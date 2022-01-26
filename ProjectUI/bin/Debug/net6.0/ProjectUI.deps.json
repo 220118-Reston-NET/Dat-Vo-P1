@@ -7,14 +7,41 @@
   "targets": {
     ".NETCoreApp,Version=v6.0": {
       "ProjectUI/1.0.0": {
+        "dependencies": {
+          "ProjectDL": "1.0.0",
+          "ProjectModel": "1.0.0"
+        },
         "runtime": {
           "ProjectUI.dll": {}
+        }
+      },
+      "ProjectDL/1.0.0": {
+        "dependencies": {
+          "ProjectModel": "1.0.0"
+        },
+        "runtime": {
+          "ProjectDL.dll": {}
+        }
+      },
+      "ProjectModel/1.0.0": {
+        "runtime": {
+          "ProjectModel.dll": {}
         }
       }
     }
   },
   "libraries": {
     "ProjectUI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ProjectDL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ProjectModel/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

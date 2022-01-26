@@ -4,6 +4,7 @@ namespace ProjectUI
     {
         void Display();
         string UserChoice();
+
     }
 
 }

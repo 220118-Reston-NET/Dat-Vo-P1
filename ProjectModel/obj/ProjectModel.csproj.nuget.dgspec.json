@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dat Vo\\Documents\\Revature\\Project0\\ProjectModel\\ProjectModel.csproj": {}
+    "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectModel\\ProjectModel.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dat Vo\\Documents\\Revature\\Project0\\ProjectModel\\ProjectModel.csproj": {
+    "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectModel\\ProjectModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dat Vo\\Documents\\Revature\\Project0\\ProjectModel\\ProjectModel.csproj",
+        "projectUniqueName": "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectModel\\ProjectModel.csproj",
         "projectName": "ProjectModel",
-        "projectPath": "C:\\Users\\Dat Vo\\Documents\\Revature\\Project0\\ProjectModel\\ProjectModel.csproj",
+        "projectPath": "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectModel\\ProjectModel.csproj",
         "packagesPath": "C:\\Users\\Dat Vo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dat Vo\\Documents\\Revature\\Project0\\ProjectModel\\obj\\",
+        "outputPath": "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectModel\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

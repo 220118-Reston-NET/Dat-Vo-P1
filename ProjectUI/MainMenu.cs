@@ -7,7 +7,8 @@ namespace ProjectUI
         {
             Console.WriteLine("==========Main Menu==========");
             Console.WriteLine("[0] Exit Main Menu");
-            Console.WriteLine("[1] Food Menu");
+            Console.WriteLine("[1] Employee List");
+            Console.WriteLine("[2] Item List"); 
             Console.WriteLine("======End of Main Menu=======");
 
         }
@@ -17,14 +18,17 @@ namespace ProjectUI
             switch (userInput)
             {
                 case "0":
-                    Console.WriteLine("GOOD BYE! COME AGAIN");
+                    Console.Clear();
+                    Console.WriteLine("GOOD BYE!");
                     return "Exit";
                 case "1":
                     Console.Clear();
-                    Console.WriteLine("==========Food Menu==========");
-                    return "FoodMenu";
+                    return "Employee List";
+                case "2":
+                    Console.Clear();
+                    return "Item List";
                 default:
-                    Console.WriteLine("Please input a valid response");
+                    Console.WriteLine("Invalid Input");
                     return "InvalidInput";
             }
         

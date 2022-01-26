@@ -1,0 +1,12 @@
+C:\Users\Dat Vo\Documents\Project0\ProjectModel\bin\Debug\net6.0\ProjectModel.deps.json
+C:\Users\Dat Vo\Documents\Project0\ProjectModel\bin\Debug\net6.0\ProjectModel.dll
+C:\Users\Dat Vo\Documents\Project0\ProjectModel\bin\Debug\net6.0\ref\ProjectModel.dll
+C:\Users\Dat Vo\Documents\Project0\ProjectModel\bin\Debug\net6.0\ProjectModel.pdb
+C:\Users\Dat Vo\Documents\Project0\ProjectModel\obj\Debug\net6.0\ProjectModel.csproj.AssemblyReference.cache
+C:\Users\Dat Vo\Documents\Project0\ProjectModel\obj\Debug\net6.0\ProjectModel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dat Vo\Documents\Project0\ProjectModel\obj\Debug\net6.0\ProjectModel.AssemblyInfoInputs.cache
+C:\Users\Dat Vo\Documents\Project0\ProjectModel\obj\Debug\net6.0\ProjectModel.AssemblyInfo.cs
+C:\Users\Dat Vo\Documents\Project0\ProjectModel\obj\Debug\net6.0\ProjectModel.csproj.CoreCompileInputs.cache
+C:\Users\Dat Vo\Documents\Project0\ProjectModel\obj\Debug\net6.0\ProjectModel.dll
+C:\Users\Dat Vo\Documents\Project0\ProjectModel\obj\Debug\net6.0\ref\ProjectModel.dll
+C:\Users\Dat Vo\Documents\Project0\ProjectModel\obj\Debug\net6.0\ProjectModel.pdb

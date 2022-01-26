@@ -1,11 +1,49 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "ProjectDL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "ProjectModel": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ProjectDL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ProjectDL.dll": {}
+        }
+      },
+      "ProjectModel/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/ProjectModel.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ProjectModel.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "ProjectDL/1.0.0": {
+      "type": "project",
+      "path": "../ProjectDL/ProjectDL.csproj",
+      "msbuildProject": "../ProjectDL/ProjectDL.csproj"
+    },
+    "ProjectModel/1.0.0": {
+      "type": "project",
+      "path": "../ProjectModel/ProjectModel.csproj",
+      "msbuildProject": "../ProjectModel/ProjectModel.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "ProjectDL >= 1.0.0",
+      "ProjectModel >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Dat Vo\\.nuget\\packages\\": {},
@@ -14,11 +52,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dat Vo\\Documents\\Revature\\Project0\\ProjectUI\\ProjectUI.csproj",
+      "projectUniqueName": "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectUI\\ProjectUI.csproj",
       "projectName": "ProjectUI",
-      "projectPath": "C:\\Users\\Dat Vo\\Documents\\Revature\\Project0\\ProjectUI\\ProjectUI.csproj",
+      "projectPath": "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectUI\\ProjectUI.csproj",
       "packagesPath": "C:\\Users\\Dat Vo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dat Vo\\Documents\\Revature\\Project0\\ProjectUI\\obj\\",
+      "outputPath": "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectUI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -37,7 +75,14 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectDL\\ProjectDL.csproj": {
+              "projectPath": "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectDL\\ProjectDL.csproj"
+            },
+            "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectModel\\ProjectModel.csproj": {
+              "projectPath": "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectModel\\ProjectModel.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
