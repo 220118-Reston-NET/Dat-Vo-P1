@@ -27,7 +27,6 @@ namespace ProjectUI
                 {
                     Console.WriteLine("Invalid Input");
                 }
-
             }
             catch
             {

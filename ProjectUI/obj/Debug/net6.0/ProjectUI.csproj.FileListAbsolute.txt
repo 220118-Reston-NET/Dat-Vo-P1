@@ -33,3 +33,5 @@ C:\Users\Dat Vo\Documents\Project0\ProjectUI\bin\Debug\net6.0\ProjectDL.pdb
 C:\Users\Dat Vo\Documents\Project0\ProjectUI\obj\Debug\net6.0\ProjectUI.csproj.CopyComplete
 C:\Users\Dat Vo\Documents\Project0\ProjectUI\bin\Debug\net6.0\ProjectModel.dll
 C:\Users\Dat Vo\Documents\Project0\ProjectUI\bin\Debug\net6.0\ProjectModel.pdb
+C:\Users\Dat Vo\documents\Project0\ProjectUI\bin\Debug\net6.0\Serilog.dll
+C:\Users\Dat Vo\documents\Project0\ProjectUI\bin\Debug\net6.0\Serilog.Sinks.File.dll

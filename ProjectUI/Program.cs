@@ -2,29 +2,24 @@
 using ProjectUI;
 using ProjectModel;
 using ProjectDL;
+using Serilog;
+
+// Log.Logger = new LoggerConfiguration();
+//     .WriteTo.File("./logs/user.txt");
+//     .CreateLogger();
 
 bool repeat = true;
 IMenu currentmenu = new MainMenu();
 List<EmployeeModel> ListOfEmployees = new List<EmployeeModel>();
 ListOfEmployees = Serialization.DeserialMain();
 
+
 while (repeat)
 {
-Console.WriteLine(currentmenu.GetType());
-//currentmenu = new RemoveEmployee();
-if (currentmenu.GetType() == typeof(ViewEmployeeList) || currentmenu.GetType() == typeof(RemoveEmployee) || currentmenu.GetType() == typeof(RemoveEmployeeIndex)) 
-{
-    ViewEmployeeList.Display(ListOfEmployees);
-}
-else
-{
-    currentmenu.Display();
-}
+//Console.WriteLine(currentmenu.GetType());
 
-// if (currentmenu.GetType() == typeof(RemoveEmployeeIndex))
-// {
-//     RemoveEmployeeIndex.UserChoice(ListOfEmployees);
-// }
+currentmenu.Display();
+
 
 string ans = currentmenu.UserChoice();
 
@@ -36,7 +31,7 @@ switch (ans)
         {
             currentmenu = new MainMenu();
         }
-        else if (currentmenu.GetType() == typeof(ViewEmployeeList))
+        else if (currentmenu.GetType() == typeof(ViewEmployeeList) || currentmenu.GetType() == typeof(SearchEmployeeOptions))
         {
             currentmenu = new EmployeeList();
         }
@@ -45,6 +40,7 @@ switch (ans)
             currentmenu = new ViewEmployeeList();
         }
         break;
+
     //Main Menu options
     case "Exit":
         repeat = false;
@@ -55,6 +51,7 @@ switch (ans)
     case "InvalidInput":
         Console.WriteLine("Invalid Input");
         break;
+
     // Employee List options
     case "add an employee":
         ListOfEmployees.Add(AddEmployee.Display());
@@ -69,18 +66,27 @@ switch (ans)
     case "search for an employee":
         currentmenu = new SearchEmployeeOptions();
         break;
+
     // Remove Employee options
     case "remove employee by index": 
         currentmenu = new RemoveEmployeeIndex();
-
         ListOfEmployees = RemoveEmployeeIndex.UserChoice(ListOfEmployees);
         Serialization.SerialMain(ListOfEmployees);
         currentmenu = new RemoveEmployee();
         break;
 
     // Search Employee options
-    case "":
-
+    case "search employee by name":
+        SearchEmployeeOptions.SearchByName();
+        currentmenu = new SearchEmployeeOptions();
+        break;
+    case "search employee by number":
+        SearchEmployeeOptions.SearchByNumber();
+        currentmenu = new SearchEmployeeOptions();
+        break;
+    case "search employee by email":
+        SearchEmployeeOptions.SearchByEmail();
+        currentmenu = new SearchEmployeeOptions();
         break;
 
     // default statement

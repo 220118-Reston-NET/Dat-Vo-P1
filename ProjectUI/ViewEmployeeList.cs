@@ -4,8 +4,10 @@ namespace ProjectUI
 {
     public class ViewEmployeeList:IMenu
     {
-        public static void Display(List<EmployeeModel> InputList)
+        public void Display()
         {
+            List<EmployeeModel> InputList = new List<EmployeeModel>();
+            InputList = Serialization.DeserialMain();
             Console.WriteLine("=====Employee List=====");
             Console.WriteLine("Names        ||Number        || Email        ");
             for (int i=0;i<InputList.Count;i++)
@@ -13,11 +15,6 @@ namespace ProjectUI
                 Console.WriteLine(i+1 + "." + Data.ManageSpaceName(InputList[i].name) + Data.ManageSpaceNumber(InputList[i].number)+ "    " + InputList[i].email);
 
             } 
-        }
-
-        public void Display()
-        {
-
         }
 
         public string UserChoice()

@@ -35,6 +35,11 @@ namespace ProjectUI
                 Console.Clear();
                 return "view employee list" ;
             }
+            else if (userInputEmployeeList == "4") 
+            {
+                Console.Clear();
+                return "search for an employee" ;
+            }
             else
             {
                 return "???";
