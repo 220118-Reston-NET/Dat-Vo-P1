@@ -21,7 +21,7 @@ namespace ProjectUI
             if (userInputEmployeeList == "0")
             {
                 Console.Clear();
-                return "go back" ;
+                return "Main Menu" ;
             }
             else if (userInputEmployeeList == "1") 
             {

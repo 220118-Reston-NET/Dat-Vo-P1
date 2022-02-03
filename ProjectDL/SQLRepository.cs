@@ -14,7 +14,7 @@ namespace ProjectDL
         {
             string sqlQuery = @"insert into Employee values(@employeeID, @employeename, @employeenumber, @employeeemail)";
 
-            using (SqlConnection con = new SqlConnection("Server=tcp:project-db-fl.database.windows.net,1433;Initial Catalog=ProjectDB;Persist Security Info=False;User ID=Project0admin;Password=DatVo123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
             {
                 con.Open();
 
@@ -36,7 +36,7 @@ namespace ProjectDL
 
             string sqlQuery = @"select * from Employee";
 
-            using (SqlConnection con = new SqlConnection("Server=tcp:project-db-fl.database.windows.net,1433;Initial Catalog=ProjectDB;Persist Security Info=False;User ID=Project0admin;Password=DatVo123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
             {
                 con.Open();
 

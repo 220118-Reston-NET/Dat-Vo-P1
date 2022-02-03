@@ -43,23 +43,23 @@ string ans = currentmenu.UserChoice();
 switch (ans)
 {
     //back button for all menu
-    case "go back":
-        if (currentmenu.GetType() == typeof(EmployeeList) || currentmenu.GetType() == typeof(StoreFrontMenu) || currentmenu.GetType() == typeof(ItemListMenu) || currentmenu.GetType() == typeof(AddEmployeeMenu))
-        {
-            Log.Information("RETURN TO MAIN MENU");
-            currentmenu = new MainMenu();
-        }
-        else if (currentmenu.GetType() == typeof(AddEmployeeMenu) || currentmenu.GetType() == typeof(SearchEmployeeMenu) || currentmenu.GetType() == typeof(ViewEmployeeMenu))
-        {
-            Log.Information("RETURN TO EMPLOYEE LIST");
-            currentmenu = new EmployeeList();
-        }
-        else if (currentmenu.GetType() == typeof(RemoveEmployee))
-        {
-            Log.Information("RETURN TO VIEW EMPLOYEES");
-            currentmenu = new ViewEmployeeList();
-        }
-        break;
+    // case "go back":
+    //     if (currentmenu.GetType() == typeof(EmployeeList) || currentmenu.GetType() == typeof(StoreFrontMenu) || currentmenu.GetType() == typeof(ItemListMenu) || currentmenu.GetType() == typeof(AddEmployeeMenu))
+    //     {
+    //         Log.Information("RETURN TO MAIN MENU");
+    //         currentmenu = new MainMenu();
+    //     }
+    //     else if (currentmenu.GetType() == typeof(AddEmployeeMenu) || currentmenu.GetType() == typeof(SearchEmployeeMenu) || currentmenu.GetType() == typeof(ViewEmployeeMenu))
+    //     {
+    //         Log.Information("RETURN TO EMPLOYEE LIST");
+    //         currentmenu = new EmployeeList();
+    //     }
+    //     else if (currentmenu.GetType() == typeof(RemoveEmployee))
+    //     {
+    //         Log.Information("RETURN TO VIEW EMPLOYEES");
+    //         currentmenu = new ViewEmployeeList();
+    //     }
+    //     break;
 
     //Main Menu options
     case "Exit":
@@ -67,13 +67,13 @@ switch (ans)
         Log.CloseAndFlush();
         repeat = false;
         break;
+    case "Main Menu":
+        Log.Information("RETURN TO MAIN MENU");
+        currentmenu = new MainMenu();
+        break;
     case "Employee List":
         Log.Information("OPEN EMPLOYEE LIST");
         currentmenu = new EmployeeList();
-        break;
-    case "InvalidInput":
-        Log.Information("INVALID INPUT DETECTED");
-        Console.WriteLine("Invalid Input");
         break;
     case "StoreFront Menu":
         Log.Information("OPENING STOREFRONT MENU");
@@ -81,6 +81,10 @@ switch (ans)
         break;
     case "Item List":
         currentmenu = new ItemListMenu();
+        break;
+    case "InvalidInput":
+        Log.Information("INVALID INPUT DETECTED");
+        Console.WriteLine("Invalid Input");
         break;
 
 
@@ -94,10 +98,10 @@ switch (ans)
         Log.Information("OPENING EMPLOYEE LIST");
         currentmenu = new ViewEmployeeMenu(new ProjectBLc(new SQLRepository(_connectionString)));
         break;
-    case "remove an employee":
-        Log.Information("OPEN REMOVING EMOYPLYEE OPTIONS");
-        currentmenu = new RemoveEmployee();
-        break;
+    // case "remove an employee":
+    //     Log.Information("OPEN REMOVING EMOYPLYEE OPTIONS");
+    //     currentmenu = new RemoveEmployee();
+    //     break;
     case "search for an employee":
         Log.Information("OPEN SEARCH SEARCH EMPLOYEE MENU");
         currentmenu = new SearchEmployeeMenu(new ProjectBLc(new SQLRepository(_connectionString)));

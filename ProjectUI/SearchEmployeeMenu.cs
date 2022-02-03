@@ -37,10 +37,10 @@ namespace ProjectUI
                     Console.WriteLine("Please press Enter to continue");
                     Console.ReadLine();
 
-                    return "go back";
+                    return "Employee List";
                 case "0":
                     Console.Clear();
-                    return "go back";
+                    return "Employee List";
                 default:
                     Console.WriteLine("Please input a valid response");
                     Console.WriteLine("Please press Enter to continue");
