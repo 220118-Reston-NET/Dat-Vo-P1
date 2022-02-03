@@ -1,3 +1,4 @@
+using ProjectBL;
 using ProjectDL;
 using ProjectModel;
 namespace ProjectUI
@@ -9,7 +10,7 @@ namespace ProjectUI
             List<EmployeeModel> InputList = new List<EmployeeModel>();
             InputList = Serialization.DeserialMain();
             Console.WriteLine("=====Employee List=====");
-            Console.WriteLine("Names        ||Number        || Email        ");
+            Console.WriteLine("Names                ||Number        || Email        ");
             for (int i=0;i<InputList.Count;i++)
             {
                 Console.WriteLine(i+1 + "." + Data.ManageSpaceName(InputList[i].name) + Data.ManageSpaceNumber(InputList[i].number)+ "    " + InputList[i].email);

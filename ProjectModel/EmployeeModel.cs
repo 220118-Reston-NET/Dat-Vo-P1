@@ -2,15 +2,17 @@ namespace ProjectModel
 {
     public class EmployeeModel
     {
+        public int employeeID { get; set; }
         public string name { get; set; }
         public string number { get; set; }
         public string email { get; set; }
 
         public EmployeeModel()
         {
-            name = "Default Employee";
-            number = "Default Number";
-            email = "Default Email";
+            employeeID = 0;
+            name = "Employee Name";
+            number = "Employee Number";
+            email = "Employee Email";
         }
     }
 }

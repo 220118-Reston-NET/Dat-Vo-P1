@@ -14,7 +14,7 @@ namespace ProjectUI
                 {
                     //return list1;
                     Console.Clear();
-                    throw new Exception("lol");
+                    throw new Exception("Please Enter A Phone Number");
                 }
                 else if (userInput > 0)
                 {

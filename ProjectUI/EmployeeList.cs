@@ -1,3 +1,4 @@
+using ProjectModel;
 namespace ProjectUI
 {
     public class EmployeeList : IMenu
@@ -42,8 +43,55 @@ namespace ProjectUI
             }
             else
             {
-                return "???";
+                return "Invalid Input";
             }
         }
+
+        // public static EmployeeModel AddEmployee()
+        // {
+        //     bool repeatNumber = true;
+        //     bool repeatEmail = true;
+        //     EmployeeModel employee = new EmployeeModel();
+        //     Console.WriteLine("Enter Employee Name:");
+        //     string Name = Console.ReadLine();
+        //     employee.name = Name;
+
+        //     // While loop validating phone number
+        //     while (repeatNumber)
+        //     {
+        //         Console.WriteLine("Enter Employee's Phone Number:");
+        //         string Number = Console.ReadLine();
+        //         if (Number.Count() == 10)
+        //         {
+        //             repeatNumber = false;
+        //             employee.number = Number;
+        //         }
+        //         else
+        //         {
+        //             Console.Clear();
+        //             Console.WriteLine("Please enter a valid phone number.");
+        //         }
+        //     }
+
+        //     // While loop validating email
+        //     while (repeatEmail)
+        //     {
+        //         Console.WriteLine("Enter Employee Email:");
+        //         string Email = Console.ReadLine();
+        //         if (Email.Contains("@") && Email.Contains(".") )
+        //         {
+        //             repeatEmail = false;
+        //             employee.email = Email;
+        //         }
+        //         else
+        //         {
+        //             Console.Clear();
+        //             Console.WriteLine("Please enter a valid email number.");
+        //         }
+        //     }
+
+        //     return employee;
+
+        //}
     }
 }

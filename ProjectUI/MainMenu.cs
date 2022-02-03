@@ -9,6 +9,7 @@ namespace ProjectUI
             Console.WriteLine("[0] Exit Main Menu");
             Console.WriteLine("[1] Employee List");
             Console.WriteLine("[2] Item List"); 
+            Console.WriteLine("[3] StoreFront"); 
             Console.WriteLine("======End of Main Menu=======");
 
         }
@@ -27,6 +28,9 @@ namespace ProjectUI
                 case "2":
                     Console.Clear();
                     return "Item List";
+                case "3":
+                    Console.Clear();
+                    return "StoreFront Menu";
                 default:
                     Console.WriteLine("Invalid Input");
                     return "InvalidInput";

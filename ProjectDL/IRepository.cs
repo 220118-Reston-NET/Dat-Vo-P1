@@ -1,5 +1,10 @@
-﻿namespace ProjectDL;
-public class Class1
+using ProjectModel;
+namespace ProjectDL
 {
+    public interface IRepository
+    {
+        EmployeeModel AddEmployee(EmployeeModel Employee);
 
+        List<EmployeeModel> GetAllEmployee();
+    }
 }

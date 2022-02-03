@@ -1,4 +1,5 @@
 using ProjectModel;
+using ProjectBL;
 using ProjectDL;
 namespace ProjectUI
 {
@@ -43,7 +44,6 @@ namespace ProjectUI
             string Name = Console.ReadLine();
             List<EmployeeModel> DataList = new List<EmployeeModel>();
             DataList = Serialization.DeserialMain();
-            //Console.WriteLine
             Console.WriteLine("========RESULTS========");
             Console.WriteLine("Names        ||Number        || Email        ");
             for (int i = 0; i < DataList.Count(); i++)

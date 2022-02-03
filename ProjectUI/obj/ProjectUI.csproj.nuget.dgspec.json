@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectUI\\ProjectUI.csproj": {}
+    "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectUI\\ProjectUI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectDL\\ProjectDL.csproj": {
+    "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectBL\\ProjectBL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectDL\\ProjectDL.csproj",
-        "projectName": "ProjectDL",
-        "projectPath": "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectDL\\ProjectDL.csproj",
+        "projectUniqueName": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectBL\\ProjectBL.csproj",
+        "projectName": "ProjectBL",
+        "projectPath": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectBL\\ProjectBL.csproj",
         "packagesPath": "C:\\Users\\Dat Vo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectDL\\obj\\",
+        "outputPath": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectBL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -31,8 +31,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectModel\\ProjectModel.csproj": {
-                "projectPath": "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectModel\\ProjectModel.csproj"
+              "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectDL\\ProjectDL.csproj": {
+                "projectPath": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectDL\\ProjectDL.csproj"
+              },
+              "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectModel\\ProjectModel.csproj": {
+                "projectPath": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectModel\\ProjectModel.csproj"
               }
             }
           }
@@ -65,14 +68,81 @@
         }
       }
     },
-    "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectModel\\ProjectModel.csproj": {
+    "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectDL\\ProjectDL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectModel\\ProjectModel.csproj",
-        "projectName": "ProjectModel",
-        "projectPath": "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectModel\\ProjectModel.csproj",
+        "projectUniqueName": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectDL\\ProjectDL.csproj",
+        "projectName": "ProjectDL",
+        "projectPath": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectDL\\ProjectDL.csproj",
         "packagesPath": "C:\\Users\\Dat Vo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectModel\\obj\\",
+        "outputPath": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectDL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Dat Vo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectModel\\ProjectModel.csproj": {
+                "projectPath": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectModel\\ProjectModel.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectModel\\ProjectModel.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectModel\\ProjectModel.csproj",
+        "projectName": "ProjectModel",
+        "projectPath": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectModel\\ProjectModel.csproj",
+        "packagesPath": "C:\\Users\\Dat Vo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectModel\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -122,14 +192,14 @@
         }
       }
     },
-    "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectUI\\ProjectUI.csproj": {
+    "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectUI\\ProjectUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectUI\\ProjectUI.csproj",
+        "projectUniqueName": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectUI\\ProjectUI.csproj",
         "projectName": "ProjectUI",
-        "projectPath": "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectUI\\ProjectUI.csproj",
+        "projectPath": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectUI\\ProjectUI.csproj",
         "packagesPath": "C:\\Users\\Dat Vo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectUI\\obj\\",
+        "outputPath": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectUI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -149,11 +219,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectDL\\ProjectDL.csproj": {
-                "projectPath": "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectDL\\ProjectDL.csproj"
+              "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectBL\\ProjectBL.csproj": {
+                "projectPath": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectBL\\ProjectBL.csproj"
               },
-              "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectModel\\ProjectModel.csproj": {
-                "projectPath": "C:\\Users\\Dat Vo\\documents\\Project0\\ProjectModel\\ProjectModel.csproj"
+              "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectDL\\ProjectDL.csproj": {
+                "projectPath": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectDL\\ProjectDL.csproj"
+              },
+              "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectModel\\ProjectModel.csproj": {
+                "projectPath": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectModel\\ProjectModel.csproj"
               }
             }
           }
@@ -168,6 +241,18 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[6.0.2-mauipre.1.22054.8, )"
+            },
+            "Microsoft.Extensions.Configuration.FileExtensions": {
+              "target": "Package",
+              "version": "[6.0.2-mauipre.1.22054.8, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[6.0.2-mauipre.1.22054.8, )"
+            },
             "Serilog": {
               "target": "Package",
               "version": "[2.10.0, )"

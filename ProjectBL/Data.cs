@@ -1,20 +1,20 @@
 // class file Data
-namespace ProjectDL
+namespace ProjectBL
 {
 public class Data
 {
     public static string ManageSpaceName(string Name)
     {
         string nameString = "";
-        if (Name.Length > 10)
+        if (Name.Length > 14)
         {
-            nameString = Name.Substring(0, 7) + "....";
+            nameString = Name.Substring(0, 10) + "....";
         }
-        else if (Name.Length <=10)
+        else if (Name.Length <=14)
         {
             int numberOfMisingSpace = new int();
             nameString = Name;
-            numberOfMisingSpace = 10-Name.Length;
+            numberOfMisingSpace = 14-Name.Length;
             for (int a = 0; a < numberOfMisingSpace+1; a++)
             {
                 nameString = nameString + " ";

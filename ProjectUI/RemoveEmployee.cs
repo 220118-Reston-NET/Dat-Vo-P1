@@ -1,5 +1,6 @@
 using ProjectModel;
 using ProjectDL;
+using ProjectBL;
 namespace ProjectUI
 {
     public class RemoveEmployee : IMenu
