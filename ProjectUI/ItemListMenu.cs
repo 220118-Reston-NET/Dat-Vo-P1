@@ -4,7 +4,6 @@ namespace ProjectUI
     {
         public void Display()
         {
-            Console.WriteLine("Please Select A Location");
             Console.WriteLine("[0] Back");
             Console.WriteLine("[1] View Item List");
             Console.WriteLine("[2] Add Item");
@@ -18,7 +17,7 @@ namespace ProjectUI
             if (UserInput == 0)
             {
                 Console.Clear();
-                return "go back";
+                return "Main Menu";
             }
             else if (UserInput == 1)
             {

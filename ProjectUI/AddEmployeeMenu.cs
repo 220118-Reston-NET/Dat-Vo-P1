@@ -20,8 +20,6 @@ namespace ProjectUI
             Console.WriteLine("[2] Email - " + _newEmployee.email);
             Console.WriteLine("[1] Save");
             Console.WriteLine("[0] Go Back");
-            //List<EmployeeModel> ListOfEmployee = _projectBL.GetAllEmployee();
-            //Console.WriteLine(_newEmployee.employeeID = ListOfEmployee.Count+1);
         }
 
         public string UserChoice()
@@ -30,7 +28,8 @@ namespace ProjectUI
             switch (userInput)
             {
                 case "0":
-                    return "go back";
+                    Console.Clear();
+                    return "Employee List";
                 case "1":
                     try
                     {
@@ -41,7 +40,7 @@ namespace ProjectUI
                         _projectBL.AddEmployee(_newEmployee);
                         Log.Information("Employee Added!");
                         Console.WriteLine("Employee Added!");
-                        return "go back";
+                        return "Employee List";
 
                     }
                     catch (System.Exception exc)

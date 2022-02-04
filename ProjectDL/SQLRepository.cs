@@ -55,8 +55,58 @@ namespace ProjectDL
                 }
 
             } 
-
             return listOfEmployee;
         }
+        
+        public ItemModel AddItem(ItemModel item)
+        {
+            string sqlQuery = @"insert into Item values(@ItemID, @ItemName, @ItemPrice, @ItemCategory, @ItemDescription)";
+
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+                //@ItemID, @ItemName, @ItemPrice, @ItemCategory, @ItemDescription
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+                command.Parameters.AddWithValue("@ItemID", item.ItemID);
+                command.Parameters.AddWithValue("@ItemName", item.ItemName);
+                command.Parameters.AddWithValue("@ItemPrice", item.ItemPrice);
+                command.Parameters.AddWithValue("@ItemCategory", item.ItemCategory);
+                command.Parameters.AddWithValue("@ItemDescription", item.ItemDescription);
+
+                command.ExecuteNonQuery();
+            }
+
+            return item;
+        }
+
+        public List<ItemModel> GetAllItem()
+        {
+            List<ItemModel> listOfItem = new List<ItemModel>();
+
+            string sqlQuery = @"select * from Item";
+
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    listOfItem.Add(new ItemModel(){
+                        ItemID = reader.GetInt32(0),
+                        ItemName = reader.GetString(1),
+                        ItemPrice = reader.GetFloat(2),
+                        ItemCategory = reader.GetString(3),
+                        ItemDescription = reader.GetString(3)
+                    });
+                }
+
+            } 
+            return listOfItem;
+        }
     }
+
 }

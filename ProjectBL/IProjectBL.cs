@@ -9,4 +9,13 @@ namespace ProjectBL
 
         List<EmployeeModel> GetAllEmployee();
     }
+
+    public interface IProjectBLitem
+    {
+        ItemModel AddItem(ItemModel p_Item);
+
+        List<ItemModel> SearchItem(string p_name);
+
+        List<ItemModel> GetAllItem();
+    }
 }

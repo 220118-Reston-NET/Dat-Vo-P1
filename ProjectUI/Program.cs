@@ -42,25 +42,6 @@ string ans = currentmenu.UserChoice();
 
 switch (ans)
 {
-    //back button for all menu
-    // case "go back":
-    //     if (currentmenu.GetType() == typeof(EmployeeList) || currentmenu.GetType() == typeof(StoreFrontMenu) || currentmenu.GetType() == typeof(ItemListMenu) || currentmenu.GetType() == typeof(AddEmployeeMenu))
-    //     {
-    //         Log.Information("RETURN TO MAIN MENU");
-    //         currentmenu = new MainMenu();
-    //     }
-    //     else if (currentmenu.GetType() == typeof(AddEmployeeMenu) || currentmenu.GetType() == typeof(SearchEmployeeMenu) || currentmenu.GetType() == typeof(ViewEmployeeMenu))
-    //     {
-    //         Log.Information("RETURN TO EMPLOYEE LIST");
-    //         currentmenu = new EmployeeList();
-    //     }
-    //     else if (currentmenu.GetType() == typeof(RemoveEmployee))
-    //     {
-    //         Log.Information("RETURN TO VIEW EMPLOYEES");
-    //         currentmenu = new ViewEmployeeList();
-    //     }
-    //     break;
-
     //Main Menu options
     case "Exit":
         Log.Information("EXITING PROGRAM");
@@ -135,7 +116,7 @@ switch (ans)
 
     // Item List Menu Options
     case "add item":
-
+        //currentmenu = new AddItemMenu(new ProjectBLc(new SQLRepository(_connectionString)))
         break;
     case "remove item":
 

@@ -41,4 +41,27 @@ namespace ProjectBL
                         .ToList(); //ToList method just converts into a list collection that our method needs to return
         }
     }
+
+    public class ProjectBLitem : IProjectBLitem
+    {
+        private IRepository _repo;
+        public ProjectBLitem(IRepository p_repo)
+        {
+            _repo = p_repo;
+        }
+        public ItemModel AddItem(ItemModel p_Item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ItemModel> GetAllItem()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ItemModel> SearchItem(string p_name)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
