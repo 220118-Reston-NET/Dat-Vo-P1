@@ -33,10 +33,9 @@ namespace ProjectUI
                 case "1":
                     try
                     {
-
                         Log.Information("Adding Employee \n" + _newEmployee);
-                        List<EmployeeModel> ListOfEmployee = _projectBL.GetAllEmployee();
-                        _newEmployee.employeeID = ListOfEmployee.Count+1;
+                        //List<EmployeeModel> ListOfEmployee = _projectBL.GetAllEmployee();
+                        //_newEmployee.employeeID = ListOfEmployee.Count+1;
                         _projectBL.AddEmployee(_newEmployee);
                         Log.Information("Employee Added!");
                         Console.WriteLine("Employee Added!");

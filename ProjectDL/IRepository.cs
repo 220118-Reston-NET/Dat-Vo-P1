@@ -6,5 +6,7 @@ namespace ProjectDL
         EmployeeModel AddEmployee(EmployeeModel Employee);
 
         List<EmployeeModel> GetAllEmployee();
+        
+        EmployeeModel RemoveEmployee(EmployeeModel Employee);
     }
 }

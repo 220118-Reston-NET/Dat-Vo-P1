@@ -79,40 +79,15 @@ switch (ans)
         Log.Information("OPENING EMPLOYEE LIST");
         currentmenu = new ViewEmployeeMenu(new ProjectBLc(new SQLRepository(_connectionString)));
         break;
-    // case "remove an employee":
-    //     Log.Information("OPEN REMOVING EMOYPLYEE OPTIONS");
-    //     currentmenu = new RemoveEmployee();
-    //     break;
+    case "remove an employee":
+        Log.Information("OPEN REMOVING EMOYPLYEE OPTIONS");
+        currentmenu = new RemoveEmployeeMenu(new ProjectBLc(new SQLRepository(_connectionString)));
+        break;
     case "search for an employee":
         Log.Information("OPEN SEARCH SEARCH EMPLOYEE MENU");
         currentmenu = new SearchEmployeeMenu(new ProjectBLc(new SQLRepository(_connectionString)));
         break;
 
-    // Remove Employee options
-    // case "remove employee by index": 
-    //     Log.Information("REMOVING EMPLOYEE BY INDEX");
-    //     currentmenu = new RemoveEmployeeIndex();
-    //     ListOfEmployees = RemoveEmployeeIndex.UserChoice(ListOfEmployees);
-    //     Serialization.SerialMain(ListOfEmployees);
-    //     currentmenu = new RemoveEmployee();
-    //     break;
-
-    // Search Employee options
-    // case "search employee by name":
-    //     Log.Information("SEARCHING EMPLOYEE BY NAME");
-    //     SearchEmployeeOptions.SearchByName();
-    //     currentmenu = new SearchEmployeeOptions();
-    //     break;
-    // case "search employee by number":
-    //     Log.Information("SEARCHING EMPLOYEE BY NUMBER");
-    //     SearchEmployeeOptions.SearchByNumber();
-    //     currentmenu = new SearchEmployeeOptions();
-    //     break;
-    // case "search employee by email":
-    //     Log.Information("SEARCHING AN EMPLOYEE BY EMAIL");
-    //     SearchEmployeeOptions.SearchByEmail();
-    //     currentmenu = new SearchEmployeeOptions();
-    //     break;
 
     // Item List Menu Options
     case "add item":

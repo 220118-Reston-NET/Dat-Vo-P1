@@ -25,9 +25,15 @@ namespace ProjectBL
 
         }
 
+
         public List<EmployeeModel> GetAllEmployee()
         {
             return _repo.GetAllEmployee();
+        }
+
+        public EmployeeModel RemoveEmployee(EmployeeModel p_Employee)
+        {
+            return _repo.RemoveEmployee(p_Employee);
         }
 
         public List<EmployeeModel> SearchEmployee(string p_name)
@@ -40,6 +46,7 @@ namespace ProjectBL
                         .Where(employee => employee.name.Contains(p_name)) //Where method is designed to filter a collection based on a condition
                         .ToList(); //ToList method just converts into a list collection that our method needs to return
         }
+
     }
 
     public class ProjectBLitem : IProjectBLitem

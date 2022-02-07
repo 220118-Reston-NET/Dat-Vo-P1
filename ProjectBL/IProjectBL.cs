@@ -5,9 +5,12 @@ namespace ProjectBL
     {
         EmployeeModel AddEmployee(EmployeeModel p_Employee);
 
+        EmployeeModel RemoveEmployee(EmployeeModel p_Employee);
+
         List<EmployeeModel> SearchEmployee(string p_name);
 
         List<EmployeeModel> GetAllEmployee();
+
     }
 
     public interface IProjectBLitem

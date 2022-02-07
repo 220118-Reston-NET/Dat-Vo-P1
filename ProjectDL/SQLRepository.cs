@@ -57,6 +57,27 @@ namespace ProjectDL
             } 
             return listOfEmployee;
         }
+        public EmployeeModel RemoveEmployee(EmployeeModel employee)
+        {
+            string sqlQuery = @"delete from Employee where employeeID = @employeeID";
+
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+                command.Parameters.AddWithValue("@employeeID", employee.employeeID);
+                //command.Parameters.AddWithValue("@employeename",employee.name);
+                //command.Parameters.AddWithValue("@employeenumber",employee.number);
+                //command.Parameters.AddWithValue("@employeeemail",employee.email);
+
+                command.ExecuteNonQuery();
+            }
+            
+            return employee;
+        }
+    
+
         
         public ItemModel AddItem(ItemModel item)
         {
@@ -107,6 +128,6 @@ namespace ProjectDL
             } 
             return listOfItem;
         }
-    }
 
+}
 }

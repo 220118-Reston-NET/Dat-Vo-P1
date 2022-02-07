@@ -31,13 +31,26 @@ public class Data
         return numberString;
     }
 
-
-    public static string IndexSearch(string NameInput, List<string> list1, List<string> list2)
+    public static string ManageSpaceEmail(string email)
     {
-        int indexNum = list1.IndexOf(NameInput);
-        return list2[indexNum];
-        
+        string emailString = "";
+        if (email.Length > 20)
+        {
+            emailString = email.Substring(0, 16) + ".....";
+        }
+        else if (email.Length <=20)
+        {
+            int numberOfMisingSpace = new int();
+            emailString = email;
+            numberOfMisingSpace = 20-email.Length;
+            for (int a = 0; a < numberOfMisingSpace+1; a++)
+            {
+                emailString = emailString + " ";
+            }
+        }
+        return emailString;
     }
+
 
 
 }
