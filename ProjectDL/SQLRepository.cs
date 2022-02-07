@@ -12,14 +12,13 @@ namespace ProjectDL
 
         public EmployeeModel AddEmployee(EmployeeModel employee)
         {
-            string sqlQuery = @"insert into Employee values(@employeeID, @employeename, @employeenumber, @employeeemail)";
+            string sqlQuery = @"insert into Employee values(@employeename, @employeenumber, @employeeemail)";
 
             using (SqlConnection con = new SqlConnection(_connectionStrings))
             {
                 con.Open();
 
                 SqlCommand command = new SqlCommand(sqlQuery, con);
-                command.Parameters.AddWithValue("@employeeID",employee.employeeID);
                 command.Parameters.AddWithValue("@employeename",employee.name);
                 command.Parameters.AddWithValue("@employeenumber",employee.number);
                 command.Parameters.AddWithValue("@employeeemail",employee.email);
@@ -67,9 +66,6 @@ namespace ProjectDL
 
                 SqlCommand command = new SqlCommand(sqlQuery, con);
                 command.Parameters.AddWithValue("@employeeID", employee.employeeID);
-                //command.Parameters.AddWithValue("@employeename",employee.name);
-                //command.Parameters.AddWithValue("@employeenumber",employee.number);
-                //command.Parameters.AddWithValue("@employeeemail",employee.email);
 
                 command.ExecuteNonQuery();
             }
@@ -81,14 +77,14 @@ namespace ProjectDL
         
         public ItemModel AddItem(ItemModel item)
         {
-            string sqlQuery = @"insert into Item values(@ItemID, @ItemName, @ItemPrice, @ItemCategory, @ItemDescription)";
+            string sqlQuery = @"insert into Item values(@ItemName, @ItemPrice, @ItemCategory, @ItemDescription)";
 
             using (SqlConnection con = new SqlConnection(_connectionStrings))
             {
                 con.Open();
                 //@ItemID, @ItemName, @ItemPrice, @ItemCategory, @ItemDescription
                 SqlCommand command = new SqlCommand(sqlQuery, con);
-                command.Parameters.AddWithValue("@ItemID", item.ItemID);
+                //command.Parameters.AddWithValue("@ItemID", item.ItemID);
                 command.Parameters.AddWithValue("@ItemName", item.ItemName);
                 command.Parameters.AddWithValue("@ItemPrice", item.ItemPrice);
                 command.Parameters.AddWithValue("@ItemCategory", item.ItemCategory);
@@ -119,9 +115,9 @@ namespace ProjectDL
                     listOfItem.Add(new ItemModel(){
                         ItemID = reader.GetInt32(0),
                         ItemName = reader.GetString(1),
-                        ItemPrice = reader.GetFloat(2),
+                        ItemPrice = reader.GetDecimal(2),
                         ItemCategory = reader.GetString(3),
-                        ItemDescription = reader.GetString(3)
+                        ItemDescription = reader.GetString(4)
                     });
                 }
 
@@ -129,5 +125,21 @@ namespace ProjectDL
             return listOfItem;
         }
 
-}
+        public ItemModel RemoveItem(ItemModel Item)
+        {
+            string sqlQuery = @"delete from Item where ItemID = @ItemID";
+
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+                command.Parameters.AddWithValue("@ItemID", Item.ItemID);
+
+                command.ExecuteNonQuery();
+            }
+            
+            return Item;
+        }
+    }
 }

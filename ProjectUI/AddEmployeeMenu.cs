@@ -35,10 +35,11 @@ namespace ProjectUI
                     {
                         Log.Information("Adding Employee \n" + _newEmployee);
                         //List<EmployeeModel> ListOfEmployee = _projectBL.GetAllEmployee();
-                        //_newEmployee.employeeID = ListOfEmployee.Count+1;
-                        _projectBL.AddEmployee(_newEmployee);
+                        // _newEmployee.employeeID = ListOfEmployee.Last().employeeID+1;
+                         _projectBL.AddEmployee(_newEmployee);
                         Log.Information("Employee Added!");
                         Console.WriteLine("Employee Added!");
+                        //Console.WriteLine("Employee ID is" + _newEmployee.employeeID);
                         return "Employee List";
 
                     }
@@ -46,6 +47,7 @@ namespace ProjectUI
                     {
                         Log.Warning("Failed to add employee.)");
                         Console.WriteLine(exc.Message);
+                        //Console.WriteLine("Employee ID is " + _newEmployee.employeeID);
                         Console.WriteLine("Please press Enter to continue");
                         Console.ReadLine();
                     }

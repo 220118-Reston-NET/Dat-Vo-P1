@@ -18,6 +18,14 @@ namespace ProjectBL
             {
                 throw new Exception("you can not have more than 9 employees");
             }
+            else if (Employee.number.Length != 10)
+            {
+                throw new Exception("Invalid Phone Number");
+            }
+            else if (!Employee.email.Contains("@"))
+            {
+                throw new Exception("Invalid Email");
+            }
             else
             {
                 return _repo.AddEmployee(Employee);
@@ -44,7 +52,7 @@ namespace ProjectBL
             // LINQ library
             return listOfEmployee
                         .Where(employee => employee.name.Contains(p_name)) //Where method is designed to filter a collection based on a condition
-                        .ToList(); //ToList method just converts into a list collection that our method needs to return
+                        .ToList(); //ToList method just converts into a list collection that the method needs to return
         }
 
     }
@@ -58,12 +66,18 @@ namespace ProjectBL
         }
         public ItemModel AddItem(ItemModel p_Item)
         {
-            throw new NotImplementedException();
+            List<ItemModel> listOfItem = _repo.GetAllItem();
+            return _repo.AddItem(p_Item);
         }
 
         public List<ItemModel> GetAllItem()
         {
-            throw new NotImplementedException();
+            return _repo.GetAllItem();
+        }
+
+        public ItemModel RemoveItem(ItemModel p_Item)
+        {
+            return _repo.RemoveItem(p_Item);
         }
 
         public List<ItemModel> SearchItem(string p_name)

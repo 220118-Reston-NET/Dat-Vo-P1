@@ -14,7 +14,7 @@ namespace ProjectUI
         }
         public void Display()
         {
-            Console.WriteLine("Enter Employee information");
+            Console.WriteLine("Enter Item information");
             Console.WriteLine("[5] Name - " + _newItem.ItemName);
             Console.WriteLine("[4] Price - " + _newItem.ItemPrice);
             Console.WriteLine("[3] Description - " + _newItem.ItemDescription);
@@ -51,14 +51,25 @@ namespace ProjectUI
                         Console.ReadLine();
                     }
                     return "add item";
+                case "2":
+                    Console.Clear();
+                    Console.WriteLine("Enter Item category");
+                    _newItem.ItemCategory = Console.ReadLine();
+                    return "add item";
                 case "3":
                     Console.Clear();
+                    Console.WriteLine("Enter Item description");
+                    _newItem.ItemDescription = Console.ReadLine();
                     return "add item";
                 case "4":
                     Console.Clear();
+                    Console.WriteLine("Enter Item price");
+                    _newItem.ItemPrice = Convert.ToDecimal(Console.ReadLine());
                     return "add item";
                 case "5":
                     Console.Clear();
+                    Console.WriteLine("Enter Item name");
+                    _newItem.ItemName = Console.ReadLine();
                     return "add item";
                 default:
                     return " ";

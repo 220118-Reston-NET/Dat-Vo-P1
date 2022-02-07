@@ -8,5 +8,12 @@ namespace ProjectDL
         List<EmployeeModel> GetAllEmployee();
         
         EmployeeModel RemoveEmployee(EmployeeModel Employee);
+
+        ItemModel AddItem(ItemModel Item);
+
+        List<ItemModel> GetAllItem();
+        
+        ItemModel RemoveItem(ItemModel Item);
+
     }
 }

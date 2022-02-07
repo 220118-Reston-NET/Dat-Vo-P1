@@ -9,7 +9,7 @@ namespace ProjectModel
 
         public EmployeeModel()
         {
-            employeeID = 0;
+            //employeeID = 0;
             name = "Employee Name";
             number = "Employee Number";
             email = "Employee Email";

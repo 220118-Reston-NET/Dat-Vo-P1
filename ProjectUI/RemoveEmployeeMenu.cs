@@ -38,7 +38,15 @@ namespace ProjectUI
                     
                     EmployeeModel employee = new EmployeeModel();
                     List<EmployeeModel> listOfEmployee = _projectBL.GetAllEmployee();
-                    employee = listOfEmployee[userInput2];
+                    //employee = listOfEmployee[userInput2];
+                    foreach(var e in listOfEmployee)
+                    {
+                        if (e.employeeID == userInput2)
+                        {
+                            employee = e;
+                        }
+                    }
+
                     _projectBL.RemoveEmployee(employee);
                     Log.Information("Employee Removed");
                     Console.WriteLine("Employee Removed!");

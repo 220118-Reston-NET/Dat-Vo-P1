@@ -17,6 +17,8 @@ namespace ProjectBL
     {
         ItemModel AddItem(ItemModel p_Item);
 
+        ItemModel RemoveItem(ItemModel p_Item);
+
         List<ItemModel> SearchItem(string p_name);
 
         List<ItemModel> GetAllItem();

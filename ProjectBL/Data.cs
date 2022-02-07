@@ -51,6 +51,21 @@ public class Data
         return emailString;
     }
 
+    public static string ManageSpacePrice(decimal price)
+    {
+        string priceString = "";
+        //price.ToString().Length;
+        int numberOfMisingSpace = new int();
+        priceString = price.ToString();
+        numberOfMisingSpace = 7-priceString.Length;
+
+        for (int a = 0; a < numberOfMisingSpace+1; a++)
+        {
+            priceString = priceString + " ";
+        }
+        return priceString;
+    }
+
 
 
 }

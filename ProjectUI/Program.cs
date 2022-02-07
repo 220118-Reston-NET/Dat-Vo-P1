@@ -11,6 +11,7 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.File("./logs/user.txt")    // logger save to this file path
     .CreateLogger();
 
+
 bool repeat = true;
 IMenu currentmenu = new MainMenu();
 List<EmployeeModel> ListOfEmployees = new List<EmployeeModel>();
@@ -24,14 +25,7 @@ var configuration = new ConfigurationBuilder()
 string _connectionString = configuration.GetConnectionString("Reference2DB");
 
 
-//==========Test==============
-// Console.WriteLine("test");
-// currentmenu = new ViewEmployeeMenu(new ProjectBLc(new SQLRepository(_connectionString)));
-// currentmenu.Display();
-// string anst = currentmenu.UserChoice();
-//========Test=================
-
-
+//MAIN WHILE LOOP
 while (repeat)
 {
 //Console.WriteLine(currentmenu.GetType()); //display current menu in termninal
@@ -63,6 +57,9 @@ switch (ans)
     case "Item List":
         currentmenu = new ItemListMenu();
         break;
+    case "Customer View":
+        //currentmenu = new 
+        break;
     case "InvalidInput":
         Log.Information("INVALID INPUT DETECTED");
         Console.WriteLine("Invalid Input");
@@ -91,17 +88,20 @@ switch (ans)
 
     // Item List Menu Options
     case "add item":
-        //currentmenu = new AddItemMenu(new ProjectBLc(new SQLRepository(_connectionString)))
+        currentmenu = new AddItemMenu(new ProjectBLitem(new SQLRepository(_connectionString)));
         break;
     case "remove item":
-
+        currentmenu = new RemoveItemMenu(new ProjectBLitem(new SQLRepository(_connectionString)));
         break;
     case "view item list":
-
+        currentmenu = new ViewItemMenu(new ProjectBLitem(new SQLRepository(_connectionString)));
         break;
 
-    // StoreFront
-    case "":
+
+    // Customer View
+    case "New User":
+        break;
+    case "Login":
         break;
 
 
