@@ -16,10 +16,13 @@ namespace ProjectUI
             switch(UserInput)
             {
                 case "0":
+                    Console.Clear();
                     return "Main Menu";
                 case "1":
+                    Console.Clear();
                     return "New User";
                 case "2":
+                    Console.Clear();
                     return "Login";
                 default:
                     return "Invalid Input";

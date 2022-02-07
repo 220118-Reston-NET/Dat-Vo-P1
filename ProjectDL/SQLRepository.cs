@@ -141,5 +141,58 @@ namespace ProjectDL
             
             return Item;
         }
+
+        public CustomerModel AddCustomer(CustomerModel Customer)
+        {
+            string sqlQuery = @"insert into Customer values(@name, @phonenumber, @email)";
+
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+                command.Parameters.AddWithValue("@name", Customer.name);
+                command.Parameters.AddWithValue("@phonenumber", Customer.phonenumber);
+                command.Parameters.AddWithValue("@email", Customer.email);
+
+                command.ExecuteNonQuery();
+            }
+
+            return Customer;
+        }
+        
+
+        public List<CustomerModel> GetAllCustomer()
+        {
+            List<CustomerModel> listOfCustomer = new List<CustomerModel>();
+
+            string sqlQuery = @"select * from Customer";
+
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    listOfCustomer.Add(new CustomerModel(){
+                        customerID = reader.GetInt32(0),
+                        name = reader.GetString(1),
+                        phonenumber = reader.GetString(2),
+                        email = reader.GetString(3)
+                    });
+                }
+
+            } 
+            return listOfCustomer;
+        }
+
+        public CustomerModel RemoveCustomer(CustomerModel Customer)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

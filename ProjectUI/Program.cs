@@ -11,7 +11,6 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.File("./logs/user.txt")    // logger save to this file path
     .CreateLogger();
 
-
 bool repeat = true;
 IMenu currentmenu = new MainMenu();
 List<EmployeeModel> ListOfEmployees = new List<EmployeeModel>();
@@ -28,7 +27,7 @@ string _connectionString = configuration.GetConnectionString("Reference2DB");
 //MAIN WHILE LOOP
 while (repeat)
 {
-//Console.WriteLine(currentmenu.GetType()); //display current menu in termninal
+Console.WriteLine(currentmenu.GetType()); //display current menu in termninal
 
 currentmenu.Display();
 
@@ -58,7 +57,7 @@ switch (ans)
         currentmenu = new ItemListMenu();
         break;
     case "Customer View":
-        //currentmenu = new 
+        currentmenu = new CustomerViewMenu();
         break;
     case "InvalidInput":
         Log.Information("INVALID INPUT DETECTED");
@@ -96,12 +95,17 @@ switch (ans)
     case "view item list":
         currentmenu = new ViewItemMenu(new ProjectBLitem(new SQLRepository(_connectionString)));
         break;
+    case "search item":
+        currentmenu = new SearchItemMenu(new ProjectBLitem(new SQLRepository(_connectionString)));
+        break;
 
 
     // Customer View
     case "New User":
+        currentmenu = new AddCustomerMenu(new ProjectBLCustomer(new SQLRepository(_connectionString)));
         break;
     case "Login":
+        //currentmenu = 
         break;
 
 

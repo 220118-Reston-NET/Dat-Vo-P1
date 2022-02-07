@@ -82,7 +82,46 @@ namespace ProjectBL
 
         public List<ItemModel> SearchItem(string p_name)
         {
-            throw new NotImplementedException();
+            List<ItemModel> listOfItem= _repo.GetAllItem();
+            // LINQ library
+            return listOfItem
+                        .Where(item => item.ItemName.Contains(p_name)) //Where method is designed to filter a collection based on a condition
+                        .ToList(); //ToList method just converts into a list collection that the method needs to return
         }
     }
+
+    public class ProjectBLCustomer : IProjectBLCustomer
+    {
+        private IRepository _repo;
+        public ProjectBLCustomer(IRepository p_repo)
+        {
+            _repo = p_repo;
+        }
+        public CustomerModel AddCustomer(CustomerModel p_customer)
+        {
+            List<CustomerModel> listOfCustomer = _repo.GetAllCustomer();
+            return _repo.AddCustomer(p_customer);
+        }
+
+        public List<CustomerModel> GetAllCustomer()
+        {
+            return _repo.GetAllCustomer();
+        }
+
+        public CustomerModel RemoveCustomer(CustomerModel p_customer)
+        {
+            return _repo.RemoveCustomer(p_customer);
+        }
+
+        public List<CustomerModel> SearchCustomer(string p_name)
+        {
+            List<CustomerModel> listOfCustomer= _repo.GetAllCustomer();
+            // LINQ library
+            return listOfCustomer
+                        .Where(customer => customer.name.Contains(p_name)) //Where method is designed to filter a collection based on a condition
+                        .ToList(); //ToList method just converts into a list collection that the method needs to return
+        }
+    }
+
+
 }

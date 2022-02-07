@@ -23,4 +23,16 @@ namespace ProjectBL
 
         List<ItemModel> GetAllItem();
     }
+
+    public interface IProjectBLCustomer
+    {
+        CustomerModel AddCustomer(CustomerModel p_customer);
+
+        CustomerModel RemoveCustomer(CustomerModel p_customer);
+
+        List<CustomerModel> SearchCustomer(string p_name);
+
+        List<CustomerModel> GetAllCustomer();
+
+    }
 }

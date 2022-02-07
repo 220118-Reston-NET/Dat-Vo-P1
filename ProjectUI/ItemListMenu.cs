@@ -8,6 +8,7 @@ namespace ProjectUI
             Console.WriteLine("[1] View Item List");
             Console.WriteLine("[2] Add Item");
             Console.WriteLine("[3] Remove Item");
+            Console.WriteLine("[4] Search Item");
         }
 
         public string UserChoice()
@@ -33,6 +34,11 @@ namespace ProjectUI
             {
                 Console.Clear();
                 return "remove item";
+            }
+            else if (UserInput == 4)
+            {
+                Console.Clear();
+                return "search item";
             }
             else
             {

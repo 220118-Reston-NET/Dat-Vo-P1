@@ -15,5 +15,11 @@ namespace ProjectDL
         
         ItemModel RemoveItem(ItemModel Item);
 
+        CustomerModel AddCustomer(CustomerModel Customer);
+
+        List<CustomerModel> GetAllCustomer();
+        
+        CustomerModel RemoveCustomer(CustomerModel Customer);
+
     }
 }
