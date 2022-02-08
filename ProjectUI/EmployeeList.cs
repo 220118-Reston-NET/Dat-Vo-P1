@@ -25,10 +25,12 @@ namespace ProjectUI
             }
             else if (userInputEmployeeList == "1") 
             {
+                Console.Clear();
                 return "add an employee" ;
             }
             else if (userInputEmployeeList == "2") 
             {
+                Console.Clear();
                 return "remove an employee" ;
             }
             else if (userInputEmployeeList == "3") 
@@ -43,6 +45,7 @@ namespace ProjectUI
             }
             else
             {
+                Console.Clear();
                 return "Invalid Input";
             }
         }

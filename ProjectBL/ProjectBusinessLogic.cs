@@ -123,5 +123,33 @@ namespace ProjectBL
         }
     }
 
+    public class ProjectBLStoreFront : IProjectBLStoreFront
+    {
+        private IRepository _repo;
+        public ProjectBLStoreFront(IRepository p_repo)
+        {
+            _repo = p_repo;
+        }
+        public StoreFrontModel AddStoreFront(StoreFrontModel p_storefront)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<StoreFrontModel> GetAllStoreFront()
+        {
+            return _repo.GetAllStoreFront();
+        }
+
+        public StoreFrontModel RemoveStoreFront(StoreFrontModel p_storefront)
+        {
+            throw new NotImplementedException();
+        }
+
+        public StoreFrontModel SearchStoreFront(string p_name)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
 
 }

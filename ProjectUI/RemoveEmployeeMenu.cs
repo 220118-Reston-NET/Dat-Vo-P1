@@ -46,11 +46,22 @@ namespace ProjectUI
                             employee = e;
                         }
                     }
-
-                    _projectBL.RemoveEmployee(employee);
-                    Log.Information("Employee Removed");
-                    Console.WriteLine("Employee Removed!");
-                    return "Employee List";
+                    if (employee.employeeID == 0)
+                    {
+                        Console.WriteLine("Please input a valid response");
+                        Console.WriteLine("Please press Enter to continue");
+                        Console.ReadLine();
+                        Console.Clear();
+                        return "remove an employee";
+                    }
+                    else 
+                    {
+                        Console.Clear();
+                        _projectBL.RemoveEmployee(employee);
+                        Log.Information("Employee Removed");
+                        Console.WriteLine("Employee Removed!");
+                        return "Employee List";
+                    }
                 // case "2":
                 //     Console.Clear();
                 //     return "Delete by name";
@@ -58,6 +69,7 @@ namespace ProjectUI
                     Console.WriteLine("Please input a valid response");
                     Console.WriteLine("Please press Enter to continue");
                     Console.ReadLine();
+                    Console.Clear();
                     return "remove an employee";
             }
         }

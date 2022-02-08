@@ -10,6 +10,7 @@ namespace ProjectDL
             _connectionStrings = p_connectionStrings;
         }
 
+        // EMPLOYEES =======================================================
         public EmployeeModel AddEmployee(EmployeeModel employee)
         {
             string sqlQuery = @"insert into Employee values(@employeename, @employeenumber, @employeeemail)";
@@ -74,7 +75,7 @@ namespace ProjectDL
         }
     
 
-        
+        // ITEMS =======================================================
         public ItemModel AddItem(ItemModel item)
         {
             string sqlQuery = @"insert into Item values(@ItemName, @ItemPrice, @ItemCategory, @ItemDescription)";
@@ -142,6 +143,7 @@ namespace ProjectDL
             return Item;
         }
 
+        // CUSTOMERS =======================================================
         public CustomerModel AddCustomer(CustomerModel Customer)
         {
             string sqlQuery = @"insert into Customer values(@name, @phonenumber, @email)";
@@ -191,6 +193,46 @@ namespace ProjectDL
         }
 
         public CustomerModel RemoveCustomer(CustomerModel Customer)
+        {
+            throw new NotImplementedException();
+        }
+
+        // STOREFRONT =======================================================
+        public StoreFrontModel AddStoreFront(StoreFrontModel Customer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<StoreFrontModel> GetAllStoreFront()
+        {
+            List<StoreFrontModel> listOfStoreFront = new List<StoreFrontModel>();
+
+            string sqlQuery = @"select * from StoreFront";
+
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    listOfStoreFront.Add(new StoreFrontModel(){
+                        storeID = reader.GetInt32(0),
+                        Name = reader.GetString(1),
+                        Location = reader.GetString(2),
+                        //Inventory = reader.GetString(3)
+                        //OrderList = reader.GetString(3)
+                    });
+                }
+
+            } 
+            return listOfStoreFront;
+        }
+
+        public StoreFrontModel RemoveStoreFront(StoreFrontModel Customer)
         {
             throw new NotImplementedException();
         }

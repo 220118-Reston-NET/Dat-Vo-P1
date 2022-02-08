@@ -46,15 +46,27 @@ namespace ProjectUI
                             item = i;
                         }
                     }
-                    _projectBL.RemoveItem(item);
-                    Log.Information("Item Removed");
-                    Console.WriteLine("Item Removed!");
-                    return "Item List";
+                    if (item.ItemID == 0)
+                    {
+                        Console.WriteLine("Please input a valid response");
+                        Console.WriteLine("Please press Enter to continue");
+                        Console.ReadLine();
+                        Console.Clear();
+                        return "remove item";
+                    }
+                    else
+                    {
+                        _projectBL.RemoveItem(item);
+                        Console.Clear();
+                        Log.Information("Item Removed");
+                        Console.WriteLine("Item Removed!");
+                        return "Item List";
+                    } 
                 default:
                     Console.WriteLine("Please input a valid response");
                     Console.WriteLine("Please press Enter to continue");
                     Console.ReadLine();
-                    return "remove an item";
+                    return "remove item";
             }
         }
     }

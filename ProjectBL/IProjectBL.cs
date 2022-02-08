@@ -35,4 +35,13 @@ namespace ProjectBL
         List<CustomerModel> GetAllCustomer();
 
     }
+
+    public interface IProjectBLStoreFront
+    {
+        StoreFrontModel AddStoreFront(StoreFrontModel p_storefront);
+        StoreFrontModel RemoveStoreFront(StoreFrontModel p_storefront);
+        StoreFrontModel SearchStoreFront(string p_name);
+        List<StoreFrontModel> GetAllStoreFront();
+
+    }
 }

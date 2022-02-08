@@ -1,7 +1,7 @@
-namespace ProjectUI
-{
-    public class CustomerViewMenu : IMenu
+    namespace ProjectUI
     {
+        public class CustomerViewMenu : IMenu
+        {
         public void Display()
         {
             Console.WriteLine("[0] go back");
@@ -25,6 +25,10 @@ namespace ProjectUI
                     Console.Clear();
                     return "Login";
                 default:
+                    Console.WriteLine("Please input a valid response");
+                    Console.WriteLine("Please press Enter to continue");
+                    Console.ReadLine();
+                    Console.Clear();
                     return "Invalid Input";
             }
         }

@@ -27,7 +27,7 @@ string _connectionString = configuration.GetConnectionString("Reference2DB");
 //MAIN WHILE LOOP
 while (repeat)
 {
-Console.WriteLine(currentmenu.GetType()); //display current menu in termninal
+//Console.WriteLine(currentmenu.GetType()); //display current menu in termninal
 
 currentmenu.Display();
 
@@ -51,7 +51,7 @@ switch (ans)
         break;
     case "StoreFront Menu":
         Log.Information("OPENING STOREFRONT MENU");
-        currentmenu = new StoreFrontMenu();
+        currentmenu = new StoreFrontMenu(new ProjectBLStoreFront(new SQLRepository(_connectionString)));
         break;
     case "Item List":
         currentmenu = new ItemListMenu();
@@ -100,12 +100,20 @@ switch (ans)
         break;
 
 
-    // Customer View
+    // Customer View (before log in)
     case "New User":
         currentmenu = new AddCustomerMenu(new ProjectBLCustomer(new SQLRepository(_connectionString)));
         break;
     case "Login":
-        //currentmenu = 
+        currentmenu = new CustomerLoginMenu(new ProjectBLCustomer(new SQLRepository(_connectionString)));
+        break;
+
+    // Customer View (Logged in)
+    case "Choose a store":
+        currentmenu = new ChooseStoreFrontMenu(new ProjectBLStoreFront(new SQLRepository(_connectionString)));
+        break;
+    case "Display Inventory":
+        //currentmenu = new 
         break;
 
 

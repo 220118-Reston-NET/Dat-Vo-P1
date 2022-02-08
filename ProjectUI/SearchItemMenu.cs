@@ -41,16 +41,18 @@ namespace ProjectUI
                     }
                     Console.WriteLine("Please press Enter to continue");
                     Console.ReadLine();
-
+                    Console.Clear();
                     return "Item List";
                 case "0":
                     Console.Clear();
                     return "Item List";
                 
                 default:
+                    Console.Clear();
                     Console.WriteLine("Please input a valid response");
                     Console.WriteLine("Please press Enter to continue");
                     Console.ReadLine();
+                    Console.Clear();
                     return "search for an employee";
             }
         }
