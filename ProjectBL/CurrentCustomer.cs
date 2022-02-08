@@ -6,6 +6,7 @@ namespace ProjectBL
     {
         public static CustomerModel currentcustomer {get; set;}
         public static StoreFrontModel currentstore {get; set;}
+        public static InventoryModel currentinventory {get; set;}
         public static void SetCustomer(CustomerModel customerInput)
         {
             //CustomerModel currentcustomer = new CustomerModel();

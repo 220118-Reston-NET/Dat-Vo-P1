@@ -232,9 +232,27 @@ namespace ProjectDL
             return listOfStoreFront;
         }
 
+
+        // Inventory =======================================================
         public StoreFrontModel RemoveStoreFront(StoreFrontModel Customer)
         {
             throw new NotImplementedException();
         }
+
+        public InventoryModel AddInventory(InventoryModel Inventory)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<InventoryModel> GetAllInventory()
+        {
+            throw new NotImplementedException();
+        }
+
+        public InventoryModel RemoveInventory(InventoryModel Inventory)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

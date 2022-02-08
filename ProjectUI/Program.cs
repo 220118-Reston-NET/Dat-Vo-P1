@@ -113,7 +113,7 @@ switch (ans)
         currentmenu = new ChooseStoreFrontMenu(new ProjectBLStoreFront(new SQLRepository(_connectionString)));
         break;
     case "Display Inventory":
-        //currentmenu = new 
+        //currentmenu = new InventoryMenu(new ProjectBLStoreFront(new SQLRepository(_connectionString)));
         break;
 
 

@@ -36,7 +36,8 @@ namespace ProjectUI
                         Log.Information("Adding Employee \n" + _newEmployee);
                         //List<EmployeeModel> ListOfEmployee = _projectBL.GetAllEmployee();
                         // _newEmployee.employeeID = ListOfEmployee.Last().employeeID+1;
-                         _projectBL.AddEmployee(_newEmployee);
+                        _projectBL.AddEmployee(_newEmployee);
+                        Console.Clear();
                         Log.Information("Employee Added!");
                         Console.WriteLine("Employee Added!");
                         //Console.WriteLine("Employee ID is" + _newEmployee.employeeID);

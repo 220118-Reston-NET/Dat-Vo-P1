@@ -33,9 +33,20 @@ namespace ProjectUI
                     CurrentCustomer.SetCustomer(c);
                 }
             }
-            Console.Clear();
-            Console.WriteLine("Hello " + CurrentCustomer.currentcustomer.name);
-            return "Choose a store";
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("Hello " + CurrentCustomer.currentcustomer.name);
+                return "Choose a store";
+            }
+            catch
+            {
+                Console.WriteLine("Incorrect ID");
+                Console.WriteLine("Please press Enter to continue");
+                Console.ReadLine();
+                return "Login";
+            }
+
         }
 
     }

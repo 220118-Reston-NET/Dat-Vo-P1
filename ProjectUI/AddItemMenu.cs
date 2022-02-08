@@ -38,6 +38,7 @@ namespace ProjectUI
                         List<ItemModel> ListOfItem = _projectBL.GetAllItem();
                         _newItem.ItemID = ListOfItem.Count+1;
                         _projectBL.AddItem(_newItem);
+                        Console.Clear();
                         Log.Information("Item Added!");
                         Console.WriteLine("Item Added!");
                         return "Item List";

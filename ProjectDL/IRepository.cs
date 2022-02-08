@@ -26,13 +26,17 @@ namespace ProjectDL
         
         CustomerModel RemoveCustomer(CustomerModel Customer);
 
-        //StoreFront stuff
+        //StoreFront methods
         StoreFrontModel AddStoreFront(StoreFrontModel Customer);
 
         List<StoreFrontModel> GetAllStoreFront();
         
         StoreFrontModel RemoveStoreFront(StoreFrontModel Customer);
 
+        //Inventory methods
+        InventoryModel AddInventory(InventoryModel Inventory);
+        List<InventoryModel> GetAllInventory();
+        InventoryModel RemoveInventory(InventoryModel Inventory);
 
     }
 }
