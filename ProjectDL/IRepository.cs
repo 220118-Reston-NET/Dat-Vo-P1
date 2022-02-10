@@ -37,6 +37,7 @@ namespace ProjectDL
         InventoryModel AddInventory(InventoryModel Inventory);
         List<InventoryModel> GetAllInventory();
         InventoryModel RemoveInventory(InventoryModel Inventory);
+        InventoryModel UpdateInventory(InventoryModel Inventory);
 
     }
 }

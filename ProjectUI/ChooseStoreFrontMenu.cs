@@ -32,7 +32,8 @@ namespace ProjectUI
             {
                 int UserInput = Int32.Parse(Console.ReadLine());
                 CurrentCustomer.SetStoreFront(listofStore[UserInput-1]);
-                Console.WriteLine("You are now shopping @ " + CurrentCustomer.currentstore.Location);
+                Console.Clear();
+                //Console.WriteLine("You are now shopping @ " + CurrentCustomer.currentstore.Location);
                 return "Display Inventory";
             }
             catch

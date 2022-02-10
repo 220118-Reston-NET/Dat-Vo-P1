@@ -10,18 +10,22 @@ using ProjectBL;
 Log.Logger = new LoggerConfiguration()
     .WriteTo.File("./logs/user.txt")    // logger save to this file path
     .CreateLogger();
+//===========================================
 
 bool repeat = true;
 IMenu currentmenu = new MainMenu();
-List<EmployeeModel> ListOfEmployees = new List<EmployeeModel>();
-ListOfEmployees = Serialization.DeserialMain();
 
+// List<EmployeeModel> ListOfEmployees = new List<EmployeeModel>();
+// ListOfEmployees = Serialization.DeserialMain();
+
+
+// String connnection
 var configuration = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json")
     .Build();
-
 string _connectionString = configuration.GetConnectionString("Reference2DB");
+//===========================================
 
 
 //MAIN WHILE LOOP
@@ -59,10 +63,14 @@ switch (ans)
     case "Customer View":
         currentmenu = new CustomerViewMenu();
         break;
+    case "Inventory Management Menu":
+        currentmenu = new InventoryManageMentMenu(new ProjectBLInventory(new SQLRepository(_connectionString)));
+        break;
     case "InvalidInput":
         Log.Information("INVALID INPUT DETECTED");
         Console.WriteLine("Invalid Input");
         break;
+
 
 
     // Employee List options
@@ -113,8 +121,14 @@ switch (ans)
         currentmenu = new ChooseStoreFrontMenu(new ProjectBLStoreFront(new SQLRepository(_connectionString)));
         break;
     case "Display Inventory":
-        //currentmenu = new InventoryMenu(new ProjectBLStoreFront(new SQLRepository(_connectionString)));
+        currentmenu = new InventoryMenu(new ProjectBLInventory(new SQLRepository(_connectionString)));
         break;
+
+    // Inventory Management Options
+    case "Replenish Item Menu":
+        currentmenu = new RepleanishItemOptionsMenu(new ProjectBLInventory(new SQLRepository(_connectionString)));
+        break;
+    
 
 
     // default statement

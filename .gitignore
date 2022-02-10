@@ -2,3 +2,4 @@ bin
 obj
 logs
 appsettings.json
+appsettingsV2.json

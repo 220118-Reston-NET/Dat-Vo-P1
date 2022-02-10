@@ -22,6 +22,10 @@ namespace ProjectBL
         List<ItemModel> SearchItem(string p_name);
 
         List<ItemModel> GetAllItem();
+
+        List<StoreFrontModel> GetAllStoreFront();
+
+        InventoryModel AddInventory(InventoryModel p_inventory);
     }
 
     public interface IProjectBLCustomer
@@ -42,6 +46,22 @@ namespace ProjectBL
         StoreFrontModel RemoveStoreFront(StoreFrontModel p_storefront);
         StoreFrontModel SearchStoreFront(string p_name);
         List<StoreFrontModel> GetAllStoreFront();
+
+    }
+
+    public interface IProjectBLInventory
+    {
+        InventoryModel AddInventory(InventoryModel p_inventory);
+        InventoryModel RemoveInventory(InventoryModel p_inventory);
+        List<InventoryModel> SearchInventoryByStoreID(int storeID);
+        ///////List<InventoryModel> SearchInventoryByItemID(int itemID);
+        List<InventoryModel> GetAllInventory();
+        List<ItemModel> GetAllItem();
+        List<StoreFrontModel> GetAllStoreFront();
+        List<ItemModel> SearchItem(int itemID);
+        
+        InventoryModel UpdateInventory(InventoryModel p_inventory);
+
 
     }
 }

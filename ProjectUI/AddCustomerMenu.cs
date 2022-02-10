@@ -70,7 +70,7 @@ namespace ProjectUI
                     Console.WriteLine("Please input a valid response");
                     Console.WriteLine("Please press Enter to continue");
                     Console.ReadLine();
-                    return "";
+                    return "New User";
             }
 
         }

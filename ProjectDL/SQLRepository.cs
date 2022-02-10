@@ -241,12 +241,50 @@ namespace ProjectDL
 
         public InventoryModel AddInventory(InventoryModel Inventory)
         {
-            throw new NotImplementedException();
+            string sqlQuery = @"insert into Inventory values(@storeID,@itemID,@quantity)";
+
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+                //@ItemID, @ItemName, @ItemPrice, @ItemCategory, @ItemDescription
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+                //command.Parameters.AddWithValue("@ItemID", item.ItemID);
+                command.Parameters.AddWithValue("@storeID", Inventory.storeID);
+                command.Parameters.AddWithValue("@itemID", Inventory.itemID);
+                command.Parameters.AddWithValue("@quantity", Inventory.quantity);
+
+                command.ExecuteNonQuery();
+            }
+
+            return Inventory;
         }
 
         public List<InventoryModel> GetAllInventory()
         {
-            throw new NotImplementedException();
+            List<InventoryModel> listOfInventory = new List<InventoryModel>();
+
+            string sqlQuery = @"select * from Inventory";
+
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    listOfInventory.Add(new InventoryModel(){
+                        storeID = reader.GetInt32(0),
+                        itemID = reader.GetInt32(1),
+                        quantity = reader.GetInt32(2),
+                        
+                    });
+                }
+
+            } 
+            return listOfInventory;
         }
 
         public InventoryModel RemoveInventory(InventoryModel Inventory)
@@ -254,5 +292,60 @@ namespace ProjectDL
             throw new NotImplementedException();
         }
 
+        public List<ItemModel> GetAvailableItems(int storeID)
+        {
+            string sqlQuery = "select i.ItemID, i.ItemName , i.ItemPrice , i.ItemDescription , Inventory.quantity  from StoreFront Sinner join Inventory on S.storeID  = Inventory.storeID inner join Item i on i.ItemID  = Inventory.itemIDhere S.storeID  = '@storeID' ";
+            List<InventoryModel> listOfInventory = new List<InventoryModel>();
+            List<ItemModel> listOfItem = new List<ItemModel>();
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+
+                SqlDataReader reader = command.ExecuteReader();
+                command.Parameters.AddWithValue("@storeID", storeID);
+
+                while (reader.Read())
+                {
+                    listOfItem.Add(new ItemModel(){
+                        ItemID = reader.GetInt32(6),
+                        ItemName = reader.GetString(7),
+                        ItemPrice = reader.GetDecimal(8),
+                        ItemCategory = reader.GetString(9),
+                        ItemDescription = reader.GetString(10)
+                    
+                    });
+                   listOfInventory.Add(new InventoryModel(){
+                        storeID = reader.GetInt32(3),
+                        itemID = reader.GetInt32(4),
+                        quantity = reader.GetInt32(5)
+
+                    });
+                }
+
+                return listOfItem;
+
+            } 
+        }
+
+        public InventoryModel UpdateInventory(InventoryModel Inventory)
+        {
+            //string sqlQuery = @"insert into Employee values(@employeename, @employeenumber, @employeeemail)";
+            string sqlQuery = @"update Inventory set quantity = @quantity where itemID = @itemID and storeID = @storeID";
+
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+                command.Parameters.AddWithValue("@quantity",Inventory.quantity);
+                command.Parameters.AddWithValue("@itemID",Inventory.itemID);
+                command.Parameters.AddWithValue("@storeID",Inventory.storeID);
+
+                command.ExecuteNonQuery();
+                return Inventory;
+            }
+        }
     }
 }

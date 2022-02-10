@@ -35,9 +35,22 @@ namespace ProjectUI
                     try
                     {
                         Log.Information("Adding Item \n" + _newItem);
-                        List<ItemModel> ListOfItem = _projectBL.GetAllItem();
-                        _newItem.ItemID = ListOfItem.Count+1;
+                        InventoryModel _newinventory = new InventoryModel();
+
+                        List<StoreFrontModel> ListOfStoreFront = _projectBL.GetAllStoreFront();
+                        ///_newItem.ItemID = ListOfItem.Count+1;
                         _projectBL.AddItem(_newItem);
+                        List<ItemModel> ListOfItem = _projectBL.GetAllItem();
+
+                        foreach(var s in ListOfStoreFront)
+                        {
+                            _newinventory.storeID = s.storeID;
+                            _newinventory.itemID = ListOfItem.Last().ItemID;
+                            _newinventory.quantity = 0;
+                            _projectBL.AddInventory(_newinventory);
+
+                        }
+
                         Console.Clear();
                         Log.Information("Item Added!");
                         Console.WriteLine("Item Added!");
@@ -73,7 +86,10 @@ namespace ProjectUI
                     _newItem.ItemName = Console.ReadLine();
                     return "add item";
                 default:
-                    return " ";
+                    Console.WriteLine("Invalid Input");
+                    Console.WriteLine("Press enter to continue");
+                    Console.ReadLine();
+                    return "add item";
             }
         }
     }

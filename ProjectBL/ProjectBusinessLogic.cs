@@ -75,6 +75,15 @@ namespace ProjectBL
             return _repo.GetAllItem();
         }
 
+        public List<StoreFrontModel> GetAllStoreFront()
+        {
+            /// <summary>
+            /// return store front to add empty inventory
+            /// </summary>
+            /// <returns></returns>
+            return _repo.GetAllStoreFront();
+        }
+
         public ItemModel RemoveItem(ItemModel p_Item)
         {
             return _repo.RemoveItem(p_Item);
@@ -82,11 +91,15 @@ namespace ProjectBL
 
         public List<ItemModel> SearchItem(string p_name)
         {
-            List<ItemModel> listOfItem= _repo.GetAllItem();
+            List<ItemModel> listOfItem = _repo.GetAllItem();
             // LINQ library
             return listOfItem
                         .Where(item => item.ItemName.Contains(p_name)) //Where method is designed to filter a collection based on a condition
                         .ToList(); //ToList method just converts into a list collection that the method needs to return
+        }
+        public InventoryModel AddInventory(InventoryModel p_inventory)
+        {
+            return _repo.AddInventory(p_inventory);
         }
     }
 
@@ -150,6 +163,63 @@ namespace ProjectBL
             throw new NotImplementedException();
         }
     }
+    public class ProjectBLInventory : IProjectBLInventory
+    {
+        private IRepository _repo;
+        public ProjectBLInventory(IRepository p_repo)
+        {
+            _repo = p_repo;
+        }
+        public InventoryModel AddInventory(InventoryModel p_inventory)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<InventoryModel> GetAllInventory()
+        {
+            return _repo.GetAllInventory();
+        }
+
+        public InventoryModel RemoveInventory(InventoryModel p_inventory)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<InventoryModel> SearchInventoryByStoreID(int storeID)
+        {
+            List<InventoryModel> listOfInventory= _repo.GetAllInventory();
+            return listOfInventory;
+        }
+
+        public List<ItemModel> GetAllItem()
+        {
+            return _repo.GetAllItem();
+        }
+
+        public List<ItemModel> SearchItem(int itemID)
+        {
+            List<ItemModel> listOfItem= _repo.GetAllItem();
+            //public ItemModel result;
+            // ItemModel result = from item in listOfItem
+            //                     where item.ItemID.
+
+            // LINQ library
+            return listOfItem
+                        .Where(item => item.ItemID.Equals(itemID)) //Where method is designed to filter a collection based on a condition
+                        .ToList(); //ToList method just converts into a list collection that the method needs to return
+        }
+
+        public List<StoreFrontModel> GetAllStoreFront()
+        {
+            return _repo.GetAllStoreFront();
+        }
+
+        public InventoryModel UpdateInventory(InventoryModel p_inventory)
+        {
+            return _repo.UpdateInventory(p_inventory);
+        }
+    }
+
 
 
 }
