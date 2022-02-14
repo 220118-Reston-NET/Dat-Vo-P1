@@ -9,7 +9,11 @@ namespace ProjectBL
         public static CustomerModel currentcustomer {get; set;}
         public static StoreFrontModel currentstore {get; set;}
         public static List<InventoryModel> currentinventoryList {get; set;}
-        public static InventoryModel currentinventory {get; set;}
+        public static InventoryModel currentinventory = new InventoryModel();
+        public static List<ItemModel> currentcart = new List<ItemModel>();
+        public static List<int> currentcartquantity = new List<int>();
+
+        public static OrderModel currentOrder = new OrderModel();
 
 
         public static void SetCustomer(CustomerModel customerInput)
@@ -36,10 +40,10 @@ namespace ProjectBL
             currentinventory.quantity = quantity;
         }
 
-        // public static void SetItem(ItemModel item)
-        // {
-        //     currentitem = item;
-        // }
+        public static void AddItemToCart(ItemModel item)
+        {
+            currentcart.Add(item);
+        }
 
 
 

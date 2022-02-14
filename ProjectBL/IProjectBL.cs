@@ -22,6 +22,7 @@ namespace ProjectBL
         List<ItemModel> SearchItem(string p_name);
 
         List<ItemModel> GetAllItem();
+        ItemModel GetItem(int itemID);
 
         List<StoreFrontModel> GetAllStoreFront();
 
@@ -57,10 +58,13 @@ namespace ProjectBL
         ///////List<InventoryModel> SearchInventoryByItemID(int itemID);
         List<InventoryModel> GetAllInventory();
         List<ItemModel> GetAllItem();
+        ItemModel GetItem(int itemID);
         List<StoreFrontModel> GetAllStoreFront();
         List<ItemModel> SearchItem(int itemID);
         
         InventoryModel UpdateInventory(InventoryModel p_inventory);
+
+        OrderModel AddOrder(OrderModel order);
 
 
     }

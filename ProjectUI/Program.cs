@@ -31,7 +31,7 @@ string _connectionString = configuration.GetConnectionString("Reference2DB");
 //MAIN WHILE LOOP
 while (repeat)
 {
-//Console.WriteLine(currentmenu.GetType()); //display current menu in termninal
+Console.WriteLine(currentmenu.GetType()); //display current menu in termninal
 
 currentmenu.Display();
 
@@ -122,6 +122,9 @@ switch (ans)
         break;
     case "Display Inventory":
         currentmenu = new InventoryMenu(new ProjectBLInventory(new SQLRepository(_connectionString)));
+        break;
+    case "add item to cart":
+        currentmenu = new AddItemToOrderMenu(new ProjectBLInventory(new SQLRepository(_connectionString)));
         break;
 
     // Inventory Management Options

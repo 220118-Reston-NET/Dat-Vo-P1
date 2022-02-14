@@ -126,6 +126,33 @@ namespace ProjectDL
             return listOfItem;
         }
 
+        public ItemModel GetItem(int itemID)
+        {
+            ItemModel resultItem = new ItemModel();
+            string sqlQuery = @"select * from Item where ItemID = @ItemID";
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+                command.Parameters.AddWithValue("@ItemID", itemID);
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    resultItem.ItemID = reader.GetInt32(0);
+                    resultItem.ItemName = reader.GetString(1);
+                    resultItem.ItemPrice = reader.GetDecimal(2);
+                    resultItem.ItemCategory = reader.GetString(3);
+                    resultItem.ItemDescription = reader.GetString(4);
+                }
+
+            } 
+
+            return resultItem;
+
+        }
+
         public ItemModel RemoveItem(ItemModel Item)
         {
             string sqlQuery = @"delete from Item where ItemID = @ItemID";
@@ -327,11 +354,11 @@ namespace ProjectDL
                 return listOfItem;
 
             } 
+
         }
 
         public InventoryModel UpdateInventory(InventoryModel Inventory)
         {
-            //string sqlQuery = @"insert into Employee values(@employeename, @employeenumber, @employeeemail)";
             string sqlQuery = @"update Inventory set quantity = @quantity where itemID = @itemID and storeID = @storeID";
 
             using (SqlConnection con = new SqlConnection(_connectionStrings))
@@ -346,6 +373,37 @@ namespace ProjectDL
                 command.ExecuteNonQuery();
                 return Inventory;
             }
+        }
+
+        // Order =======================================================
+        public OrderModel AddOrder(OrderModel Order)
+        {
+            string sqlQuery = @"insert into CustomerOrder values(@totalprice, @customerID, @storeID)";
+
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+                command.Parameters.AddWithValue("@totalprice", Order.TotalPrice);
+                command.Parameters.AddWithValue("@customerID", Order.customerID);
+                command.Parameters.AddWithValue("@storeID", Order.storeID);
+
+                command.ExecuteNonQuery();
+            }
+
+            return Order;
+
+        }
+
+        public List<OrderModel> GetAllOrder()
+        {
+            throw new NotImplementedException();
+        }
+
+        public OrderModel RemoveOrder(OrderModel Order)
+        {
+            throw new NotImplementedException();
         }
     }
 }

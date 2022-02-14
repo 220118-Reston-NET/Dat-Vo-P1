@@ -2,30 +2,19 @@ using ProjectBL;
 using ProjectModel;
 namespace ProjectUI
 {
-    public class InventoryMenu : IMenu
+    public class AddItemToOrderMenu : IMenu
     {
         private IProjectBLInventory _projectBL;
+        //public List<ItemModel> CurrentCart;
 
-        public InventoryMenu(IProjectBLInventory p_projectBL)
+        public AddItemToOrderMenu(IProjectBLInventory p_projectBL)
         {
             _projectBL = p_projectBL;
         }
         public void Display()
         {
-
-            int c = new int();
-            decimal total = new decimal();
-            foreach(var item in CurrentCustomer.currentcart)
-            {
-                total = total + item.ItemPrice*CurrentCustomer.currentcartquantity[c];
-                c=c+1;
-            }
-
-            Console.WriteLine("[0] Back");
-            Console.WriteLine("[2] Add Item to cart");
-            Console.WriteLine("[3] Checkout");
-            Console.WriteLine("[-1] Log Out");
-            Console.WriteLine("Total Price: $" + total);
+            Console.WriteLine("[0] Go back");
+            Console.WriteLine("Enter Item ID to add specificied item to cart");
             Console.WriteLine("Current Store Location: " + CurrentCustomer.currentstore.Location);
             Console.WriteLine("=====Item List=====");
             Console.WriteLine("ItemID || Name         || Price   || Category    || Quantity Available");
@@ -39,10 +28,7 @@ namespace ProjectUI
                     ItemModel item = _projectBL.SearchItem(inventory.itemID)[0];
                     Console.WriteLine(item.ItemID +"         " + Data.ManageSpaceName(item.ItemName)+ Data.ManageSpacePrice(item.ItemPrice)+ "    "+item.ItemCategory +"       "+ inventory.quantity);
                 }
-                
-                
             }
-            
         }
 
         public string UserChoice()
@@ -50,37 +36,31 @@ namespace ProjectUI
             try
             {
                 int UserInput = Int32.Parse(Console.ReadLine());
-
                 if (UserInput == 0)
                 {
                     Console.Clear();
-                    return "Choose a store";
-                }
-                else if (UserInput == -1)
-                {
-                    Console.Clear();
-                    return "Customer View";
-                }
-                else if (UserInput == 2)
-                {
-                    Console.Clear();
-                    return "add item to cart";
-                }
-                else if (UserInput == 3)
-                {
-                    Console.Clear();
-                    _projectBL.AddOrder(CurrentCustomer.currentOrder);
-                    Console.Write("Order Placed!");
                     return "Display Inventory";
                 }
-                else
+                Console.Clear();
+                Console.WriteLine("Enter the amount: ");
+                int UserInput2 = Int32.Parse(Console.ReadLine());
+
+                CurrentCustomer.AddItemToCart(_projectBL.GetItem(UserInput));
+                CurrentCustomer.currentcartquantity.Add(UserInput2);
+
+                
+
+
+                int c = new int();
+                c = 0;
+                Console.WriteLine("=======================Cart=======================");
+                foreach(var i in CurrentCustomer.currentcart)
                 {
-                    Console.WriteLine("Please input a valid response");
-                    Console.WriteLine("Please press Enter to continue");
-                    Console.ReadLine();
-                    Console.Clear();
-                    return "Display Inventory";
+                    Console.WriteLine("- " + i.ItemName + " x" + CurrentCustomer.currentcartquantity[c]);
+                    c = c+1;
                 }
+                Console.WriteLine("====================End of Cart====================");
+                return "add item to cart";
             }
             catch
             {
@@ -88,9 +68,8 @@ namespace ProjectUI
                 Console.WriteLine("Please press Enter to continue");
                 Console.ReadLine();
                 Console.Clear();
-                return "Display Inventory";
+                return "add item to cart";
             }
-
         }
     }
 }

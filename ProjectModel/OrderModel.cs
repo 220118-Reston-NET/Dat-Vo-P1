@@ -2,14 +2,18 @@ namespace ProjectModel
 {
     public class OrderModel
     {
-        public string CustomerName { get; set; }
-        public double TotalPrice { get; set; }
-        public List<ItemModel>? ItemList{ get; set; }
+        public int orderID { get; set; }
+        public decimal TotalPrice { get; set; }
+        public int customerID { get; set; }
+        public int storeID { get; set; }
+
 
         public OrderModel()
         {
-            CustomerName = "Customer Name";
+            //CustomerName = "Customer Name";
             TotalPrice = 0;
+            customerID = 0;
+            storeID = 0;
         }
     }
 }

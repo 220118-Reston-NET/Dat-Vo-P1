@@ -101,6 +101,11 @@ namespace ProjectBL
         {
             return _repo.AddInventory(p_inventory);
         }
+
+        public ItemModel GetItem(int itemID)
+        {
+            return _repo.GetItem(itemID);
+        }
     }
 
     public class ProjectBLCustomer : IProjectBLCustomer
@@ -217,6 +222,47 @@ namespace ProjectBL
         public InventoryModel UpdateInventory(InventoryModel p_inventory)
         {
             return _repo.UpdateInventory(p_inventory);
+        }
+
+        public ItemModel GetItem(int itemID)
+        {
+            return _repo.GetItem(itemID);
+        }
+
+        public OrderModel AddOrder(OrderModel order)
+        {
+
+            CurrentCustomer.currentOrder.customerID = CurrentCustomer.currentcustomer.customerID;
+            CurrentCustomer.currentOrder.storeID = CurrentCustomer.currentstore.storeID;
+
+            int c = new int();
+            decimal total = new decimal();
+            foreach(var item in CurrentCustomer.currentcart)
+            {
+                total = total + item.ItemPrice*CurrentCustomer.currentcartquantity[c];
+                
+                int currentquantity = new int();
+                List<InventoryModel> ListOfInventory = GetAllInventory();
+                foreach(var inven in ListOfInventory)
+                {
+                    if (inven.itemID == item.ItemID && inven.storeID == CurrentCustomer.currentstore.storeID)
+                    {
+                        currentquantity = inven.quantity;
+                    }
+                }
+
+                CurrentCustomer.currentinventory.itemID = item.ItemID;
+                CurrentCustomer.currentinventory.storeID = CurrentCustomer.currentstore.storeID;
+                CurrentCustomer.SetInventoryQuantity(currentquantity-CurrentCustomer.currentcartquantity[c]);
+                _repo.UpdateInventory(CurrentCustomer.currentinventory);
+
+                c=c+1;
+            }
+            CurrentCustomer.currentOrder.TotalPrice = total;
+
+            CurrentCustomer.currentcart.Clear();
+            CurrentCustomer.currentcartquantity.Clear();
+            return _repo.AddOrder(order);
         }
     }
 

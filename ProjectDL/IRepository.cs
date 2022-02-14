@@ -15,6 +15,7 @@ namespace ProjectDL
         ItemModel AddItem(ItemModel Item);
 
         List<ItemModel> GetAllItem();
+        ItemModel GetItem(int itemID);
         
         ItemModel RemoveItem(ItemModel Item);
 
@@ -36,8 +37,15 @@ namespace ProjectDL
         //Inventory methods
         InventoryModel AddInventory(InventoryModel Inventory);
         List<InventoryModel> GetAllInventory();
+            //InventoryModel GetInventory();
         InventoryModel RemoveInventory(InventoryModel Inventory);
         InventoryModel UpdateInventory(InventoryModel Inventory);
+
+        //Order methods
+        OrderModel AddOrder(OrderModel Order);
+        List<OrderModel> GetAllOrder();
+        OrderModel RemoveOrder(OrderModel Order);
+
 
     }
 }
