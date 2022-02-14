@@ -260,9 +260,44 @@ namespace ProjectBL
             }
             CurrentCustomer.currentOrder.TotalPrice = total;
 
+            //CurrentCustomer.currentcart.Clear();
+            //CurrentCustomer.currentcartquantity.Clear();
+
+
+            return _repo.AddOrder(order);
+        }
+
+        public List<OrderModel> GetAllOrder()
+        {
+            return _repo.GetAllOrder();
+        }
+
+        public void AddOrderItem()
+        {
+            List<OrderModel> listOfOrder = _repo.GetAllOrder();
+            int c = new int();
+            foreach(var item in CurrentCustomer.currentcart)
+            {
+                OrderItemModel OI = new OrderItemModel();
+                OI.itemID = item.ItemID;
+                OI.orderID = listOfOrder.Last().orderID;
+                OI.quantity = CurrentCustomer.currentcartquantity[c];
+                _repo.AddOrderItem(OI);
+                c = c + 1;
+            }
+
             CurrentCustomer.currentcart.Clear();
             CurrentCustomer.currentcartquantity.Clear();
-            return _repo.AddOrder(order);
+        }
+
+        public CustomerModel GetCustomer(int customerID)
+        {
+            return _repo.SearchCustomerByID(customerID);
+        }
+
+        public StoreFrontModel GetStore(int storeID)
+        {
+            return _repo.SearchStoreByID(storeID);
         }
     }
 

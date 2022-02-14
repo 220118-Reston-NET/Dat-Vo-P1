@@ -70,7 +70,8 @@ namespace ProjectUI
                 {
                     Console.Clear();
                     _projectBL.AddOrder(CurrentCustomer.currentOrder);
-                    Console.Write("Order Placed!");
+                    _projectBL.AddOrderItem();
+                    Console.Write("Order Placed! \n");
                     return "Display Inventory";
                 }
                 else

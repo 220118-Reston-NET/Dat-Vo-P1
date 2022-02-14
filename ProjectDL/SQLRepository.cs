@@ -259,6 +259,33 @@ namespace ProjectDL
             return listOfStoreFront;
         }
 
+        public CustomerModel SearchCustomerByID(int customerID)
+        {
+            List<CustomerModel> listOfCustomer = new List<CustomerModel>();
+            string sqlQuery = @"select * from Customer where customerID = @customerID";
+
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+                
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+                command.Parameters.AddWithValue("@customerID", customerID);
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    listOfCustomer.Add(new CustomerModel(){
+                        customerID = reader.GetInt32(0),
+                        name = reader.GetString(1),
+                        phonenumber = reader.GetString(2),
+                        email = reader.GetString(3)
+                    });
+                }
+
+            } 
+            return listOfCustomer[0];
+        }
+
 
         // Inventory =======================================================
         public StoreFrontModel RemoveStoreFront(StoreFrontModel Customer)
@@ -393,17 +420,86 @@ namespace ProjectDL
             }
 
             return Order;
-
         }
+
 
         public List<OrderModel> GetAllOrder()
         {
-            throw new NotImplementedException();
+            List<OrderModel> listOfOrder = new List<OrderModel>();
+
+            string sqlQuery = @"select * from CustomerOrder";
+
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    listOfOrder.Add(new OrderModel(){
+                        orderID =  reader.GetInt32(0),
+                        TotalPrice = reader.GetDecimal(1),
+                        customerID = reader.GetInt32(2),
+                        storeID = reader.GetInt32(3)
+                    });
+                }
+
+            } 
+            return listOfOrder;
         }
 
         public OrderModel RemoveOrder(OrderModel Order)
         {
             throw new NotImplementedException();
+        }
+
+
+        public OrderItemModel AddOrderItem(OrderItemModel orderItem)
+        {
+            string sqlQuery = @"insert into Order_Items values(@orderID, @itemID, @quantity)";
+ 
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+                command.Parameters.AddWithValue("@orderID", orderItem.orderID);
+                command.Parameters.AddWithValue("@itemID", orderItem.itemID);
+                command.Parameters.AddWithValue("@quantity", orderItem.quantity);
+
+                command.ExecuteNonQuery();
+            }
+
+            return orderItem;
+        }
+
+        public StoreFrontModel SearchStoreByID(int storeID)
+        {
+            List<StoreFrontModel> listOfStore = new List<StoreFrontModel>();
+            string sqlQuery = @"select * from StoreFront where storeID = @storeID";
+
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+                
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+                command.Parameters.AddWithValue("@storeID", storeID);
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    listOfStore.Add(new StoreFrontModel(){
+                        storeID = reader.GetInt32(0),
+                        Name = reader.GetString(1),
+                        Location = reader.GetString(2)
+                    });
+                }
+
+            } 
+            return listOfStore[0];
         }
     }
 }

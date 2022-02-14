@@ -2,7 +2,6 @@
 global using Serilog;
 using Microsoft.Extensions.Configuration;
 using ProjectUI;
-using ProjectModel;
 using ProjectDL;
 using ProjectBL;
 
@@ -31,7 +30,7 @@ string _connectionString = configuration.GetConnectionString("Reference2DB");
 //MAIN WHILE LOOP
 while (repeat)
 {
-Console.WriteLine(currentmenu.GetType()); //display current menu in termninal
+//Console.WriteLine(currentmenu.GetType()); //display current menu in termninal
 
 currentmenu.Display();
 
@@ -62,6 +61,9 @@ switch (ans)
         break;
     case "Customer View":
         currentmenu = new CustomerViewMenu();
+        break;
+    case "Order History":
+        currentmenu = new OrderHistoryMenu(new ProjectBLInventory(new SQLRepository(_connectionString)));
         break;
     case "Inventory Management Menu":
         currentmenu = new InventoryManageMentMenu(new ProjectBLInventory(new SQLRepository(_connectionString)));

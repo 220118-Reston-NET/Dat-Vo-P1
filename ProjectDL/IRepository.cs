@@ -27,12 +27,16 @@ namespace ProjectDL
         
         CustomerModel RemoveCustomer(CustomerModel Customer);
 
+        CustomerModel SearchCustomerByID(int customerID);
+
         //StoreFront methods
         StoreFrontModel AddStoreFront(StoreFrontModel Customer);
 
         List<StoreFrontModel> GetAllStoreFront();
         
         StoreFrontModel RemoveStoreFront(StoreFrontModel Customer);
+
+        StoreFrontModel SearchStoreByID(int storeID);
 
         //Inventory methods
         InventoryModel AddInventory(InventoryModel Inventory);
@@ -45,6 +49,9 @@ namespace ProjectDL
         OrderModel AddOrder(OrderModel Order);
         List<OrderModel> GetAllOrder();
         OrderModel RemoveOrder(OrderModel Order);
+
+        //OrderItems methods
+        OrderItemModel AddOrderItem(OrderItemModel orderItem);
 
 
     }

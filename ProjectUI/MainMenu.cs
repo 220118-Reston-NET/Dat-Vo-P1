@@ -11,7 +11,8 @@ namespace ProjectUI
             Console.WriteLine("[2] Item List"); 
             Console.WriteLine("[3] StoreFront List"); 
             Console.WriteLine("[4] Inventory Management");
-            Console.WriteLine("[5] Customer Interface");
+            Console.WriteLine("[5] Order History");
+            Console.WriteLine("[6] Customer Interface");
             Console.WriteLine("======End of Main Menu=======");
 
         }
@@ -37,6 +38,9 @@ namespace ProjectUI
                     Console.Clear();
                     return "Inventory Management Menu";
                 case "5":
+                    Console.Clear();
+                    return "Order History";
+                case "6":
                     Console.Clear();
                     return "Customer View";
                 default:

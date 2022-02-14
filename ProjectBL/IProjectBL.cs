@@ -66,6 +66,12 @@ namespace ProjectBL
 
         OrderModel AddOrder(OrderModel order);
 
+        void AddOrderItem();
+
+        List<OrderModel> GetAllOrder();
+        CustomerModel GetCustomer(int customerID);
+
+        StoreFrontModel GetStore(int storeID);
 
     }
 }
