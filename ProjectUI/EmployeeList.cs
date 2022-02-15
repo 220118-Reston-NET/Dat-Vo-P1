@@ -45,8 +45,13 @@ namespace ProjectUI
             }
             else
             {
+                
                 Console.Clear();
-                return "Invalid Input";
+                Console.WriteLine("Invalid Input");
+                Console.WriteLine("Press enter to continue");
+                Console.ReadLine();
+                Log.Information("INVALID INPUT DETECTED, REROUTE TO EMPLOYEE LIST");
+                return "Employee List";
             }
         }
 

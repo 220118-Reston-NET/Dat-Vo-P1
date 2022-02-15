@@ -55,6 +55,7 @@
                 Console.WriteLine("Please press Enter to continue4");
                 Console.ReadLine();
                 Console.Clear();
+                Log.Information("INVALID INPUT DETECTED, REROUTING TO INVENTORY MANAGMENT MENU");
                 return "Inventory Management Menu";
             }
 

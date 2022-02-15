@@ -70,6 +70,7 @@ namespace ProjectUI
                     Console.WriteLine("Please press Enter to continue");
                     Console.ReadLine();
                     Console.Clear();
+                    Log.Information("INVALID INPUT DETECTED, REROUTING TO REMOVE AN EMPLOYEE MENU");
                     return "remove an employee";
             }
         }

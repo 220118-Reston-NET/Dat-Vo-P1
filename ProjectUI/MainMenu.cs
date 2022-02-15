@@ -45,7 +45,10 @@ namespace ProjectUI
                     return "Customer View";
                 default:
                     Console.WriteLine("Invalid Input");
-                    return "InvalidInput";
+                    Console.WriteLine("Press Enter to continue");
+                    Console.ReadLine();
+                    Log.Information("INVALID INPUT DETECTED, REROUT TO MAIN MENU");
+                    return "Main Menu";
             }
         
         }

@@ -58,6 +58,7 @@ namespace ProjectUI
                     CurrentCustomer.SetInventoryQuantity(UserInput3);
                     _projectBL.UpdateInventory(CurrentCustomer.currentinventory);
 
+                    Log.Information("INVENTORY UPDATED");
                     Console.Clear();
                     return "Replenish Item Menu";
                 }
@@ -67,6 +68,7 @@ namespace ProjectUI
                     Console.WriteLine("Please press Enter to continue");
                     Console.ReadLine();
                     Console.Clear();
+                    Log.Information("INVALID INPUT DETECTED, REROUTING TO REPLENISH ITEM MENU");
                     return "Replenish Item Menu";
                 }
             }
@@ -76,6 +78,7 @@ namespace ProjectUI
                 Console.WriteLine("Please input a valid response");
                 Console.WriteLine("Please press Enter to continue5");
                 Console.ReadLine();
+                Log.Information("INVALID INPUT DETECTED, REROUTING TO REPLENISH ITEM MENU");
                 return "Replenish Item Menu";
             }
 

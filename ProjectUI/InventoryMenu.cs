@@ -59,11 +59,13 @@ namespace ProjectUI
                 else if (UserInput == -1)
                 {
                     Console.Clear();
+                    Log.Information("LOGGING OUT, REROUTING TO CUSTOMER VIEW MENU");
                     return "Customer View";
                 }
                 else if (UserInput == 2)
                 {
                     Console.Clear();
+                    
                     return "add item to cart";
                 }
                 else if (UserInput == 3)
@@ -72,6 +74,7 @@ namespace ProjectUI
                     _projectBL.AddOrder(CurrentCustomer.currentOrder);
                     _projectBL.AddOrderItem();
                     Console.Write("Order Placed! \n");
+                    Log.Information("ORDER PLACED, ORDER SAVED TO DATABASE");
                     return "Display Inventory";
                 }
                 else
@@ -80,6 +83,7 @@ namespace ProjectUI
                     Console.WriteLine("Please press Enter to continue");
                     Console.ReadLine();
                     Console.Clear();
+                    Log.Information("INVALID INPUT DETECTED, REROUTING TO DISPLAY INVENTORY MENU");
                     return "Display Inventory";
                 }
             }
@@ -89,6 +93,7 @@ namespace ProjectUI
                 Console.WriteLine("Please press Enter to continue");
                 Console.ReadLine();
                 Console.Clear();
+                Log.Information("INVALID INPUT DETECTED, REROUTING TO DISPLAY INVENTORY MENU");
                 return "Display Inventory";
             }
 

@@ -29,7 +29,8 @@
                     Console.WriteLine("Please press Enter to continue");
                     Console.ReadLine();
                     Console.Clear();
-                    return "Invalid Input";
+                    Log.Information("INVALID INPUT DETECTED, REROUTING TO CUSTOMER VIEW");
+                    return "Customer View";
             }
         }
     }

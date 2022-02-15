@@ -47,7 +47,7 @@ namespace ProjectUI
 
                 CurrentCustomer.AddItemToCart(_projectBL.GetItem(UserInput));
                 CurrentCustomer.currentcartquantity.Add(UserInput2);
-
+                Log.Information("ITEM ADDED TO CART");
                 
 
 
@@ -68,6 +68,7 @@ namespace ProjectUI
                 Console.WriteLine("Please press Enter to continue");
                 Console.ReadLine();
                 Console.Clear();
+                Log.Information("INVALID INPUT DETECTED, REROUTING TO ADD ITEM TO CART MENU");
                 return "add item to cart";
             }
         }

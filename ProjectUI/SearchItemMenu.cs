@@ -30,8 +30,10 @@ namespace ProjectUI
             switch (userInput)
             {
                 case "1":
+                    
                     Console.WriteLine("Please enter item name");
                     string name = Console.ReadLine();
+                    Log.Information("SEARCHING FOR ITEMS BY NAME");
                     List<ItemModel> listOfItem = _projectBL.SearchItem(name);
                     Console.WriteLine("=====Item List=====");
                     Console.WriteLine("Name         || Price   || Category               || Description");
@@ -53,7 +55,8 @@ namespace ProjectUI
                     Console.WriteLine("Please press Enter to continue");
                     Console.ReadLine();
                     Console.Clear();
-                    return "search for an employee";
+                    Log.Information("INVALID INPUT DETECTED, REROUTING TO SEARCH ITEM MENU");
+                    return "search item";
             }
         }
     }

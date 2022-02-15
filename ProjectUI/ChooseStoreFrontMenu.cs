@@ -26,14 +26,13 @@ namespace ProjectUI
         public string UserChoice()
         {
             List<StoreFrontModel> listofStore = _projectBL.GetAllStoreFront();
-            //int UserInput = Int32.Parse(Console.ReadLine());
 
             try
             {
                 int UserInput = Int32.Parse(Console.ReadLine());
                 CurrentCustomer.SetStoreFront(listofStore[UserInput-1]);
                 Console.Clear();
-                //Console.WriteLine("You are now shopping @ " + CurrentCustomer.currentstore.Location);
+                Log.Information("SET CURRENT STORE TO " + listofStore[UserInput-1].Name);
                 return "Display Inventory";
             }
             catch
@@ -42,6 +41,7 @@ namespace ProjectUI
                 Console.WriteLine("Please press Enter to continue");
                 Console.ReadLine();
                 Console.Clear();
+                Log.Information("INVALID INPUT DETECTED, REROUTING TO CHOOSE A STORE MENU");
                 return "Choose a store";
             }
 

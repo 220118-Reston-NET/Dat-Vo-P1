@@ -38,7 +38,7 @@ namespace ProjectUI
                         Log.Information("Adding Employee \n" + _newCustomer);
                         _projectBL.AddCustomer(_newCustomer);
                         Console.Clear();
-                        Log.Information("New User Added!");
+                        Log.Information("New customer Added!");
                         Console.WriteLine("New User Added!");
                         return "Customer View";
 
@@ -54,22 +54,26 @@ namespace ProjectUI
                 case "2":
                     Console.Clear();
                     Console.WriteLine("Please enter your email!");
+                    Log.Information("INPUTING EMAIL");
                     _newCustomer.email = Console.ReadLine();
                     return "New User";
                 case "3":
                     Console.Clear();
                     Console.WriteLine("Please enter your phone number!");
+                    Log.Information("INPUTING PHONE NUMBER");
                     _newCustomer.phonenumber = Console.ReadLine();
                     return "New User";
                 case "4":
                     Console.Clear();
                     Console.WriteLine("Please enter your full name!");
                     _newCustomer.name = Console.ReadLine();
+                    Log.Information("INPUTING NAME");
                     return "New User";
                 default:
                     Console.WriteLine("Please input a valid response");
                     Console.WriteLine("Please press Enter to continue");
                     Console.ReadLine();
+                    Log.Information("INVALID INPUT DETECTED, REROUTING TO NEW USER MENU");
                     return "New User";
             }
 

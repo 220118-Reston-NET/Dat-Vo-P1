@@ -37,7 +37,7 @@ namespace ProjectUI
                     return "Order History";
                 }
     
-
+                Log.Information("ORDER SELECTED, DISPLAYING ORDER'S DETAILS");
                 List<OrderItemModel> listOfOrderItem = _projectBL.SearchOrderItem(UserInput);
                 List<OrderModel> ListOfOrder = _projectBL.GetAllOrder();
 
@@ -54,6 +54,7 @@ namespace ProjectUI
                 Console.WriteLine("Press enter to continue");
                 Console.ReadLine();
                 Console.Clear();
+                Log.Information("INVALID INPUT DETECTED, REROUTING TO VIEW ORDER'S DETAILS MENU");
                 return "ViewOrderDetails";
 
             }
@@ -63,6 +64,7 @@ namespace ProjectUI
                 Console.WriteLine("Please press Enter to continue");
                 Console.ReadLine();
                 Console.Clear();
+                Log.Information("INVALID INPUT DETECTED, REROUTING TO VIEW ORDER'S DETAILS MENU");
                 return "ViewOrderDetails";   
             }
 

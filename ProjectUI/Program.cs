@@ -26,12 +26,11 @@ var configuration = new ConfigurationBuilder()
 string _connectionString = configuration.GetConnectionString("Reference2DB");
 //===========================================
 
-
+Log.Information("PROGRAM LAUNCHED");
 //MAIN WHILE LOOP
 while (repeat)
 {
-//Console.WriteLine(currentmenu.GetType()); //display current menu in termninal
-
+    //Console.WriteLine(currentmenu.GetType()); //display current menu in termninal
 currentmenu.Display();
 
 string ans = currentmenu.UserChoice();

@@ -25,7 +25,7 @@ namespace ProjectUI
                 case "1":
                     Console.WriteLine("Please enter a name");
                     string name = Console.ReadLine();
-
+                    Log.Information("SEARCHING FOR EMPLOYEE");
                     List<EmployeeModel> listOfEmployee = _projectBL.SearchEmployee(name);
                     Console.WriteLine("=====Employee List=====");
                     Console.WriteLine("Names         ||Number        || Email                ||EMPID");       
@@ -47,6 +47,7 @@ namespace ProjectUI
                     Console.WriteLine("Please press Enter to continue");
                     Console.ReadLine();
                     Console.Clear();
+                    Log.Information("INVALID INPUT DETECTED, REROUTING TO SEARCH EMPLOYEE MENU");
                     return "search for an employee";
             }
 

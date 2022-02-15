@@ -35,7 +35,7 @@ namespace ProjectUI
                     //Console.Clear();
                     Console.WriteLine("Enter the ID to delete item");
                     int userInput2 = Int32.Parse(Console.ReadLine());
-                    
+                    Log.Information("AWAITING ITEM ID INPUT TO DELETE ITEM");
                     ItemModel item = new ItemModel();
                     List<ItemModel> listOfItem = _projectBL.GetAllItem();
                     //item = listOfItem[userInput2];
@@ -52,13 +52,14 @@ namespace ProjectUI
                         Console.WriteLine("Please press Enter to continue");
                         Console.ReadLine();
                         Console.Clear();
+                        Log.Information("INVALID INPUT DETECTED, REROUTING TO REMOVE ITEM MENU");
                         return "remove item";
                     }
                     else
                     {
                         _projectBL.RemoveItem(item);
                         Console.Clear();
-                        Log.Information("Item Removed");
+                        Log.Information("SUCCESSFULLY REMOVED ITEM");
                         Console.WriteLine("Item Removed!");
                         return "Item List";
                     } 
@@ -66,6 +67,7 @@ namespace ProjectUI
                     Console.WriteLine("Please input a valid response");
                     Console.WriteLine("Please press Enter to continue");
                     Console.ReadLine();
+                    Log.Information("INVALID INPUT DETECTED, REROUTING TO REMOVE AN ITEM MENU");
                     return "remove item";
             }
         }

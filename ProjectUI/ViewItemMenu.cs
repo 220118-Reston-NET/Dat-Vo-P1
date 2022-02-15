@@ -35,6 +35,7 @@ namespace ProjectUI
                     Console.WriteLine("Please input a valid response");
                     Console.WriteLine("Please press Enter to continue");
                     Console.ReadLine();
+                    Log.Information("INVALID INPUT DETECTED, REROUTING TO VIEW ITEM LIST MENU");
                     return "view item list";
             }
         }

@@ -48,7 +48,6 @@ namespace ProjectUI
                     {
                         Log.Warning("Failed to add employee.)");
                         Console.WriteLine(exc.Message);
-                        //Console.WriteLine("Employee ID is " + _newEmployee.employeeID);
                         Console.WriteLine("Please press Enter to continue");
                         Console.ReadLine();
                     }
@@ -70,6 +69,7 @@ namespace ProjectUI
                     Console.WriteLine("Please input a valid response");
                     Console.WriteLine("Please press Enter to continue");
                     Console.ReadLine();
+                    Log.Information("INVALID INPUT DETECTED, REROUTING TO ADD AN EMPLOYEE MENU");
                     return "add an employee";
             }
 

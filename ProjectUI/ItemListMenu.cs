@@ -43,7 +43,11 @@ namespace ProjectUI
             else
             {
                 Console.Clear();
-                return "InvalidInput";
+                Console.WriteLine("Invalid Input");
+                Console.WriteLine("Press enter to continue");
+                Console.ReadLine();
+                Log.Information("INVALID INPUT DETECTED, REROUTE TO ITEM LIST");
+                return "Item List";
             }
         }
     }

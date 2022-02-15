@@ -37,6 +37,7 @@ namespace ProjectUI
             {
                 Console.Clear();
                 Console.WriteLine("Hello " + CurrentCustomer.currentcustomer.name);
+                Log.Information("SUCCESSFULLY LOGGED IN AS " + CurrentCustomer.currentcustomer.name);
                 return "Choose a store";
             }
             catch
@@ -44,6 +45,7 @@ namespace ProjectUI
                 Console.WriteLine("Incorrect ID");
                 Console.WriteLine("Please press Enter to continue");
                 Console.ReadLine();
+                Log.Information("INVALID INPUT DETECTED, REROUTING TO LOGIN MENU");
                 return "Login";
             }
 

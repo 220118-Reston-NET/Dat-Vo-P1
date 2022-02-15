@@ -68,27 +68,32 @@ namespace ProjectUI
                 case "2":
                     Console.Clear();
                     Console.WriteLine("Enter Item category");
+                    Log.Information("USER INPUTTING ITEM CATEGORY");
                     _newItem.ItemCategory = Console.ReadLine();
                     return "add item";
                 case "3":
                     Console.Clear();
                     Console.WriteLine("Enter Item description");
+                    Log.Information("USER INPUTTING ITEM DESCRIPTION");
                     _newItem.ItemDescription = Console.ReadLine();
                     return "add item";
                 case "4":
                     Console.Clear();
                     Console.WriteLine("Enter Item price");
+                    Log.Information("USER INPUTTING ITEM PRICE");
                     _newItem.ItemPrice = Convert.ToDecimal(Console.ReadLine());
                     return "add item";
                 case "5":
                     Console.Clear();
                     Console.WriteLine("Enter Item name");
+                    Log.Information("USER INPUTTING ITEM NAME");
                     _newItem.ItemName = Console.ReadLine();
                     return "add item";
                 default:
                     Console.WriteLine("Invalid Input");
                     Console.WriteLine("Press enter to continue");
                     Console.ReadLine();
+                    Log.Information("INVALID INPUT DETECTED, REROUTING TO ADD ITEM MENU");
                     return "add item";
             }
         }

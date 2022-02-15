@@ -11,9 +11,7 @@ namespace ProjectUI
         }
         public void Display()
         {
-            //Console.WriteLine("Please Select A Location");
             Console.WriteLine("[0] Back");
-            //Console.WriteLine("Choose a location to shop.");
             Console.WriteLine("=====StoreFront List=====");
             Console.WriteLine("Name         || Location ");
             List<StoreFrontModel> listOfStore = _projectBL.GetAllStoreFront();
@@ -38,7 +36,7 @@ namespace ProjectUI
                 Console.WriteLine("Please press Enter to continue");
                 Console.ReadLine();
                 Console.Clear();
-                return "InvalidInput";
+                return "StoreFront Menu";
             }
         }
     }
