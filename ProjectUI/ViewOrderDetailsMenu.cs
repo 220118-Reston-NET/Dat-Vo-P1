@@ -31,13 +31,11 @@ namespace ProjectUI
             {
                 int UserInput = Int32.Parse(Console.ReadLine());
                 Console.Clear();
-                Console.WriteLine();
                 if (UserInput == 0)
                 {
                     return "Order History";
                 }
     
-                Log.Information("ORDER SELECTED, DISPLAYING ORDER'S DETAILS");
                 List<OrderItemModel> listOfOrderItem = _projectBL.SearchOrderItem(UserInput);
                 List<OrderModel> ListOfOrder = _projectBL.GetAllOrder();
 
@@ -50,11 +48,12 @@ namespace ProjectUI
                     Console.WriteLine(Data.ManageSpaceName(_projectBL.GetItem(O.itemID).ItemName)+ "     $" + Data.ManageSpacePrice(_projectBL.GetItem(O.itemID).ItemPrice)+ "     " + O.quantity);
                     //_projectBL.GetItem
                 }
+
+                Log.Information("ORDER SELECTED, DISPLAYING ORDER #" + UserInput);
                 Console.WriteLine("=============End Of Order=============");
                 Console.WriteLine("Press enter to continue");
                 Console.ReadLine();
                 Console.Clear();
-                Log.Information("INVALID INPUT DETECTED, REROUTING TO VIEW ORDER'S DETAILS MENU");
                 return "ViewOrderDetails";
 
             }
