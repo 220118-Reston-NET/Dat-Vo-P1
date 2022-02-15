@@ -57,22 +57,25 @@ switch (ans)
         currentmenu = new StoreFrontMenu(new ProjectBLStoreFront(new SQLRepository(_connectionString)));
         break;
     case "Item List":
+        Log.Information("OPEN ITEM LIST MENU");
         currentmenu = new ItemListMenu();
         break;
     case "Customer View":
+        Log.Information("OPEN CUSTOMER VIEW");
         currentmenu = new CustomerViewMenu();
         break;
     case "Order History":
+        Log.Information("OPEN ORDER HISTORY");
         currentmenu = new OrderHistoryMenu(new ProjectBLInventory(new SQLRepository(_connectionString)));
         break;
     case "Inventory Management Menu":
+        Log.Information("OPEN INVENTORY MANAGEMENT");
         currentmenu = new InventoryManageMentMenu(new ProjectBLInventory(new SQLRepository(_connectionString)));
         break;
     case "InvalidInput":
         Log.Information("INVALID INPUT DETECTED");
         Console.WriteLine("Invalid Input");
         break;
-
 
 
     // Employee List options
@@ -97,43 +100,58 @@ switch (ans)
 
     // Item List Menu Options
     case "add item":
+        Log.Information("OPEN ADD AN ITEM MENU");
         currentmenu = new AddItemMenu(new ProjectBLitem(new SQLRepository(_connectionString)));
         break;
     case "remove item":
+        Log.Information("OPEN REMOVING AN ITEM MENU");
         currentmenu = new RemoveItemMenu(new ProjectBLitem(new SQLRepository(_connectionString)));
         break;
     case "view item list":
+        Log.Information("OPEN ITEM LIST");
         currentmenu = new ViewItemMenu(new ProjectBLitem(new SQLRepository(_connectionString)));
         break;
     case "search item":
+        Log.Information("OPEN SEARCH ITEM MENU");
         currentmenu = new SearchItemMenu(new ProjectBLitem(new SQLRepository(_connectionString)));
         break;
 
 
     // Customer View (before log in)
     case "New User":
+        Log.Information("OPEN NEW USER MENU");
         currentmenu = new AddCustomerMenu(new ProjectBLCustomer(new SQLRepository(_connectionString)));
         break;
     case "Login":
+        Log.Information("OPEN LOGIN MENU");
         currentmenu = new CustomerLoginMenu(new ProjectBLCustomer(new SQLRepository(_connectionString)));
         break;
 
     // Customer View (Logged in)
     case "Choose a store":
+        Log.Information("OPEN STORE OPTIONS");
         currentmenu = new ChooseStoreFrontMenu(new ProjectBLStoreFront(new SQLRepository(_connectionString)));
         break;
     case "Display Inventory":
+        Log.Information("DISPLAY INVENTORY MENU");
         currentmenu = new InventoryMenu(new ProjectBLInventory(new SQLRepository(_connectionString)));
         break;
     case "add item to cart":
+        Log.Information("OPEN ADD AN ITEM (TO CART) MENU");
         currentmenu = new AddItemToOrderMenu(new ProjectBLInventory(new SQLRepository(_connectionString)));
         break;
 
     // Inventory Management Options
     case "Replenish Item Menu":
+        Log.Information("REPLENISH ITEM MENU SELECTED");
         currentmenu = new RepleanishItemOptionsMenu(new ProjectBLInventory(new SQLRepository(_connectionString)));
         break;
     
+    // VIEW ORDER HISTORY OPTIONS
+    case "ViewOrderDetails":
+        Log.Information("SHOWS DETAILS OF SPECIFIED ORDER");
+        currentmenu = new ViewOrderDetailsMenu(new ProjectBLInventory(new SQLRepository(_connectionString)));
+        break;
 
 
     // default statement

@@ -70,8 +70,9 @@ namespace ProjectBL
 
         List<OrderModel> GetAllOrder();
         CustomerModel GetCustomer(int customerID);
-
         StoreFrontModel GetStore(int storeID);
+
+        List<OrderItemModel> SearchOrderItem(int orderID);
 
     }
 }

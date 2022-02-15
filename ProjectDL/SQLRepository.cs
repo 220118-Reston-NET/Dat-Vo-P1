@@ -501,5 +501,35 @@ namespace ProjectDL
             } 
             return listOfStore[0];
         }
+
+        public List<OrderItemModel> SearchOrderItem(int orderID)
+        {
+            string sqlQuery = @"select * from Order_Items where orderID = @orderID";
+
+            List<OrderItemModel> listOfOrderItem = new List<OrderItemModel>();
+
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+                
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+                command.Parameters.AddWithValue("@orderID", orderID);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    listOfOrderItem.Add(new OrderItemModel(){
+                        orderID = reader.GetInt32(0),
+                        itemID = reader.GetInt32(1),
+                        quantity = reader.GetInt32(2)
+                    });
+                }
+
+            } 
+            
+            return listOfOrderItem;
+
+        }
     }
 }

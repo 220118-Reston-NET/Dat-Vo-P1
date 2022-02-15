@@ -2,18 +2,18 @@ using ProjectModel;
 using ProjectBL;
 namespace ProjectUI
 {
-    public class OrderHistoryMenu : IMenu
+    public class ViewOrderDetailsMenu : IMenu
     {
         private IProjectBLInventory _projectBL;
 
-        public OrderHistoryMenu(IProjectBLInventory p_projectBL)
+        public ViewOrderDetailsMenu(IProjectBLInventory p_projectBL)
         {
             _projectBL = p_projectBL;
         }
         public void Display()
         {
             Console.WriteLine("[0] Go Back");
-            Console.WriteLine("[1] View Details");
+            Console.WriteLine("Enter Order ID to view details");
             Console.WriteLine("=========Order History=========");
             Console.WriteLine("Order ID|| Customer         ||Store Location            || Price");
             List<OrderModel> ListOfOrder = _projectBL.GetAllOrder();
@@ -30,24 +30,32 @@ namespace ProjectUI
             try
             {
                 int UserInput = Int32.Parse(Console.ReadLine());
+                Console.Clear();
+                Console.WriteLine();
                 if (UserInput == 0)
                 {
-                    Console.Clear();
-                    return "Main Menu";
-                }
-                else if (UserInput == 1)
-                {
-                    Console.Clear();
-                    return "ViewOrderDetails";
-                }
-                else
-                {
-                    Console.WriteLine("Please input a valid response");
-                    Console.WriteLine("Please press Enter to continue");
-                    Console.ReadLine();
-                    Console.Clear();
                     return "Order History";
                 }
+    
+
+                List<OrderItemModel> listOfOrderItem = _projectBL.SearchOrderItem(UserInput);
+                List<OrderModel> ListOfOrder = _projectBL.GetAllOrder();
+
+                Console.WriteLine("=========Order " + UserInput + " =========");
+                Console.WriteLine("Total Price: $" + ListOfOrder[UserInput-1].TotalPrice);
+                Console.WriteLine("Item             || Price      ||Quantity     ");
+                foreach(var O in listOfOrderItem)
+                {
+                    
+                    Console.WriteLine(Data.ManageSpaceName(_projectBL.GetItem(O.itemID).ItemName)+ "     $" + Data.ManageSpacePrice(_projectBL.GetItem(O.itemID).ItemPrice)+ "     " + O.quantity);
+                    //_projectBL.GetItem
+                }
+                Console.WriteLine("=============End Of Order=============");
+                Console.WriteLine("Press enter to continue");
+                Console.ReadLine();
+                Console.Clear();
+                return "ViewOrderDetails";
+
             }
             catch
             {
@@ -55,9 +63,9 @@ namespace ProjectUI
                 Console.WriteLine("Please press Enter to continue");
                 Console.ReadLine();
                 Console.Clear();
-                return "Order History";
+                return "ViewOrderDetails";   
             }
-            
+
         }
     }
 }

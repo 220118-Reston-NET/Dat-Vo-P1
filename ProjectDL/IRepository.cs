@@ -53,6 +53,8 @@ namespace ProjectDL
         //OrderItems methods
         OrderItemModel AddOrderItem(OrderItemModel orderItem);
 
+        List<OrderItemModel> SearchOrderItem(int orderID);
+
 
     }
 }

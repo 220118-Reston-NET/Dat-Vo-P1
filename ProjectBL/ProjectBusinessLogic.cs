@@ -299,6 +299,11 @@ namespace ProjectBL
         {
             return _repo.SearchStoreByID(storeID);
         }
+
+        public List<OrderItemModel> SearchOrderItem(int orderID)
+        {
+            return _repo.SearchOrderItem(orderID);
+        }
     }
 
 
