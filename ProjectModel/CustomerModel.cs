@@ -10,7 +10,7 @@ namespace ProjectModel
 
         public CustomerModel()
         {
-            //name = "name";
+            name = "";
             //phonenumber = "number";
             //email = "email";
         }

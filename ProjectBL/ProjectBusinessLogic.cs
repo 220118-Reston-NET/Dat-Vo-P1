@@ -118,7 +118,7 @@ namespace ProjectBL
         public CustomerModel AddCustomer(CustomerModel p_customer)
         {
             List<CustomerModel> listOfCustomer = _repo.GetAllCustomer();
-            if (p_customer.name == null)
+            if (p_customer.name.Count() < 2)
             {
                 throw new Exception("Please enter a name");
             }
