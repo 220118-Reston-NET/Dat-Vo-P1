@@ -118,6 +118,19 @@ namespace ProjectBL
         public CustomerModel AddCustomer(CustomerModel p_customer)
         {
             List<CustomerModel> listOfCustomer = _repo.GetAllCustomer();
+            if (p_customer.name == null)
+            {
+                throw new Exception("Please enter a name");
+            }
+            else if (p_customer.phonenumber.Count() != 10)
+            {
+                throw new Exception("Please enter a valid phone number");
+            }
+            else if (!p_customer.email.Contains("@") )
+            {
+                throw new Exception("Please enter a valid email");
+            }
+    
             return _repo.AddCustomer(p_customer);
         }
 
