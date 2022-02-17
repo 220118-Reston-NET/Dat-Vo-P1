@@ -35,7 +35,7 @@ namespace ProjectUI
                     Console.Clear();
                     try
                     {
-                        Log.Information("Adding Employee \n" + _newCustomer);
+                        Log.Information("Adding Customer \n" + _newCustomer.name);
                         _projectBL.AddCustomer(_newCustomer);
                         Console.Clear();
                         Log.Information("New customer Added!");
