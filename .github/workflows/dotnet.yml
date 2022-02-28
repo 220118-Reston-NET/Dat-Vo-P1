@@ -71,7 +71,7 @@ jobs:
       shell: pwsh
       run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"220118-Reston-NET_Dat-Vo-P1" /o:"220118-reston-net" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.exclusion ="**Project0Api/wwwroot/lib/**" /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml" -d:sonar.vstest.reportsPath="**/TestResults/*.trx"
-          dotnet build ./PokeApi -c Release
+          dotnet build ./Project0Api -c Release
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
       
     - name: Create Publish folder
