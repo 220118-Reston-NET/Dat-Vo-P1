@@ -16,7 +16,8 @@ namespace ProjectUI
         public void Display()
         {
             Console.WriteLine("Enter your information");
-            Console.WriteLine("[4] Name - " + _newCustomer.name);
+            Console.WriteLine("[5] Name - " + _newCustomer.name);
+            Console.WriteLine("[4] Password - " + _newCustomer.password);
             Console.WriteLine("[3] Number - " + _newCustomer.phonenumber);
             Console.WriteLine("[2] Email - " + _newCustomer.email);
             Console.WriteLine("[1] Save");
@@ -64,6 +65,12 @@ namespace ProjectUI
                     _newCustomer.phonenumber = Console.ReadLine();
                     return "New User";
                 case "4":
+                    Console.Clear();
+                    Console.WriteLine("Please enter password!");
+                    Log.Information("INPUTING PASSWORD");
+                    _newCustomer.password = Console.ReadLine();
+                    return "New User";
+                case "5":
                     Console.Clear();
                     Console.WriteLine("Please enter your full name!");
                     _newCustomer.name = Console.ReadLine();

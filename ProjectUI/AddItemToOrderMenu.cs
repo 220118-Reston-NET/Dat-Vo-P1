@@ -35,7 +35,7 @@ namespace ProjectUI
         {
             try
             {
-                int UserInput = Int32.Parse(Console.ReadLine());
+                int UserInput = Int32.Parse(Console.ReadLine());  // takes in Item ID
                 if (UserInput == 0)
                 {
                     Console.Clear();
@@ -43,11 +43,25 @@ namespace ProjectUI
                 }
                 Console.Clear();
                 Console.WriteLine("Enter the amount: ");
-                int UserInput2 = Int32.Parse(Console.ReadLine());
+                int UserInput2 = Int32.Parse(Console.ReadLine()); // takes in amount of said item
+                
+                List<InventoryModel> listOfInventory = _projectBL.GetAllInventory();
+                var specifiedInventory = from inven in listOfInventory where inven.itemID == UserInput && inven.storeID == CurrentCustomer.currentstore.storeID select inven;
+                
+                if (UserInput2 <= specifiedInventory.ElementAt(0).quantity)
+                {
+                    CurrentCustomer.AddItemToCart(_projectBL.GetItem(UserInput));
+                    CurrentCustomer.currentcartquantity.Add(UserInput2);
+                    Log.Information("ITEM ADDED TO CART");
+                }
+                else
+                {
+                    throw new Exception("Cannot order more items than available");
+                }
 
-                CurrentCustomer.AddItemToCart(_projectBL.GetItem(UserInput));
-                CurrentCustomer.currentcartquantity.Add(UserInput2);
-                Log.Information("ITEM ADDED TO CART");
+                // CurrentCustomer.AddItemToCart(_projectBL.GetItem(UserInput));
+                // CurrentCustomer.currentcartquantity.Add(UserInput2);
+                // Log.Information("ITEM ADDED TO CART");
                 
 
 

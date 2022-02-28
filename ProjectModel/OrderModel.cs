@@ -7,6 +7,13 @@ namespace ProjectModel
         public int customerID { get; set; }
         public int storeID { get; set; }
 
+        // public List<OrderItemModel> listOfOrderItems{ get; set; }
+
+        // public List<int> listOfAmount{ get; set; }
+        public Dictionary<ItemModel, int> ItemAndAmount { get; set; }
+
+        public DateTime datetimeoforder { get; set;}
+
 
         public OrderModel()
         {

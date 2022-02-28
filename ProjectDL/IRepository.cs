@@ -10,6 +10,8 @@ namespace ProjectDL
         
         EmployeeModel RemoveEmployee(EmployeeModel Employee);
 
+        EmployeeModel GetEmployeeByID(int employeeID);
+
         //Item methods
 
         ItemModel AddItem(ItemModel Item);
@@ -36,7 +38,10 @@ namespace ProjectDL
         
         StoreFrontModel RemoveStoreFront(StoreFrontModel Customer);
 
-        StoreFrontModel SearchStoreByID(int storeID);
+        StoreFrontModel SearchStoreByID(int? storeID);
+        //StoreFrontModel SearchStoreFront(int storeID);
+
+        StoreFrontModel SearchStoreFront(string p_name);
 
         //Inventory methods
         InventoryModel AddInventory(InventoryModel Inventory);
@@ -45,15 +50,19 @@ namespace ProjectDL
         InventoryModel RemoveInventory(InventoryModel Inventory);
         InventoryModel UpdateInventory(InventoryModel Inventory);
 
+        List<InventoryModel> SearchInventoryByStoreID(int storeID);
+
         //Order methods
         OrderModel AddOrder(OrderModel Order);
         List<OrderModel> GetAllOrder();
+
+        List<OrderModel> GetAllOrder(int? customerID);
         OrderModel RemoveOrder(OrderModel Order);
 
         //OrderItems methods
         OrderItemModel AddOrderItem(OrderItemModel orderItem);
 
-        List<OrderItemModel> SearchOrderItem(int orderID);
+        List<OrderItemModel> SearchOrderItem(int? orderID);
 
 
     }

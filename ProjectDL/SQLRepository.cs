@@ -13,7 +13,7 @@ namespace ProjectDL
         // EMPLOYEES =======================================================
         public EmployeeModel AddEmployee(EmployeeModel employee)
         {
-            string sqlQuery = @"insert into Employee values(@employeename, @employeenumber, @employeeemail)";
+            string sqlQuery = @"insert into Employee values(@employeename, @employeenumber, @employeeemail,@password)";
 
             using (SqlConnection con = new SqlConnection(_connectionStrings))
             {
@@ -23,7 +23,7 @@ namespace ProjectDL
                 command.Parameters.AddWithValue("@employeename",employee.name);
                 command.Parameters.AddWithValue("@employeenumber",employee.number);
                 command.Parameters.AddWithValue("@employeeemail",employee.email);
-
+                command.Parameters.AddWithValue("@password", employee.password);
                 command.ExecuteNonQuery();
             }
 
@@ -50,7 +50,8 @@ namespace ProjectDL
                         employeeID = reader.GetInt32(0),
                         name = reader.GetString(1),
                         number = reader.GetString(2),
-                        email = reader.GetString(3)
+                        email = reader.GetString(3),
+                        password = reader.GetString(4)
                     });
                 }
 
@@ -72,6 +73,34 @@ namespace ProjectDL
             }
             
             return employee;
+        }
+
+        public EmployeeModel GetEmployeeByID(int employeeID)
+        {
+            List<EmployeeModel > listOfEmployee = new List<EmployeeModel>();
+            string sqlQuery = @"select * from Employee where employeeID = @employeeID";
+
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+                
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+                command.Parameters.AddWithValue("@employeeID", employeeID);
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    listOfEmployee.Add(new EmployeeModel(){
+                        employeeID = reader.GetInt32(0),
+                        name = reader.GetString(1),
+                        number = reader.GetString(2),
+                        email = reader.GetString(3),
+                        password = reader.GetString(4)
+                    });
+                }
+
+            } 
+            return listOfEmployee[0];
         }
     
 
@@ -173,7 +202,7 @@ namespace ProjectDL
         // CUSTOMERS =======================================================
         public CustomerModel AddCustomer(CustomerModel Customer)
         {
-            string sqlQuery = @"insert into Customer values(@name, @phonenumber, @email)";
+            string sqlQuery = @"insert into Customer values(@name, @phonenumber, @email, @password)";
 
             using (SqlConnection con = new SqlConnection(_connectionStrings))
             {
@@ -183,7 +212,7 @@ namespace ProjectDL
                 command.Parameters.AddWithValue("@name", Customer.name);
                 command.Parameters.AddWithValue("@phonenumber", Customer.phonenumber);
                 command.Parameters.AddWithValue("@email", Customer.email);
-
+                command.Parameters.AddWithValue("@password", Customer.password);
                 command.ExecuteNonQuery();
             }
 
@@ -211,7 +240,8 @@ namespace ProjectDL
                         customerID = reader.GetInt32(0),
                         name = reader.GetString(1),
                         phonenumber = reader.GetString(2),
-                        email = reader.GetString(3)
+                        email = reader.GetString(3),
+                        password = reader.GetString(4)
                     });
                 }
 
@@ -259,6 +289,33 @@ namespace ProjectDL
             return listOfStoreFront;
         }
 
+
+        public StoreFrontModel SearchStoreFront(string p_name)
+        {
+            List<StoreFrontModel> listOfStoreFront = new List<StoreFrontModel>();
+            string sqlQuery = @"select * from StoreFront where storeName = @storeName";
+
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+                
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+                command.Parameters.AddWithValue("@storeName", p_name);
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    listOfStoreFront.Add(new StoreFrontModel(){
+                        storeID = reader.GetInt32(0),
+                        Name = reader.GetString(1),
+                        Location = reader.GetString(2)
+                    });
+                }
+
+            } 
+            return listOfStoreFront[0];
+        }
+
         public CustomerModel SearchCustomerByID(int customerID)
         {
             List<CustomerModel> listOfCustomer = new List<CustomerModel>();
@@ -278,7 +335,8 @@ namespace ProjectDL
                         customerID = reader.GetInt32(0),
                         name = reader.GetString(1),
                         phonenumber = reader.GetString(2),
-                        email = reader.GetString(3)
+                        email = reader.GetString(3),
+                        password = reader.GetString(4)
                     });
                 }
 
@@ -402,10 +460,38 @@ namespace ProjectDL
             }
         }
 
+        public List<InventoryModel> SearchInventoryByStoreID(int storeID)
+        {
+            List<InventoryModel> listOfInventory = new List<InventoryModel>();
+            string sqlQuery = @"Select * from Inventory where storeID = @storeID";
+            
+
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+                command.Parameters.AddWithValue("@storeID", storeID);
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    listOfInventory.Add(new InventoryModel(){
+                        storeID = reader.GetInt32(0),
+                        itemID = reader.GetInt32(1),
+                        quantity = reader.GetInt32(2)                      
+                    });
+                }
+
+                return listOfInventory;
+            }
+
+        }
+
         // Order =======================================================
         public OrderModel AddOrder(OrderModel Order)
         {
-            string sqlQuery = @"insert into CustomerOrder values(@totalprice, @customerID, @storeID)";
+            string sqlQuery = @"insert into CustomerOrder values(@totalprice, @customerID, @storeID, @timeoforder)";
 
             using (SqlConnection con = new SqlConnection(_connectionStrings))
             {
@@ -415,6 +501,7 @@ namespace ProjectDL
                 command.Parameters.AddWithValue("@totalprice", Order.TotalPrice);
                 command.Parameters.AddWithValue("@customerID", Order.customerID);
                 command.Parameters.AddWithValue("@storeID", Order.storeID);
+                command.Parameters.AddWithValue("@timeoforder", DateTime.Now);
 
                 command.ExecuteNonQuery();
             }
@@ -443,13 +530,17 @@ namespace ProjectDL
                         orderID =  reader.GetInt32(0),
                         TotalPrice = reader.GetDecimal(1),
                         customerID = reader.GetInt32(2),
-                        storeID = reader.GetInt32(3)
+                        storeID = reader.GetInt32(3),
+                        datetimeoforder = reader.GetDateTime(4)
                     });
                 }
 
             } 
+
             return listOfOrder;
         }
+
+
 
         public OrderModel RemoveOrder(OrderModel Order)
         {
@@ -476,8 +567,12 @@ namespace ProjectDL
             return orderItem;
         }
 
-        public StoreFrontModel SearchStoreByID(int storeID)
+        public StoreFrontModel SearchStoreByID(int? storeID)
         {
+            if(storeID is null)
+            {
+                return new StoreFrontModel();
+            }
             List<StoreFrontModel> listOfStore = new List<StoreFrontModel>();
             string sqlQuery = @"select * from StoreFront where storeID = @storeID";
 
@@ -502,34 +597,101 @@ namespace ProjectDL
             return listOfStore[0];
         }
 
-        public List<OrderItemModel> SearchOrderItem(int orderID)
+        public List<OrderItemModel> SearchOrderItem(int? orderID)
         {
-            string sqlQuery = @"select * from Order_Items where orderID = @orderID";
+            if (orderID is null)
+            {
+                string sqlQuery = @"select * from Order_Items";
+                List<OrderItemModel> listOfOrderItem = new List<OrderItemModel>();
 
-            List<OrderItemModel> listOfOrderItem = new List<OrderItemModel>();
+                using (SqlConnection con = new SqlConnection(_connectionStrings))
+                {
+                    con.Open();
+                    
+                    SqlCommand command = new SqlCommand(sqlQuery, con);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        listOfOrderItem.Add(new OrderItemModel(){
+                            orderID = reader.GetInt32(0),
+                            itemID = reader.GetInt32(1),
+                            quantity = reader.GetInt32(2)
+                        });
+                    }
+
+                } 
+                
+                return listOfOrderItem;
+            }
+            else
+            {
+                string sqlQuery = @"select * from Order_Items where orderID = @orderID";
+                List<OrderItemModel> listOfOrderItem = new List<OrderItemModel>();
+
+                using (SqlConnection con = new SqlConnection(_connectionStrings))
+                {
+                    con.Open();
+                    
+                    SqlCommand command = new SqlCommand(sqlQuery, con);
+                    command.Parameters.AddWithValue("@orderID", orderID);
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        listOfOrderItem.Add(new OrderItemModel(){
+                            orderID = reader.GetInt32(0),
+                            itemID = reader.GetInt32(1),
+                            quantity = reader.GetInt32(2)
+                        });
+                    }
+
+                } 
+                
+                return listOfOrderItem;
+            }
+
+
+
+        }
+
+        public List<OrderModel> GetAllOrder(int? customerID)
+        {
+            List<OrderModel> listOfOrder = new List<OrderModel>();
+
+            string sqlQuery = @"select * from CustomerOrder where customerID = @customerID";
+            string sqlQuery2 = @"select * from Order_Items where orderID = @orderID";
 
             using (SqlConnection con = new SqlConnection(_connectionStrings))
             {
                 con.Open();
                 
                 SqlCommand command = new SqlCommand(sqlQuery, con);
-                command.Parameters.AddWithValue("@orderID", orderID);
-
+                command.Parameters.AddWithValue("@customerID", customerID);
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    listOfOrderItem.Add(new OrderItemModel(){
-                        orderID = reader.GetInt32(0),
-                        itemID = reader.GetInt32(1),
-                        quantity = reader.GetInt32(2)
+                    listOfOrder.Add(new OrderModel(){
+                        orderID =  reader.GetInt32(0),
+                        TotalPrice = reader.GetDecimal(1),
+                        customerID = reader.GetInt32(2),
+                        storeID = reader.GetInt32(3),
+                        datetimeoforder = reader.GetDateTime(4),
+
+                        // SqlCommand command2 = new SqlCommand(sqlQuery2, con),
+                        // command2.Parameters.AddWithValue("@orderID", orderID);
+                        // listOfOrderItems.Add();
+
                     });
                 }
 
-            } 
-            
-            return listOfOrderItem;
 
+            } 
+            return listOfOrder;    
         }
+
+
     }
 }

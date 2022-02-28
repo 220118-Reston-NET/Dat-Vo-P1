@@ -3,6 +3,7 @@ namespace ProjectBL
 {
     public interface IProjectBL
     {
+        //EMPLOYEE
         EmployeeModel AddEmployee(EmployeeModel p_Employee);
 
         EmployeeModel RemoveEmployee(EmployeeModel p_Employee);
@@ -10,7 +11,41 @@ namespace ProjectBL
         List<EmployeeModel> SearchEmployee(string p_name);
 
         List<EmployeeModel> GetAllEmployee();
+        EmployeeModel GetEmployeeByID(int employeeID);
 
+
+        ///==============================================
+        //CUSTOMER
+        List<CustomerModel> SearchCustomer(string p_name);
+        CustomerModel AddCustomer(CustomerModel p_customer);
+        CustomerModel GetCustomer(int customerID);
+
+        //======================================================
+        //Orders
+        List<OrderModel> GetAllOrder();
+        List<OrderModel> GetAllOrder(int? customerID);
+
+        OrderModel AddOrder(OrderModel order);
+        
+
+        //======================================================
+        //OrderItems
+        List<OrderItemModel> SearchOrderItem(int? orderID);
+        void AddOrderItem();
+
+        //======================================================
+        //StoreFront
+        StoreFrontModel SearchStoreFront(string p_name);
+        StoreFrontModel SearchStoreFront(int? storeID);
+        
+        //======================================================
+        //Item
+        ItemModel GetItem(int itemID);
+
+        //======================================================
+        //Inventory
+        List<InventoryModel> SearchInventoryByStoreID(int storeID);
+        InventoryModel UpdateInventory(InventoryModel p_inventory);
     }
 
     public interface IProjectBLitem
@@ -55,7 +90,6 @@ namespace ProjectBL
         InventoryModel AddInventory(InventoryModel p_inventory);
         InventoryModel RemoveInventory(InventoryModel p_inventory);
         List<InventoryModel> SearchInventoryByStoreID(int storeID);
-        ///////List<InventoryModel> SearchInventoryByItemID(int itemID);
         List<InventoryModel> GetAllInventory();
         List<ItemModel> GetAllItem();
         ItemModel GetItem(int itemID);

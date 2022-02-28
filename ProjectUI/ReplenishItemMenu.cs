@@ -2,11 +2,11 @@ using ProjectBL;
 using ProjectModel;
 namespace ProjectUI
 {
-    public class RepleanishItemOptionsMenu : IMenu
+    public class ReplenishItemOptionsMenu : IMenu
     {
         //ItemModel item = new ItemModel();
         private IProjectBLInventory _projectBL;
-        public RepleanishItemOptionsMenu(IProjectBLInventory p_projectBL)
+        public ReplenishItemOptionsMenu(IProjectBLInventory p_projectBL)
         {
             _projectBL = p_projectBL;
         }
@@ -55,6 +55,7 @@ namespace ProjectUI
                     CurrentCustomer.SetInventoryStoreID(CurrentCustomer.currentstore.storeID);
                     Console.WriteLine("Enter amount");
                     int UserInput3 = Int32.Parse(Console.ReadLine());
+
                     CurrentCustomer.SetInventoryQuantity(UserInput3);
                     _projectBL.UpdateInventory(CurrentCustomer.currentinventory);
 

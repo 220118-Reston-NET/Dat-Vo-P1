@@ -12,7 +12,8 @@ Log.Logger = new LoggerConfiguration()
 //===========================================
 
 bool repeat = true;
-IMenu currentmenu = new MainMenu();
+//IMenu currentmenu = new MainMenu();
+IMenu currentmenu = new LogInMenu();
 
 // List<EmployeeModel> ListOfEmployees = new List<EmployeeModel>();
 // ListOfEmployees = Serialization.DeserialMain();
@@ -35,13 +36,19 @@ currentmenu.Display();
 
 string ans = currentmenu.UserChoice();
 
+//Console.WriteLine(CurrentCustomer.currentcustomer.name);
 switch (ans)
 {
+    
     //Main Menu options
     case "Exit":
         Log.Information("EXITING PROGRAM");
         Log.CloseAndFlush();
         repeat = false;
+        break;
+    case "LogInMenu":
+        Log.Information("OPEN GENERAL LOGIN MENU");
+        currentmenu = new LogInMenu();
         break;
     case "Main Menu":
         Log.Information("RETURN TO MAIN MENU");
@@ -115,6 +122,11 @@ switch (ans)
         currentmenu = new SearchItemMenu(new ProjectBLitem(new SQLRepository(_connectionString)));
         break;
 
+    // Employee View (before  login)
+    case "Employee Login":
+        Log.Information("OPEN EMPLOYEE LOGIN MENU");
+        currentmenu = new EmployeeLogInMenu(new ProjectBLc(new SQLRepository(_connectionString)));
+        break;
 
     // Customer View (before log in)
     case "New User":
@@ -143,7 +155,7 @@ switch (ans)
     // Inventory Management Options
     case "Replenish Item Menu":
         Log.Information("REPLENISH ITEM MENU SELECTED");
-        currentmenu = new RepleanishItemOptionsMenu(new ProjectBLInventory(new SQLRepository(_connectionString)));
+        currentmenu = new ReplenishItemOptionsMenu(new ProjectBLInventory(new SQLRepository(_connectionString)));
         break;
     
     // VIEW ORDER HISTORY OPTIONS

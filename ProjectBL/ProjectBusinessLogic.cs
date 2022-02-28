@@ -9,6 +9,26 @@ namespace ProjectBL
         {
             _repo = p_repo;
         }
+
+        public CustomerModel AddCustomer(CustomerModel p_customer)
+        {
+            List<CustomerModel> listOfCustomer = _repo.GetAllCustomer();
+            if (p_customer.name.Count() < 2)
+            {
+                throw new Exception("Please enter a name");
+            }
+            else if (p_customer.phonenumber.Count() != 10)
+            {
+                throw new Exception("Please enter a valid phone number");
+            }
+            else if (!p_customer.email.Contains("@") )
+            {
+                throw new Exception("Please enter a valid email");
+            }
+    
+            return _repo.AddCustomer(p_customer);
+        }
+
         public EmployeeModel AddEmployee(EmployeeModel Employee)
         {
             List<EmployeeModel> listOfEmployee = _repo.GetAllEmployee();
@@ -44,6 +64,17 @@ namespace ProjectBL
             return _repo.RemoveEmployee(p_Employee);
         }
 
+        public List<CustomerModel> SearchCustomer(string p_name)
+        {
+            List<CustomerModel> listOfCustomer= _repo.GetAllCustomer();
+
+
+            // LINQ library
+            return listOfCustomer
+                        .Where(customer => customer.name.Contains(p_name)) //Where method is designed to filter a collection based on a condition
+                        .ToList(); //ToList method just converts into a list collection that the method needs to return
+        }
+
         public List<EmployeeModel> SearchEmployee(string p_name)
         {
             List<EmployeeModel> listOfEmployee= _repo.GetAllEmployee();
@@ -54,8 +85,127 @@ namespace ProjectBL
                         .Where(employee => employee.name.Contains(p_name)) //Where method is designed to filter a collection based on a condition
                         .ToList(); //ToList method just converts into a list collection that the method needs to return
         }
+        public CustomerModel GetCustomer(int customerID)
+        {
+            return _repo.SearchCustomerByID(customerID);
+        }
 
+        public EmployeeModel GetEmployeeByID(int employeeID)
+        {
+            return _repo.GetEmployeeByID(employeeID);
+        }
+
+        public List<OrderModel> GetAllOrder()
+        {
+            return _repo.GetAllOrder();
+        }
+
+        public List<OrderModel> GetAllOrder(int? customerID)
+        {
+            
+            return _repo.GetAllOrder(customerID);
+        }
+
+        public List<OrderItemModel> SearchOrderItem(int? orderID)
+        {
+            return _repo.SearchOrderItem(orderID);
+        }
+
+        public StoreFrontModel SearchStoreFront(string p_name)
+        {
+            return _repo.SearchStoreFront(p_name);
+        }
+
+        public StoreFrontModel SearchStoreFront(int? storeID)
+        {
+            return _repo.SearchStoreByID(storeID);
+        }
+        public ItemModel GetItem(int itemID)
+        {
+            return _repo.GetItem(itemID);
+        }
+
+        public List<InventoryModel> SearchInventoryByStoreID(int storeID)
+        {
+            return _repo.SearchInventoryByStoreID(storeID);
+        }
+
+        public List<InventoryModel> GetAllInventory()
+        {
+            return _repo.GetAllInventory();
+        }
+        public OrderModel AddOrder(OrderModel order)
+        {
+            CurrentCustomer.currentOrder.customerID = CurrentCustomer.currentcustomer.customerID;
+            CurrentCustomer.currentOrder.storeID = CurrentCustomer.currentstore.storeID;
+
+            int c = new int();
+            decimal total = new decimal();
+            foreach(var item in CurrentCustomer.currentcart)
+            {
+                total = total + item.ItemPrice*CurrentCustomer.currentcartquantity[c];
+                
+                int currentquantity = new int();
+                List<InventoryModel> ListOfInventory = GetAllInventory();
+                foreach(var inven in ListOfInventory)
+                {
+                    if (inven.itemID == item.ItemID && inven.storeID == CurrentCustomer.currentstore.storeID)
+                    {
+                        currentquantity = inven.quantity;
+                    }
+                }
+
+                CurrentCustomer.currentinventory.itemID = item.ItemID;
+                CurrentCustomer.currentinventory.storeID = CurrentCustomer.currentstore.storeID;
+                CurrentCustomer.SetInventoryQuantity(currentquantity-CurrentCustomer.currentcartquantity[c]);
+                _repo.UpdateInventory(CurrentCustomer.currentinventory);
+
+                c=c+1;
+            }
+            CurrentCustomer.currentOrder.TotalPrice = total;
+
+            //CurrentCustomer.currentcart.Clear();
+            //CurrentCustomer.currentcartquantity.Clear();
+
+
+            return _repo.AddOrder(order);
+        }
+
+        public void AddOrderItem()
+        {
+            List<OrderModel> listOfOrder = _repo.GetAllOrder();
+            int c = new int();
+            foreach(var item in CurrentCustomer.currentcart)
+            {
+                OrderItemModel OI = new OrderItemModel();
+                OI.itemID = item.ItemID;
+                OI.orderID = listOfOrder.Last().orderID;
+                OI.quantity = CurrentCustomer.currentcartquantity[c];
+                _repo.AddOrderItem(OI);
+                c = c + 1;
+            }
+
+            CurrentCustomer.currentcart.Clear();
+            CurrentCustomer.currentcartquantity.Clear();
+        }
+
+        public InventoryModel UpdateInventory(InventoryModel p_inventory)
+        {
+            return _repo.UpdateInventory(p_inventory);
+        }
     }
+
+
+
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
 
     public class ProjectBLitem : IProjectBLitem
     {

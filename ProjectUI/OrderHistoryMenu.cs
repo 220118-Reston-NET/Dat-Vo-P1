@@ -15,11 +15,11 @@ namespace ProjectUI
             Console.WriteLine("[0] Go Back");
             Console.WriteLine("[1] View Details");
             Console.WriteLine("=========Order History=========");
-            Console.WriteLine("Order ID|| Customer         ||Store Location            || Price");
+            Console.WriteLine("Order ID|| Customer         ||Store Location            || Price  || Date");
             List<OrderModel> ListOfOrder = _projectBL.GetAllOrder();
             foreach(var o in ListOfOrder)
             {
-                Console.WriteLine(o.orderID+"          "+Data.ManageSpaceName(_projectBL.GetCustomer(o.customerID).name) +"    "+ Data.ManageSpaceName(_projectBL.GetStore(o.storeID).Name) +"             $"+ o.TotalPrice);
+                Console.WriteLine(o.orderID+"          "+Data.ManageSpaceName(_projectBL.GetCustomer(o.customerID).name) +"    "+ Data.ManageSpaceName(_projectBL.GetStore(o.storeID).Name) +"             $"+ o.TotalPrice + "     " + o.datetimeoforder.ToString("MM/dd/yy"));
             }
 
             Console.WriteLine("========End Of History ========");

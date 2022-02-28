@@ -6,13 +6,14 @@ namespace ProjectUI
         public void Display()
         {
             Console.WriteLine("==========Main Menu==========");
-            Console.WriteLine("[0] Exit Main Menu");
+            Console.WriteLine("[0] Logout");
+            //Console.WriteLine("[0] Exit Main Menu");
             Console.WriteLine("[1] Employee List");
             Console.WriteLine("[2] Item List"); 
             Console.WriteLine("[3] StoreFront List"); 
             Console.WriteLine("[4] Inventory Management");
             Console.WriteLine("[5] Order History");
-            Console.WriteLine("[6] Customer Interface");
+            //Console.WriteLine("[6] Customer Interface");
             Console.WriteLine("======End of Main Menu=======");
 
         }
@@ -23,8 +24,8 @@ namespace ProjectUI
             {
                 case "0":
                     Console.Clear();
-                    Console.WriteLine("GOOD BYE!");
-                    return "Exit";
+                    Console.WriteLine("Logging out");
+                    return "LogInMenu";
                 case "1":
                     Console.Clear();
                     return "Employee List";
@@ -40,9 +41,9 @@ namespace ProjectUI
                 case "5":
                     Console.Clear();
                     return "Order History";
-                case "6":
-                    Console.Clear();
-                    return "Customer View";
+                // case "6":
+                //     Console.Clear();
+                //     return "Customer View";
                 default:
                     Console.WriteLine("Invalid Input");
                     Console.WriteLine("Press Enter to continue");
