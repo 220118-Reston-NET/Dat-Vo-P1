@@ -65,7 +65,7 @@ jobs:
       run: dotnet restore
       
     - name: Test
-      run: dotnet test --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+      run: dotnet test ./Project0Test --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
     
     - name: Build and analyze
       env:
