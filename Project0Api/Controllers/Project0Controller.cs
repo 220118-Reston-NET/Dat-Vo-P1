@@ -33,6 +33,21 @@ namespace Project0Api.Controllers
         //     return new string[] { "value1", "value2" };
         // }
 
+
+        [HttpGet("GetAllEmployee")]
+        public IActionResult GetAllEmployee()
+        {
+            try
+            {
+
+                return Ok(_projectBL.GetAllEmployee());
+            }
+            catch (System.Exception e)
+            {
+                return Conflict(e.Message);
+            }
+        }
+        
         // GET: api/Project0/5
         [HttpGet("GetCustomerByName/{CustomerName}")]
         public IActionResult GetCustomer(string CustomerName)
