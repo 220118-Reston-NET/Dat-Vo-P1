@@ -11,6 +11,7 @@ namespace ProjectDL
         EmployeeModel RemoveEmployee(EmployeeModel Employee);
 
         EmployeeModel GetEmployeeByID(int employeeID);
+        //List<EmployeeModel> SearchEmployee(string p_name);
 
         //Item methods
 

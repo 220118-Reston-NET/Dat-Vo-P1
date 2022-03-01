@@ -69,5 +69,73 @@ namespace Project0test
             Assert.Equal(testEmployee.email,E1.email);
         }
 
+        [Fact]
+        public void RemoveEmployeeTest()
+        {
+
+            string testname = "Tim";
+            string testemail = "Tim@email.com";
+
+            EmployeeModel testEmployee = new EmployeeModel()
+            {
+                name = testname,
+                email = testemail,
+                number = "1234567890",
+            };
+
+            List<EmployeeModel> expectedListOfEmployee = new List<EmployeeModel>();
+
+            Mock<IRepository> mockRepo = new Mock<IRepository>();
+
+            mockRepo.Setup(repo => repo.AddEmployee(testEmployee)).Returns(testEmployee);            
+            mockRepo.Setup(repo => repo.GetAllEmployee()).Returns(expectedListOfEmployee);
+
+            IProjectBL projectBL = new ProjectBLc(mockRepo.Object);
+
+            EmployeeModel E1 = projectBL.AddEmployee(testEmployee);
+            projectBL.RemoveEmployee(testEmployee);
+
+
+            bool result = (expectedListOfEmployee.Count == 1);
+            Assert.False(result);
+        }
+
     }
+
+    public class CustomerFunctionTest
+    {
+        [Fact]
+        public void AddCustomerTest()
+        {
+
+            string testname = "Tim";
+            string testemail = "Tim@email.com";
+
+            CustomerModel testCustomer = new CustomerModel()
+            {
+                name = testname,
+                email = testemail,
+                phonenumber = "1234567890",
+            };
+
+            List<CustomerModel> expectedListOfCustomer= new List<CustomerModel>();
+
+            Mock<IRepository> mockRepo = new Mock<IRepository>();
+
+            mockRepo.Setup(repo => repo.AddCustomer(testCustomer)).Returns(testCustomer);            
+            mockRepo.Setup(repo => repo.GetAllCustomer()).Returns(expectedListOfCustomer);
+
+            IProjectBL projectBL = new ProjectBLc(mockRepo.Object);
+
+            CustomerModel E1 = projectBL.AddCustomer(testCustomer);
+
+            Assert.Same(testCustomer, E1);
+            Assert.Equal(testCustomer.name, E1.name);
+            Assert.Equal(testCustomer.email,E1.email);
+        } 
+    }
+
+
+
+
 }
