@@ -113,7 +113,7 @@ namespace Project0test
     public class EmployeeTest
     {
         [Fact]
-        public void CustomerName()
+        public void Name()
         {
             //Arrange 
             EmployeeModel s = new EmployeeModel();
@@ -125,6 +125,35 @@ namespace Project0test
             //Assert
             Assert.Equal(validName, s.name);
         }
+
+        [Fact]
+        public void number()
+        {
+            //Arrange 
+            EmployeeModel s = new EmployeeModel();
+            string valid = "1234567890";
+
+            //Act
+            s.number = valid;
+
+            //Assert
+            Assert.Equal(valid, s.number);
+        }
+
+        [Fact]
+        public void email()
+        {
+            //Arrange 
+            EmployeeModel s = new EmployeeModel();
+            string valid = "something@email.com";
+
+            //Act
+            s.email = valid;
+
+            //Assert
+            Assert.Equal(valid, s.email);
+        }
+
     }
     public class EmployeeTest2
     {
@@ -143,7 +172,7 @@ namespace Project0test
         }
     }
 
-    public class StoreLocation
+    public class StoreModel
     {
         [Fact]
         public void StoreFrontCheck()
@@ -159,15 +188,13 @@ namespace Project0test
             Assert.NotNull(s.Location);
             
         }
-    }
-    public class StoreLocation2
-    {
+
         [Fact]
-        public void StoreFrontCheck()
+        public void StoreFrontCheck2()
         {
             //Arrange 
             StoreFrontModel s = new StoreFrontModel();
-            string validLocation = "Texas Chain";
+            string validLocation = "Texas";
 
             //Act
             s.Location = validLocation;
@@ -176,9 +203,22 @@ namespace Project0test
             Assert.Equal(validLocation, s.Location);
             
         }
+        [Fact]
+        public void StoreFrontCheck3()
+        {
+            //Arrange 
+            StoreFrontModel s = new StoreFrontModel();
+            int valid = 1;
+
+            //Act
+            s.storeID = valid;
+
+            //Assert
+            Assert.NotNull(s.storeID);
+        }
     }
 
-    public class ModelTest
+    public class InventoryModelTest
     {   [Fact]
         public void Inventory()
         {
@@ -208,6 +248,23 @@ namespace Project0test
             Assert.Equal(valid, s.storeID);
             
         }
+
+        [Fact]
+        public void Inventory3()
+        {
+            //Arrange 
+            InventoryModel s = new InventoryModel();
+            int valid = 3;
+
+            //Act
+            s.quantity = valid;
+
+            //Assert
+            Assert.Equal(valid, s.quantity);
+            
+        }
     }
+
+
     
 }
