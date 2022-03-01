@@ -6,7 +6,7 @@ namespace Project0test
     public class CustomerTest
     {
         [Fact]
-        public void CustomerNameIsValid()
+        public void CustomerName()
         {
             //Arrange
             CustomerModel cus = new CustomerModel();
@@ -18,26 +18,52 @@ namespace Project0test
             //Assert
             Assert.Equal(validName, cus.name);
         }
-    }
 
-    public class CustomerTest2
-    {
         [Fact]
-        public void CustomerNameIsValid()
+        public void CustomerNumber()
         {
             //Arrange
             CustomerModel cus = new CustomerModel();
-            string validName = "John";
+            string valid = "1234567890";
 
             //Act
-            cus.name = validName;
+            cus.phonenumber = valid;
 
             //Assert
-            Assert.NotNull(cus.name);
+            Assert.Equal(valid, cus.phonenumber);
         }
+
+        [Fact]
+        public void CustomerEmail()
+        {
+            //Arrange
+            CustomerModel cus = new CustomerModel();
+            string valid = "1234567890@email.com";
+
+            //Act
+            cus.email = valid;
+
+            //Assert
+            Assert.Equal(valid, cus.email);
+        }
+        [Fact]
+        public void CustomerID()
+        {
+            //Arrange
+            CustomerModel cus = new CustomerModel();
+            int valid = 0;
+
+            //Act
+            cus.customerID = valid;
+
+            //Assert
+            Assert.Equal(valid, cus.customerID);
+        }
+
     }
 
-    public class ItemTest
+
+    public class ItemModelTest
     {
         [Fact]
         public void ItemNameCheck()
@@ -105,61 +131,8 @@ namespace Project0test
         
     }
 
-    public class ItemTest2
-    {
-        [Fact]
-        public void ItemPriceCheck()
-        {
-        
-            //Arrange
-            ItemModel i = new ItemModel();
-            string validName = "sprite";
 
-            //Act
-            i.ItemName = validName;
-
-            //Assert
-            Assert.NotNull(i.ItemName);
-
-        }
-    }
-
-    public class SFcheck
-    {
-        [Fact]
-        public void StoreFrontCheck()
-        {
-            //Arrange 
-            StoreFrontModel s = new StoreFrontModel();
-            string validName = "Texas Chain";
-
-            //Act
-            s.Name = validName;
-
-            //Assert
-            Assert.Equal(validName, s.Name);
-        }
-    }
-
-    public class SFcheck2
-    {
-        [Fact]
-        public void StoreFrontCheck()
-        {
-            //Arrange 
-            StoreFrontModel s = new StoreFrontModel();
-            string validName = "Texas Chain";
-
-            //Act
-            s.Name = validName;
-
-            //Assert
-            Assert.NotNull(s.Name);
-        }
-    }
-
-
-    public class EmployeeTest
+    public class EmployeeModelTest
     {
         [Fact]
         public void Name()
@@ -204,22 +177,7 @@ namespace Project0test
         }
 
     }
-    public class EmployeeTest2
-    {
-        [Fact]
-        public void CustomerName()
-        {
-            //Arrange 
-            EmployeeModel s = new EmployeeModel();
-            string validName = "Texas Chain";
 
-            //Act
-            s.name = validName;
-
-            //Assert
-            Assert.NotNull(s.name);
-        }
-    }
 
     public class StoreModel
     {
@@ -268,7 +226,8 @@ namespace Project0test
     }
 
     public class InventoryModelTest
-    {   [Fact]
+    {   
+        [Fact]
         public void Inventory()
         {
             //Arrange 
@@ -314,6 +273,37 @@ namespace Project0test
         }
     }
 
+    public class OrderItemModelTest
+    {
+        [Fact]
+        public void OrderID()
+        {
+            //Arrange 
+            OrderItemModel s = new OrderItemModel();
+            int valid = 2;
+
+            //Act
+            s.orderID = valid;
+
+            //Assert
+            Assert.Equal(valid, s.orderID);
+            
+        }
+        [Fact]
+        public void ItemID()
+        {
+            //Arrange 
+            OrderItemModel s = new OrderItemModel();
+            int valid = 2;
+
+            //Act
+            s.itemID = valid;
+
+            //Assert
+            Assert.Equal(valid, s.itemID);
+            
+        }
+    }
 
     
 }
