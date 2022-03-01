@@ -1,6 +1,12 @@
+global using Serilog;
 using ProjectBL;
 using ProjectDL;
 using ProjectModel;
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.File("./logs/user.txt")    // logger save to this file path
+    .CreateLogger();
+// using Newtonsoft.Json.Converters;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

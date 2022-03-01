@@ -42,8 +42,10 @@ namespace Project0Api.Controllers
                 List<CustomerModel> Result = _projectBL.SearchCustomer(CustomerName);
                 if(Result.Count() == 0)
                 {
+                    Log.Information("Fail to find Customer");
                     throw new Exception("Customer Not Found");
                 }
+                Log.Information("Customer(s) found");
                 return Ok(Result);
             }
             catch (System.Exception e)
@@ -60,6 +62,7 @@ namespace Project0Api.Controllers
                 List<InventoryDetailsForAPIModel> Result = new List<InventoryDetailsForAPIModel>();
                 InventoryDetailsForAPIModel IDFAPI = new InventoryDetailsForAPIModel();
                 List<InventoryModel> listOfInventory = _projectBL.SearchInventoryByStoreID(CurrentCustomer.currentstore.storeID);
+                Log.Information("Displaying Inventory");
                 foreach(var inven in listOfInventory)
                 {
                     IDFAPI = new InventoryDetailsForAPIModel();
@@ -72,13 +75,14 @@ namespace Project0Api.Controllers
             }
             else
             {
+                Log.Information("Request to display inventory failed");
                 return Conflict("Select a store first");
             }
         }
 
        
         [HttpGet("GetOrders")]
-        public IActionResult GetOrders(string? sortby, OrderSort type)
+        public IActionResult GetOrders(string? sortby)
         {
 
             List<OrderDetailsForAPIModel> Result = new List<OrderDetailsForAPIModel>();
@@ -88,15 +92,17 @@ namespace Project0Api.Controllers
             {
                 if (CurrentCustomer.currentcustomer.name != "")
                 {
-                    
+                    Log.Information("Displaying Customer's order(s)");
                     List<OrderModel> listOfOrders = _projectBL.GetAllOrder(CurrentCustomer.currentcustomer.customerID);
                     List<OrderItemModel> listOfOrderItems = new List<OrderItemModel>();
                     if (sortby == "DateTime")
                     {
+                        Log.Information("sorting order by DateTime");
                         listOfOrders = listOfOrders.OrderBy(o=>o.datetimeoforder).ToList();
                     }
                     else if (sortby == "Cost")
                     {
+                        Log.Information("sorting order by Cost");
                         listOfOrders = listOfOrders.OrderBy(o=>o.TotalPrice).ToList();
                     }
 
@@ -121,14 +127,17 @@ namespace Project0Api.Controllers
                 }
                 else if(CurrentCustomer.currentemployee.name != "")
                 {
+                    Log.Information("Displaying all order(s)");
                     List<OrderModel> listOfOrders = _projectBL.GetAllOrder();
                     List<OrderItemModel> listOfOrderItems = new List<OrderItemModel>();
                     if (sortby == "DateTime")
                     {
+                        Log.Information("Sorting Orders by DateTime");
                         listOfOrders = listOfOrders.OrderBy(o=>o.datetimeoforder).ToList();
                     }
                     else if (sortby == "Cost")
                     {
+                        Log.Information("Sorting Orders by Cost");
                         listOfOrders = listOfOrders.OrderBy(o=>o.TotalPrice).ToList();
 
                     }
@@ -152,10 +161,12 @@ namespace Project0Api.Controllers
                 }
                 else if(CurrentCustomer.currentemployee.name == "" && CurrentCustomer.currentcustomer.name == "")
                 {
+                    Log.Information("Request to display orders failed (user is not logged in)");
                     return Conflict();
                 }
                 else 
                 {
+                    Log.Information("Request to display orders failed");
                     return Conflict();
                 }
                 
@@ -170,18 +181,21 @@ namespace Project0Api.Controllers
         public IActionResult GetOrderOfStore(string? sortby)
         {
             try
-                { List<OrderDetailsForAPIModel> Result = new List<OrderDetailsForAPIModel>();
+            { 
+                Log.Information("Displaying order(s) of current store");
+                List<OrderDetailsForAPIModel> Result = new List<OrderDetailsForAPIModel>();
                 OrderDetailsForAPIModel OrderDetails = new OrderDetailsForAPIModel();
                 List<OrderModel> listOfOrders = _projectBL.GetAllOrder();
                 List<OrderItemModel> listOfOrderItems = new List<OrderItemModel>();
                 if (sortby == "DateTime")
                 {
+                    Log.Information("Sorting orders by DateTime");
                     listOfOrders = listOfOrders.Where(order => order.storeID == CurrentCustomer.currentstore.storeID).ToList();
                     listOfOrders = listOfOrders.OrderBy(o=>o.datetimeoforder).ToList();
                 }
                 else if (sortby == "Cost")
                 {
-                    //from x in Items.ToList() where(x.Code.ToLower().Contains("a")) select x
+                    Log.Information("Sorting orders by Cost");
                     listOfOrders = listOfOrders.Where(order => order.storeID == CurrentCustomer.currentstore.storeID).ToList();
                     listOfOrders = listOfOrders.OrderBy(o=>o.TotalPrice).ToList();
 
@@ -204,6 +218,7 @@ namespace Project0Api.Controllers
                 return Ok(Result);}
             catch
             {
+                Log.Information("Request to display orders of current store failed");
                 return Conflict();
             }
 
@@ -217,11 +232,13 @@ namespace Project0Api.Controllers
             try
             {
                 //_projectBL.AddCustomer
+                Log.Information("Adding new customer");
                 return Ok(_projectBL.AddCustomer(new_customer));
             }
             catch (System.Exception)
             {
-                return NotFound();
+                Log.Information("Failed to add new customer");
+                return Conflict();
             }
         }
 
@@ -234,10 +251,12 @@ namespace Project0Api.Controllers
                 CustomerModel customer = _projectBL.GetCustomer(UserID);
                 if (Password == customer.password)
                 {
+                    Log.Information("Successfully log in as customer");
                     CurrentCustomer.SetCustomer(customer);
                 }
                 else
                 {
+                    Log.Information("Failed to log in");
                     return Conflict();
                 }
                 return Ok(customer);
@@ -247,15 +266,18 @@ namespace Project0Api.Controllers
                 EmployeeModel employee = _projectBL.GetEmployeeByID(UserID);
                 if (Password == employee.password)
                 {
+                    Log.Information("Successfully log in as employee");
                     CurrentCustomer.SetEmployee(employee);
                 }
                 else
                 {
+                    Log.Information("Failed to log in");
                     return Conflict();
                 }
                 return Ok(employee);
             }
             else
+                Log.Information("Failed to log in");
                 return Conflict();
             
         }
@@ -269,13 +291,14 @@ namespace Project0Api.Controllers
                 {
                     return Conflict("No store Selected");
                 }
+                Log.Information("Returning Current Store");
                 return Ok(CurrentCustomer.currentstore);
             }
             else 
             {
                 CurrentCustomer.SetStoreFront(_projectBL.SearchStoreFront(storeID));
                 CurrentCustomer.clearcart();
-
+                Log.Information("Store Selected");
                 return Ok(CurrentCustomer.currentstore);
             }
         }
@@ -285,10 +308,12 @@ namespace Project0Api.Controllers
         {
             if(CurrentCustomer.currentcustomer.name == "")
             {
+                Log.Information("Failed to add item to cart (user not logged in)");
                 return Conflict("Not Logged In");
             }
             if(CurrentCustomer.currentstore.Name is null)
             {
+                Log.Information("Failed to add item to cart (store not selected)");
                 return Conflict("Store Not Selected");
             }
             else 
@@ -298,6 +323,7 @@ namespace Project0Api.Controllers
                 CurrentCustomer.currentcartquantity.Add(quantity);
                 Cart.Add(CurrentCustomer.currentcart);
                 Cart.Add(CurrentCustomer.currentcartquantity);
+                Log.Information("Successfully added item to cart: x" +quantity + " of "+ _projectBL.GetItem(itemID).ItemName);
                 return Ok(Cart);
             }
         }
@@ -312,10 +338,12 @@ namespace Project0Api.Controllers
                 inven.itemID = itemID;
                 inven.quantity = amount;
                 _projectBL.UpdateInventory(inven);
+                Log.Information("Inventory Updated: (" + _projectBL.SearchStoreFront(inven.storeID).Name +", "+_projectBL.GetItem(inven.itemID).ItemName +", "+ inven.quantity);
                 return Ok();
             }
             else
             {
+                Log.Information("Failed to update inventory (user not logged in)");
                 return Conflict("Not Logged in");
             }
         }
@@ -346,12 +374,16 @@ namespace Project0Api.Controllers
         {
             try
             {
+
                 CurrentCustomer.LogOut();
                 CurrentCustomer.clearcart();
+                Log.Information("Logged out");
+
                 return Ok();
             }
             catch(System.Exception)
             {
+                Log.Information("Error occured while logging out");
                 return Conflict();
             }
         }

@@ -1035,11 +1035,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectUI\\ProjectUI.csproj",
+      "projectUniqueName": "c:\\Users\\Dat Vo\\Documents\\Project0\\ProjectUI\\ProjectUI.csproj",
       "projectName": "ProjectUI",
-      "projectPath": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectUI\\ProjectUI.csproj",
+      "projectPath": "c:\\Users\\Dat Vo\\Documents\\Project0\\ProjectUI\\ProjectUI.csproj",
       "packagesPath": "C:\\Users\\Dat Vo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectUI\\obj\\",
+      "outputPath": "c:\\Users\\Dat Vo\\Documents\\Project0\\ProjectUI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -1059,14 +1059,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectBL\\ProjectBL.csproj": {
-              "projectPath": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectBL\\ProjectBL.csproj"
+            "c:\\Users\\Dat Vo\\Documents\\Project0\\ProjectBL\\ProjectBL.csproj": {
+              "projectPath": "c:\\Users\\Dat Vo\\Documents\\Project0\\ProjectBL\\ProjectBL.csproj"
             },
-            "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectDL\\ProjectDL.csproj": {
-              "projectPath": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectDL\\ProjectDL.csproj"
+            "c:\\Users\\Dat Vo\\Documents\\Project0\\ProjectDL\\ProjectDL.csproj": {
+              "projectPath": "c:\\Users\\Dat Vo\\Documents\\Project0\\ProjectDL\\ProjectDL.csproj"
             },
-            "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectModel\\ProjectModel.csproj": {
-              "projectPath": "C:\\Users\\Dat Vo\\Documents\\Project0\\ProjectModel\\ProjectModel.csproj"
+            "c:\\Users\\Dat Vo\\Documents\\Project0\\ProjectModel\\ProjectModel.csproj": {
+              "projectPath": "c:\\Users\\Dat Vo\\Documents\\Project0\\ProjectModel\\ProjectModel.csproj"
             }
           }
         }

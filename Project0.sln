@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.28307.1758
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectModel", "ProjectModel\ProjectModel.csproj", "{6D98003C-F4A9-4EE5-98FF-EC3FEF4FCC74}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectUI", "ProjectUI\ProjectUI.csproj", "{C5CDD38C-7EF2-4FD8-8388-A67117B0C2A1}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDL", "ProjectDL\ProjectDL.csproj", "{C5CDD38C-7EF2-4FD8-8388-A67117B0C2A2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectBL", "ProjectBL\ProjectBL.csproj", "{C5CDD38C-7EF2-4FD8-8388-A67117B0C2A3}"
