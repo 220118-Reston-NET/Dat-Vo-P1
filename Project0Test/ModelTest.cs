@@ -16,6 +16,7 @@ namespace Project0test
             cus.name = validName;
 
             //Assert
+            Assert.NotNull(cus.name);
             Assert.Equal(validName, cus.name);
         }
 
@@ -30,6 +31,7 @@ namespace Project0test
             cus.phonenumber = valid;
 
             //Assert
+            Assert.NotNull(cus.phonenumber);
             Assert.Equal(valid, cus.phonenumber);
         }
 
@@ -44,6 +46,7 @@ namespace Project0test
             cus.email = valid;
 
             //Assert
+            Assert.NotNull(cus.email);
             Assert.Equal(valid, cus.email);
         }
         [Fact]
@@ -57,6 +60,7 @@ namespace Project0test
             cus.customerID = valid;
 
             //Assert
+            Assert.NotNull(cus.customerID);
             Assert.Equal(valid, cus.customerID);
         }
 
@@ -77,6 +81,7 @@ namespace Project0test
             i.ItemName = validName;
 
             //Assert
+            Assert.NotNull(i.ItemName);
             Assert.Equal(validName, i.ItemName);
 
         }
@@ -93,6 +98,7 @@ namespace Project0test
             i.ItemPrice  = valid;
 
             //Assert
+            Assert.NotNull(i.ItemPrice);
             Assert.Equal(valid, i.ItemPrice);
 
         }
@@ -109,6 +115,7 @@ namespace Project0test
             i.ItemCategory = valid;
 
             //Assert
+            Assert.NotNull(i.ItemCategory);
             Assert.Equal(valid, i.ItemCategory);
 
         }
@@ -125,6 +132,7 @@ namespace Project0test
             i.ItemDescription = valid;
 
             //Assert
+            Assert.NotNull(i.ItemDescription);
             Assert.Equal(valid, i.ItemDescription);
 
         }
@@ -145,6 +153,7 @@ namespace Project0test
             s.name = validName;
 
             //Assert
+            Assert.NotNull(s.name);
             Assert.Equal(validName, s.name);
         }
 
@@ -159,6 +168,7 @@ namespace Project0test
             s.number = valid;
 
             //Assert
+            Assert.NotNull(s.number);
             Assert.Equal(valid, s.number);
         }
 
@@ -173,6 +183,7 @@ namespace Project0test
             s.email = valid;
 
             //Assert
+            Assert.NotNull(s.email);
             Assert.Equal(valid, s.email);
         }
 
@@ -222,6 +233,7 @@ namespace Project0test
 
             //Assert
             Assert.NotNull(s.storeID);
+            Assert.Equal(valid, s.storeID);
         }
     }
 
@@ -238,6 +250,7 @@ namespace Project0test
             s.itemID = valid;
 
             //Assert
+            Assert.NotNull(s.itemID);
             Assert.Equal(valid, s.itemID);
             
         }
@@ -253,6 +266,7 @@ namespace Project0test
             s.storeID = valid;
 
             //Assert
+            Assert.NotNull(s.storeID);
             Assert.Equal(valid, s.storeID);
             
         }
@@ -268,6 +282,7 @@ namespace Project0test
             s.quantity = valid;
 
             //Assert
+            Assert.NotNull(s.quantity);
             Assert.Equal(valid, s.quantity);
             
         }
@@ -286,6 +301,7 @@ namespace Project0test
             s.orderID = valid;
 
             //Assert
+            Assert.NotNull(s.orderID);
             Assert.Equal(valid, s.orderID);
             
         }
@@ -300,10 +316,88 @@ namespace Project0test
             s.itemID = valid;
 
             //Assert
+            Assert.NotNull(s.itemID );
             Assert.Equal(valid, s.itemID);
+            
+        }
+        [Fact]
+        public void Quantity()
+        {
+            //Arrange 
+            OrderItemModel s = new OrderItemModel();
+            int valid = 2;
+
+            //Act
+            s.quantity= valid;
+
+            //Assert
+            Assert.NotNull(s.quantity);
+            Assert.Equal(valid, s.quantity);
             
         }
     }
 
-    
+    public class OrderModelTest
+    {
+        [Fact]
+        public void OrderID()
+        {
+            //Arrange 
+            OrderModel s = new OrderModel();
+            int valid = 2;
+
+            //Act
+            s.orderID = valid;
+
+            //Assert
+            Assert.NotNull(s.orderID);
+            Assert.Equal(valid, s.orderID);
+            
+        }
+        [Fact]
+        public void Price()
+        {
+            //Arrange 
+            OrderModel s = new OrderModel();
+            decimal valid = 2.0m;
+
+            //Act
+            s.TotalPrice = valid;
+
+            //Assert
+            Assert.NotNull(s.TotalPrice);
+            Assert.Equal(valid, s.TotalPrice);
+            
+        }
+        [Fact]
+        public void CustomerID()
+        {
+            //Arrange 
+            OrderModel s = new OrderModel();
+            int valid = 2;
+
+            //Act
+            s.customerID = valid;
+
+            //Assert
+            Assert.NotNull(s.customerID );
+            Assert.Equal(valid, s.customerID );
+            
+        }
+        [Fact]
+        public void StoreID()
+        {
+            //Arrange 
+            OrderModel s = new OrderModel();
+            int valid = 2;
+
+            //Act
+            s.storeID = valid;
+
+            //Assert
+            Assert.NotNull(s.storeID);
+            Assert.Equal(valid, s.storeID);
+            
+        }
+    }
 }
