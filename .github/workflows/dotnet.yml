@@ -1,6 +1,6 @@
 name: Build, Test, and Deploy API
 
-# We specify when should this action should execute depending on what is happening on your remote repository
+
 on:
   # This is stating it will trigger if a push happens on main
   push:
