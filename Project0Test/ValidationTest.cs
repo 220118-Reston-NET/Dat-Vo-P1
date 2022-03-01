@@ -40,7 +40,7 @@ namespace Project0test
     public class ItemTest
     {
         [Fact]
-        public void ItemPriceCheck()
+        public void ItemNameCheck()
         {
         
             //Arrange
@@ -54,6 +54,55 @@ namespace Project0test
             Assert.Equal(validName, i.ItemName);
 
         }
+
+        [Fact]
+        public void ItemPriceCheck()
+        {
+        
+            //Arrange
+            ItemModel i = new ItemModel();
+            decimal valid = 1.5m;
+
+            //Act
+            i.ItemPrice  = valid;
+
+            //Assert
+            Assert.Equal(valid, i.ItemPrice);
+
+        }
+
+        [Fact]
+        public void ItemCatCheck()
+        {
+        
+            //Arrange
+            ItemModel i = new ItemModel();
+            string valid = "Category";
+
+            //Act
+            i.ItemCategory = valid;
+
+            //Assert
+            Assert.Equal(valid, i.ItemCategory);
+
+        }
+
+        [Fact]
+        public void ItemDescCheck()
+        {
+        
+            //Arrange
+            ItemModel i = new ItemModel();
+            string valid = "Description";
+
+            //Act
+            i.ItemDescription = valid;
+
+            //Assert
+            Assert.Equal(valid, i.ItemDescription);
+
+        }
+        
     }
 
     public class ItemTest2
