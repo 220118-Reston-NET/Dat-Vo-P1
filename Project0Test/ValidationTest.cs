@@ -3,7 +3,7 @@ using ProjectModel;
 
 namespace Project0test
 {
-    public class AddCustomerTest
+    public class CustomerTest
     {
         [Fact]
         public void CustomerNameIsValid()
@@ -20,7 +20,7 @@ namespace Project0test
         }
     }
 
-    public class AddCustomerTest2
+    public class CustomerTest2
     {
         [Fact]
         public void CustomerNameIsValid()
@@ -37,7 +37,7 @@ namespace Project0test
         }
     }
 
-    public class AddItemTest
+    public class ItemTest
     {
         [Fact]
         public void ItemPriceCheck()
@@ -56,7 +56,7 @@ namespace Project0test
         }
     }
 
-    public class AddItemTest2
+    public class ItemTest2
     {
         [Fact]
         public void ItemPriceCheck()
@@ -110,7 +110,7 @@ namespace Project0test
     }
 
 
-    public class AddEmployeeTest
+    public class EmployeeTest
     {
         [Fact]
         public void CustomerName()
@@ -126,7 +126,7 @@ namespace Project0test
             Assert.Equal(validName, s.name);
         }
     }
-    public class AddEmployeeTest2
+    public class EmployeeTest2
     {
         [Fact]
         public void CustomerName()
@@ -177,4 +177,37 @@ namespace Project0test
             
         }
     }
+
+    public class ModelTest
+    {   [Fact]
+        public void Inventory()
+        {
+            //Arrange 
+            InventoryModel s = new InventoryModel();
+            int valid = 2;
+
+            //Act
+            s.itemID = valid;
+
+            //Assert
+            Assert.Equal(valid, s.itemID);
+            
+        }
+
+        [Fact]
+        public void Inventory2()
+        {
+            //Arrange 
+            InventoryModel s = new InventoryModel();
+            int valid = 2;
+
+            //Act
+            s.storeID = valid;
+
+            //Assert
+            Assert.Equal(valid, s.storeID);
+            
+        }
+    }
+    
 }
