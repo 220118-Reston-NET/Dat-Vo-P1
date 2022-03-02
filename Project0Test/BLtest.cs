@@ -175,6 +175,7 @@ namespace Project0test
 
             //CustomerModel E1 = projectBL.AddCustomer(testCustomer);
 
+            
             Assert.Throws<System.Exception>( () => projectBL.AddCustomer(testCustomer));
         } 
 
@@ -293,6 +294,9 @@ namespace Project0test
 
             //Assert
             Assert.Same(expectedOrderList, actualListOfOrder); 
+            Assert.NotNull(actualListOfOrder[0].TotalPrice);
+            Assert.NotNull(actualListOfOrder[0].customerID);
+            Assert.NotNull(actualListOfOrder[0].storeID);
             Assert.Equal(a, actualListOfOrder[0].TotalPrice); 
             Assert.Equal(b, actualListOfOrder[0].customerID); 
             Assert.Equal(c, actualListOfOrder[0].storeID); 
@@ -356,6 +360,11 @@ namespace Project0test
             ItemModel Imodel = projectBL.GetItem(0);
 
             Assert.Same(testItem, Imodel); 
+            Assert.NotNull(Imodel.ItemID); 
+            Assert.NotNull(Imodel.ItemName); 
+            Assert.NotNull(Imodel.ItemPrice); 
+            Assert.NotNull(Imodel.ItemCategory); 
+            Assert.NotNull(Imodel.ItemDescription); 
             
         } 
 
@@ -385,6 +394,9 @@ namespace Project0test
             StoreFrontModel Smodel = projectBL.SearchStoreFront(0);
 
             Assert.Same(TestStore, Smodel); 
+            Assert.NotNull(Smodel.storeID); 
+            Assert.NotNull(Smodel.Name); 
+            Assert.NotNull(Smodel.Location); 
 
 
         }
@@ -416,6 +428,9 @@ namespace Project0test
             List<InventoryModel> actualListOfInventory = projectBL.GetAllInventory();
 
             Assert.Same(expectedListOfInventory,actualListOfInventory);
+            Assert.NotNull(actualListOfInventory[0].storeID); 
+            Assert.NotNull(actualListOfInventory[0].itemID); 
+            Assert.NotNull(actualListOfInventory[0].quantity); 
         }
         
 
