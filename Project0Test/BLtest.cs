@@ -260,6 +260,36 @@ namespace Project0test
             Assert.Same(testItem, Imodel); 
             
         } 
+
+
+    }
+
+    public class StoreFrontTest
+    {
+        [Fact]
+        public void SearchStoreFrontTest()
+        {
+            int ID = 0;
+            string Tname = "name";
+            string location = "location";
+
+            StoreFrontModel TestStore = new StoreFrontModel()
+            {
+                storeID = ID,
+                Name = Tname,
+                Location = location
+            };
+
+            Mock<IRepository> mockRepo = new Mock<IRepository>();
+            mockRepo.Setup(repo => repo.SearchStoreByID(TestStore.storeID)).Returns(TestStore);
+
+            IProjectBL projectBL = new ProjectBLc(mockRepo.Object);
+            StoreFrontModel Smodel = projectBL.SearchStoreFront(0);
+
+            Assert.Same(TestStore, Smodel); 
+
+
+        }
     }
 
 
