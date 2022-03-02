@@ -4,6 +4,7 @@ using Moq;
 using ProjectDL;
 using ProjectModel;
 using System.Collections.Generic;
+using System;
 
 
 namespace Project0test
@@ -255,35 +256,34 @@ namespace Project0test
             Assert.Equal(c, actualListOfOrder[0].storeID); 
         }
 
-        // [Fact]
-        // public void AddOrderTest()
-        // {
-        //     //Arrange
-        //     Mock<IRepository> mockRepo = new Mock<IRepository>();
-        //     decimal a = 1.5m;
-        //     int b = 1;
-        //     int c = 1;
+        [Fact]
+        public void AddOrderTest()
+        {
+            //Arrange
+            Mock<IRepository> mockRepo = new Mock<IRepository>();
+            OrderModel Omodel = new OrderModel();
+            decimal a = 1.5m;
+            int b = 1;
+            int c = 1;
+            DateTime today = DateTime.Now;
 
-        //     OrderModel TestOrder = new OrderModel()
-        //     {
-        //         TotalPrice = a,
-        //         customerID = b,      
-        //         storeID = c
-        //     };
+            OrderModel TestOrder = new OrderModel()
+            {
+                TotalPrice = a,
+                customerID = b,      
+                storeID = c,
+                datetimeoforder = today
+            };
 
-        //     mockRepo.Setup(repo => repo.AddOrder(TestOrder)).Returns(TestOrder);
+            mockRepo.Setup(repo => repo.AddOrder(TestOrder)).Returns(TestOrder);
 
-        //     //Act
-        //     IProjectBL projectBL = new ProjectBLc(mockRepo.Object);
-        //     OrderModel Omodel = projectBL.AddOrder(TestOrder);
+            //Act
+            IProjectBL projectBL = new ProjectBLc(mockRepo.Object);
 
-        //     //Assert
-        //     Assert.Same(TestOrder, Omodel); 
-        //     Assert.Equal(TestOrder.TotalPrice, Omodel.TotalPrice); 
-        //     Assert.Equal(TestOrder.customerID, Omodel.customerID); 
-        //     Assert.Equal(TestOrder.storeID, Omodel.storeID); 
+            //Assert 
+            Assert.Throws<System.NullReferenceException>( () => projectBL.AddOrder(TestOrder));
 
-        // }
+        }
 
 
     }

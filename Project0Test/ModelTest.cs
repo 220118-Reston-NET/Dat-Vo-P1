@@ -1,5 +1,6 @@
 using Xunit;
 using ProjectModel;
+using System;
 
 namespace Project0test
 {
@@ -50,8 +51,6 @@ namespace Project0test
             Assert.NotNull(cus.customerID);
             Assert.Equal(valid, cus.customerID);
         }
-
-
 
     }
 
@@ -387,6 +386,20 @@ namespace Project0test
             Assert.NotNull(s.storeID);
             Assert.Equal(valid, s.storeID);
             
+        }
+
+        public void TimeOfOrdertest()
+        {
+            //Arrange 
+            OrderModel s = new OrderModel();
+            DateTime valid = DateTime.Now;
+
+            //Act
+            s.datetimeoforder = valid;
+
+            //Assert
+            Assert.NotNull(s.datetimeoforder);
+            Assert.Equal(valid, s.datetimeoforder);
         }
     }
 
