@@ -369,20 +369,6 @@ namespace Project0test
 
             //Assert
             Assert.NotNull(s.customerID );
-            
-        }
-
-        [Fact]
-        public void CustomerID2()
-        {
-            //Arrange 
-            OrderModel s = new OrderModel();
-            int valid = 2;
-
-            //Act
-            s.customerID = valid;
-
-            //Assert
             Assert.Equal(valid, s.customerID);
             
         }
@@ -401,6 +387,7 @@ namespace Project0test
             Assert.NotNull(s.storeID);
             Assert.Equal(valid, s.storeID);
             
+            
         }
 
         public void TimeOfOrdertest()
@@ -417,5 +404,7 @@ namespace Project0test
             Assert.Equal(valid, s.datetimeoforder);
         }
     }
+
+
 
 }

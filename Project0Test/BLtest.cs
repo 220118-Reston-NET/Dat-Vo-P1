@@ -135,6 +135,7 @@ namespace Project0test
             Assert.Same(testCustomer, E1);
             Assert.Equal(testCustomer.name, E1.name);
             Assert.Equal(testCustomer.email,E1.email);
+            Assert.Equal(testCustomer.phonenumber,E1.phonenumber);
         } 
 
         [Fact]
@@ -219,6 +220,7 @@ namespace Project0test
             List<CustomerModel> Tcus = projectBL.SearchCustomer(TestCustomer.name);
             
             Assert.Equal(expectedList.Count, Tcus.Count); 
+
         }
 
     }
@@ -376,6 +378,36 @@ namespace Project0test
             Assert.Same(expectedListOfInventory,actualListOfInventory);
         }
 
+    }
+
+    public class OrderItemsTest
+    {
+        //[Fact]
+        // public void AddOrderItemtest()
+        // {
+        //     decimal a = 1.5m;
+        //     int b = 1;
+        //     int c = 1;
+        //     OrderModel TestOrder = new OrderModel()
+        //     {
+        //         TotalPrice = a,
+        //         customerID = b,      
+        //         storeID = c,
+        //     };
+
+        //     List<OrderModel> expectedOrderList = new List<OrderModel>();
+        //     expectedOrderList.Add(TestOrder);
+
+        //     Mock<IRepository> mockRepo = new Mock<IRepository>();
+        //     mockRepo.Setup(repo => repo.GetAllOrder()).Returns(expectedOrderList);
+        //     IProjectBL projectBL = new ProjectBLc(mockRepo.Object);
+
+        //     projectBL.AddOrder();
+        //     // bool Result = OI is not null;
+        //     // Assert.False(Result);
+        //     //Assert.Throws<System.Exception>( () => projectBL.AddOrderItem() is not void);
+
+        // }
     }
 
 
