@@ -294,31 +294,31 @@ namespace Project0test
 
     public class InventoryFunctionTest
     {
-        // [Fact]
-        // public void GetAllInventoryTest()
-        // {
-        //     int TstoreID = 1;
-        //     int TitemID = 1;
-        //     int Tquantity = 1;
-        //     InventoryModel TestInventory = new InventoryModel()
-        //     {
-        //         storeID = TstoreID,
-        //         itemID = TitemID,
-        //         quantity = Tquantity
+        [Fact]
+        public void GetAllInventoryTest()
+        {
+            int TstoreID = 1;
+            int TitemID = 1;
+            int Tquantity = 1;
+            InventoryModel TestInventory = new InventoryModel()
+            {
+                storeID = TstoreID,
+                itemID = TitemID,
+                quantity = Tquantity
                 
-        //     };
-        //     List<InventoryModel> expectedListOfInventory = new List<InventoryModel>();
-        //     expectedListOfInventory.Add(TestInventory);
+            };
+            List<InventoryModel> expectedListOfInventory = new List<InventoryModel>();
+            expectedListOfInventory.Add(TestInventory);
 
-        //     Mock<IRepository> mockRepo = new Mock<IRepository>();
-        //     mockRepo.Setup(repo => repo.GetAllInventory()).Returns(expectedListOfInventory);
+            Mock<IRepository> mockRepo = new Mock<IRepository>();
+            mockRepo.Setup(repo => repo.GetAllInventory()).Returns(expectedListOfInventory);
 
-        //     IProjectBL projectBL = new ProjectBLc(mockRepo.Object);
+            IProjectBL projectBL = new ProjectBLc(mockRepo.Object);
             
-        //     List<InventoryModel> actualListOfInventory = projectBL.GetAllInventory();
+            List<InventoryModel> actualListOfInventory = projectBL.GetAllInventory();
 
-        //     Assert.Same(expectedListOfInventory,actualListOfInventory);
-        // }
+            Assert.Same(expectedListOfInventory,actualListOfInventory);
+        }
 
     }
 

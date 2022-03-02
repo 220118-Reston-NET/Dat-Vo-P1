@@ -46,6 +46,7 @@ namespace ProjectBL
         //Inventory
         List<InventoryModel> SearchInventoryByStoreID(int storeID);
         InventoryModel UpdateInventory(InventoryModel p_inventory);
+        List<InventoryModel> GetAllInventory();
     }
 
     public interface IProjectBLitem
