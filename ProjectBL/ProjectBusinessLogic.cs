@@ -29,29 +29,29 @@ namespace ProjectBL
             return _repo.AddCustomer(p_customer);
         }
 
-        // public EmployeeModel AddEmployee(EmployeeModel Employee)
-        // {
-        //     List<EmployeeModel> listOfEmployee = _repo.GetAllEmployee();
+        public EmployeeModel AddEmployee(EmployeeModel Employee)
+        {
+            List<EmployeeModel> listOfEmployee = _repo.GetAllEmployee();
     
 
-        //     if (listOfEmployee.Count >= 9)
-        //     {
-        //         throw new Exception("you can not have more than 9 employees");
-        //     }
-        //     else if (Employee.number.Length != 10)
-        //     {
-        //         throw new Exception("Invalid Phone Number");
-        //     }
-        //     else if (!Employee.email.Contains("@"))
-        //     {
-        //         throw new Exception("Invalid Email");
-        //     }
-        //     else
-        //     {
-        //         return _repo.AddEmployee(Employee);
-        //     }
+            if (listOfEmployee.Count >= 9)
+            {
+                throw new Exception("you can not have more than 9 employees");
+            }
+            else if (Employee.number.Length != 10)
+            {
+                throw new Exception("Invalid Phone Number");
+            }
+            else if (!Employee.email.Contains("@"))
+            {
+                throw new Exception("Invalid Email");
+            }
+            else
+            {
+                return _repo.AddEmployee(Employee);
+            }
 
-        // }
+        }
 
 
         public List<EmployeeModel> GetAllEmployee()
@@ -59,10 +59,10 @@ namespace ProjectBL
             return _repo.GetAllEmployee();
         }
 
-        // public EmployeeModel RemoveEmployee(EmployeeModel p_Employee)
-        // {
-        //     return _repo.RemoveEmployee(p_Employee);
-        // }
+        public EmployeeModel RemoveEmployee(EmployeeModel p_Employee)
+        {
+            return _repo.RemoveEmployee(p_Employee);
+        }
 
         public List<CustomerModel> SearchCustomer(string p_name)
         {
