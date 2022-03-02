@@ -100,6 +100,8 @@ namespace Project0test
             Assert.False(result);
         }
 
+
+
     }
 
     public class CustomerFunctionTest
@@ -133,6 +135,47 @@ namespace Project0test
             Assert.Equal(testCustomer.name, E1.name);
             Assert.Equal(testCustomer.email,E1.email);
         } 
+
+    }
+
+    public class OrderFunctionTest
+    {
+        [Fact]
+        public void GetAllOrderTest()
+        {
+            //Arrange
+            decimal a = 1.5m;
+            int b = 1;
+            int c = 1;
+            OrderModel TestOrder = new OrderModel()
+            {
+                TotalPrice = a,
+                customerID = b,      
+                storeID = c,
+            };
+
+            List<OrderModel> expectedOrderList = new List<OrderModel>();
+            expectedOrderList.Add(TestOrder);
+
+            Mock<IRepository> mockRepo = new Mock<IRepository>();
+            mockRepo.Setup(repo => repo.GetAllOrder()).Returns(expectedOrderList);
+            IProjectBL projectBL = new ProjectBLc(mockRepo.Object);
+
+            //Act
+            List<OrderModel> actualListOfOrder = projectBL.GetAllOrder();
+
+            //Assert
+            Assert.Same(expectedOrderList, actualListOfOrder); 
+            Assert.Equal(a, actualListOfOrder[0].TotalPrice); 
+            Assert.Equal(b, actualListOfOrder[0].customerID); 
+            Assert.Equal(c, actualListOfOrder[0].storeID); 
+        }
+
+        // [Fact]
+        // public void AddOrderTest()
+        // {
+
+        // }
     }
 
 
