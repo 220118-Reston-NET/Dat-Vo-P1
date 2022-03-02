@@ -264,7 +264,8 @@ namespace Project0test
             OrderModel Omodel = new OrderModel();
             decimal a = 1.5m;
             int b = 1;
-            int c = 1;
+            int c = 3;
+            int d = 2;
             DateTime today = DateTime.Now;
 
             OrderModel TestOrder = new OrderModel()
@@ -272,6 +273,7 @@ namespace Project0test
                 TotalPrice = a,
                 customerID = b,      
                 storeID = c,
+                orderID=d,
                 datetimeoforder = today
             };
 

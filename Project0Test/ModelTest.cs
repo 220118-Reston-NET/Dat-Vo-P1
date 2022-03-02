@@ -369,9 +369,24 @@ namespace Project0test
 
             //Assert
             Assert.NotNull(s.customerID );
-            Assert.Equal(valid, s.customerID );
             
         }
+
+        [Fact]
+        public void CustomerID2()
+        {
+            //Arrange 
+            OrderModel s = new OrderModel();
+            int valid = 2;
+
+            //Act
+            s.customerID = valid;
+
+            //Assert
+            Assert.Equal(valid, s.customerID);
+            
+        }
+
         [Fact]
         public void StoreID()
         {
