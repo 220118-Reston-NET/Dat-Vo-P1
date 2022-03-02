@@ -37,6 +37,8 @@ namespace Project0test
             Assert.Same(expectedEmployeeList, actualListOfEmployee); 
             Assert.Equal(testName, actualListOfEmployee[0].name); 
             Assert.Equal(testEmail, actualListOfEmployee[0].email); 
+            Assert.NotNull(actualListOfEmployee[0].email);
+            Assert.NotNull(actualListOfEmployee[0].name);
         }
 
   
@@ -68,6 +70,8 @@ namespace Project0test
             Assert.Same(testEmployee, E1);
             Assert.Equal(testEmployee.name, E1.name);
             Assert.Equal(testEmployee.email,E1.email);
+            Assert.NotNull(E1.email);
+            Assert.NotNull(E1.name);
         }
 
         [Fact]
@@ -133,6 +137,11 @@ namespace Project0test
 
             CustomerModel E1 = projectBL.AddCustomer(testCustomer);
 
+
+            Assert.NotNull(E1.name);
+            Assert.NotNull(E1.email);
+            Assert.NotNull(E1.phonenumber);
+            Assert.NotNull(E1.password);
             Assert.Same(testCustomer, E1);
             Assert.Equal(testCustomer.name, E1.name);
             Assert.Equal(testCustomer.email,E1.email);
