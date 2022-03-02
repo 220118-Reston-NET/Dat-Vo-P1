@@ -137,6 +137,60 @@ namespace Project0test
         } 
 
         [Fact]
+        public void AddCustomerTest2()
+        {
+
+            string testname = "Tim";
+            string testemail = "Timemail.com";
+
+            CustomerModel testCustomer = new CustomerModel()
+            {
+                name = testname,
+                email = testemail,
+                phonenumber = "1234567890",
+            };
+
+            List<CustomerModel> expectedListOfCustomer= new List<CustomerModel>();
+
+            Mock<IRepository> mockRepo = new Mock<IRepository>();
+
+            mockRepo.Setup(repo => repo.AddCustomer(testCustomer)).Returns(testCustomer);            
+            mockRepo.Setup(repo => repo.GetAllCustomer()).Returns(expectedListOfCustomer);
+
+            IProjectBL projectBL = new ProjectBLc(mockRepo.Object);
+
+            //CustomerModel E1 = projectBL.AddCustomer(testCustomer);
+
+            Assert.Throws<System.Exception>( () => projectBL.AddCustomer(testCustomer));
+        } 
+
+        [Fact]
+        public void AddCustomerTest3()
+        {
+
+            string testname = "Tim";
+            string testemail = "Tim@email.com";
+
+            CustomerModel testCustomer = new CustomerModel()
+            {
+                name = testname,
+                email = testemail,
+                phonenumber = "1234560",
+            };
+
+            List<CustomerModel> expectedListOfCustomer= new List<CustomerModel>();
+
+            Mock<IRepository> mockRepo = new Mock<IRepository>();
+
+            mockRepo.Setup(repo => repo.AddCustomer(testCustomer)).Returns(testCustomer);            
+            mockRepo.Setup(repo => repo.GetAllCustomer()).Returns(expectedListOfCustomer);
+
+            IProjectBL projectBL = new ProjectBLc(mockRepo.Object);
+
+            Assert.Throws<System.Exception>( () => projectBL.AddCustomer(testCustomer));
+        } 
+
+        [Fact]
         public void SearchCustomerTest()
         {
             string Tname = "fake name";

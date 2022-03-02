@@ -20,20 +20,6 @@ namespace Project0test
             Assert.Equal(validName, cus.name);
         }
 
-        [Fact]
-        public void CustomerNumber()
-        {
-            //Arrange
-            CustomerModel cus = new CustomerModel();
-            string valid = "1234567890";
-
-            //Act
-            cus.phonenumber = valid;
-
-            //Assert
-            Assert.NotNull(cus.phonenumber);
-            Assert.Equal(valid, cus.phonenumber);
-        }
 
         [Fact]
         public void CustomerEmail()
@@ -49,6 +35,7 @@ namespace Project0test
             Assert.NotNull(cus.email);
             Assert.Equal(valid, cus.email);
         }
+
         [Fact]
         public void CustomerID()
         {
@@ -63,6 +50,8 @@ namespace Project0test
             Assert.NotNull(cus.customerID);
             Assert.Equal(valid, cus.customerID);
         }
+
+
 
     }
 
@@ -400,4 +389,5 @@ namespace Project0test
             
         }
     }
+
 }
