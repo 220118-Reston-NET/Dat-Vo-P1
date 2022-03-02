@@ -408,7 +408,9 @@ namespace Project0test
 
             Assert.Same(expectedListOfInventory,actualListOfInventory);
         }
+        
 
+        [Fact]
         public void UpdateInventoryTest()
         {
             int TstoreID = 1;
@@ -421,17 +423,6 @@ namespace Project0test
                 quantity = Tquantity
                 
             };
-            List<InventoryModel> expectedListOfInventory = new List<InventoryModel>();
-            expectedListOfInventory.Add(TestInventory);
-            List<InventoryModel> actualListOfInventory = new List<InventoryModel>();
-
-
-            Mock<IRepository> mockRepo = new Mock<IRepository>();
-            mockRepo.Setup(repo => repo.GetAllInventory()).Returns(expectedListOfInventory);
-            mockRepo.Setup(repo => repo.GetAllInventory()).Returns(actualListOfInventory);
-
-            IProjectBL projectBL = new ProjectBLc(mockRepo.Object);
-            
 
             InventoryModel TestInventory2 = new InventoryModel()
             {
@@ -439,12 +430,25 @@ namespace Project0test
                 itemID = 1,
                 quantity = 99
             };
+            List<InventoryModel> expectedListOfInventory = new List<InventoryModel>();
+            expectedListOfInventory.Add(TestInventory);
+            InventoryModel actualListOfInventory = new InventoryModel();
 
 
-            projectBL.UpdateInventory(TestInventory2);
-            actualListOfInventory = projectBL.GetAllInventory();
+            Mock<IRepository> mockRepo = new Mock<IRepository>();
+            mockRepo.Setup(repo => repo.GetAllInventory()).Returns(expectedListOfInventory);
+            mockRepo.Setup(repo => repo.UpdateInventory(TestInventory2)).Returns(actualListOfInventory);
+            IProjectBL projectBL = new ProjectBLc(mockRepo.Object);
+            
 
-            Assert.Same(expectedListOfInventory,actualListOfInventory);
+
+            actualListOfInventory = projectBL.UpdateInventory(TestInventory2);
+            expectedListOfInventory = projectBL.GetAllInventory();
+
+            bool Result = (actualListOfInventory.quantity == TestInventory.quantity);
+
+            //Assert.Same(expectedListOfInventory,actualListOfInventory);
+            Assert.False(Result);
         }
 
 
