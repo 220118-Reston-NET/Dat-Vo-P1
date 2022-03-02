@@ -136,6 +136,36 @@ namespace Project0test
             Assert.Equal(testCustomer.email,E1.email);
         } 
 
+        [Fact]
+        public void SearchCustomerTest()
+        {
+            string Tname = "fake name";
+            string Tnumber = "1234567890";
+            string Temail = "T@gmail.com";
+            string Tpass = "123";
+            
+            CustomerModel TestCustomer = new CustomerModel()
+            {
+                customerID = 0,
+                name = Tname,
+                phonenumber = Tnumber,
+                email = Temail,
+                password = Tpass
+            };
+            List<CustomerModel> listofCustomer = new List<CustomerModel>();
+            List<CustomerModel> expectedList = new List<CustomerModel>();
+            
+            Mock<IRepository> mockRepo = new Mock<IRepository>();
+            mockRepo.Setup(repo => repo.AddCustomer(TestCustomer)).Returns(TestCustomer); 
+            mockRepo.Setup(repo => repo.GetAllCustomer()).Returns(listofCustomer);
+
+            IProjectBL projectBL = new ProjectBLc(mockRepo.Object);
+            CustomerModel E1 = projectBL.AddCustomer(TestCustomer);
+            List<CustomerModel> Tcus = projectBL.SearchCustomer(TestCustomer.name);
+            
+            Assert.Equal(expectedList.Count, Tcus.Count); 
+        }
+
     }
 
     public class OrderFunctionTest
