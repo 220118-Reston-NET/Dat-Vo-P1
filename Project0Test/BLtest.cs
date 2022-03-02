@@ -409,6 +409,46 @@ namespace Project0test
             Assert.Same(expectedListOfInventory,actualListOfInventory);
         }
 
+        public void UpdateInventoryTest()
+        {
+            int TstoreID = 1;
+            int TitemID = 1;
+            int Tquantity = 1;
+            InventoryModel TestInventory = new InventoryModel()
+            {
+                storeID = TstoreID,
+                itemID = TitemID,
+                quantity = Tquantity
+                
+            };
+            List<InventoryModel> expectedListOfInventory = new List<InventoryModel>();
+            expectedListOfInventory.Add(TestInventory);
+            List<InventoryModel> actualListOfInventory = new List<InventoryModel>();
+
+
+            Mock<IRepository> mockRepo = new Mock<IRepository>();
+            mockRepo.Setup(repo => repo.GetAllInventory()).Returns(expectedListOfInventory);
+            mockRepo.Setup(repo => repo.GetAllInventory()).Returns(actualListOfInventory);
+
+            IProjectBL projectBL = new ProjectBLc(mockRepo.Object);
+            
+
+            InventoryModel TestInventory2 = new InventoryModel()
+            {
+                storeID = 1,
+                itemID = 1,
+                quantity = 99
+            };
+
+
+            projectBL.UpdateInventory(TestInventory2);
+            actualListOfInventory = projectBL.GetAllInventory();
+
+            Assert.Same(expectedListOfInventory,actualListOfInventory);
+        }
+
+
+
     }
 
     public class OrderItemsTest
@@ -441,6 +481,7 @@ namespace Project0test
         // }
     }
 
+    
 
 
 
