@@ -29,29 +29,29 @@ namespace ProjectBL
             return _repo.AddCustomer(p_customer);
         }
 
-        public EmployeeModel AddEmployee(EmployeeModel Employee)
-        {
-            List<EmployeeModel> listOfEmployee = _repo.GetAllEmployee();
+        // public EmployeeModel AddEmployee(EmployeeModel Employee)
+        // {
+        //     List<EmployeeModel> listOfEmployee = _repo.GetAllEmployee();
     
 
-            if (listOfEmployee.Count >= 9)
-            {
-                throw new Exception("you can not have more than 9 employees");
-            }
-            else if (Employee.number.Length != 10)
-            {
-                throw new Exception("Invalid Phone Number");
-            }
-            else if (!Employee.email.Contains("@"))
-            {
-                throw new Exception("Invalid Email");
-            }
-            else
-            {
-                return _repo.AddEmployee(Employee);
-            }
+        //     if (listOfEmployee.Count >= 9)
+        //     {
+        //         throw new Exception("you can not have more than 9 employees");
+        //     }
+        //     else if (Employee.number.Length != 10)
+        //     {
+        //         throw new Exception("Invalid Phone Number");
+        //     }
+        //     else if (!Employee.email.Contains("@"))
+        //     {
+        //         throw new Exception("Invalid Email");
+        //     }
+        //     else
+        //     {
+        //         return _repo.AddEmployee(Employee);
+        //     }
 
-        }
+        // }
 
 
         public List<EmployeeModel> GetAllEmployee()
@@ -59,10 +59,10 @@ namespace ProjectBL
             return _repo.GetAllEmployee();
         }
 
-        public EmployeeModel RemoveEmployee(EmployeeModel p_Employee)
-        {
-            return _repo.RemoveEmployee(p_Employee);
-        }
+        // public EmployeeModel RemoveEmployee(EmployeeModel p_Employee)
+        // {
+        //     return _repo.RemoveEmployee(p_Employee);
+        // }
 
         public List<CustomerModel> SearchCustomer(string p_name)
         {
@@ -75,16 +75,16 @@ namespace ProjectBL
                         .ToList(); //ToList method just converts into a list collection that the method needs to return
         }
 
-        public List<EmployeeModel> SearchEmployee(string p_name)
-        {
-            List<EmployeeModel> listOfEmployee= _repo.GetAllEmployee();
+        // public List<EmployeeModel> SearchEmployee(string p_name)
+        // {
+        //     List<EmployeeModel> listOfEmployee= _repo.GetAllEmployee();
 
 
-            // LINQ library
-            return listOfEmployee
-                        .Where(employee => employee.name.Contains(p_name)) //Where method is designed to filter a collection based on a condition
-                        .ToList(); //ToList method just converts into a list collection that the method needs to return
-        }
+        //     // LINQ library
+        //     return listOfEmployee
+        //                 .Where(employee => employee.name.Contains(p_name)) //Where method is designed to filter a collection based on a condition
+        //                 .ToList(); //ToList method just converts into a list collection that the method needs to return
+        // }
         public CustomerModel GetCustomer(int customerID)
         {
             return _repo.SearchCustomerByID(customerID);
@@ -111,10 +111,10 @@ namespace ProjectBL
             return _repo.SearchOrderItem(orderID);
         }
 
-        public StoreFrontModel SearchStoreFront(string p_name)
-        {
-            return _repo.SearchStoreFront(p_name);
-        }
+        //public StoreFrontModel SearchStoreFront(string p_name)
+        // {
+        //     return _repo.SearchStoreFront(p_name);
+        // }
 
         public StoreFrontModel SearchStoreFront(int? storeID)
         {

@@ -4,11 +4,11 @@ namespace ProjectBL
     public interface IProjectBL
     {
         //EMPLOYEE
-        EmployeeModel AddEmployee(EmployeeModel p_Employee);
+        //EmployeeModel AddEmployee(EmployeeModel p_Employee);
 
-        EmployeeModel RemoveEmployee(EmployeeModel p_Employee);
+        //EmployeeModel RemoveEmployee(EmployeeModel p_Employee);
 
-        List<EmployeeModel> SearchEmployee(string p_name);
+        //List<EmployeeModel> SearchEmployee(string p_name);
 
         List<EmployeeModel> GetAllEmployee();
         EmployeeModel GetEmployeeByID(int employeeID);
@@ -35,7 +35,7 @@ namespace ProjectBL
 
         //======================================================
         //StoreFront
-        StoreFrontModel SearchStoreFront(string p_name);
+        //StoreFrontModel SearchStoreFront(string p_name);
         StoreFrontModel SearchStoreFront(int? storeID);
         
         //======================================================
