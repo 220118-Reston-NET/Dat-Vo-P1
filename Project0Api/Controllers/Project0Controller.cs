@@ -102,6 +102,7 @@ namespace Project0Api.Controllers
 
             List<OrderDetailsForAPIModel> Result = new List<OrderDetailsForAPIModel>();
             OrderDetailsForAPIModel OrderDetails = new OrderDetailsForAPIModel();
+            ItemAndQuantityforApiModel IandQ = new ItemAndQuantityforApiModel();
         
             try
             {
@@ -132,8 +133,13 @@ namespace Project0Api.Controllers
                         OrderDetails.DateTimeOfOrder = Order.datetimeoforder;
                         foreach(var OrderItem in listOfOrderItems)
                         {
-                            OrderDetails.ItemList.Add(_projectBL.GetItem(OrderItem.itemID));
-                            OrderDetails.QuantityList.Add(OrderItem.quantity);
+                            IandQ = new ItemAndQuantityforApiModel();
+                            IandQ.Item = _projectBL.GetItem(OrderItem.itemID);
+                            IandQ.Quantity = OrderItem.quantity;
+                            //OrderDetails.ItemList.Add(_projectBL.GetItem(OrderItem.itemID));
+                            //OrderDetails.QuantityList.Add(OrderItem.quantity);
+                            OrderDetails.ItemAndQuantity.Add(IandQ);
+                            
                         }
                         Result.Add(OrderDetails);
                     }
@@ -166,8 +172,12 @@ namespace Project0Api.Controllers
                         OrderDetails.DateTimeOfOrder = Order.datetimeoforder;
                         foreach(var OrderItem in listOfOrderItems)
                         {
-                            OrderDetails.ItemList.Add(_projectBL.GetItem(OrderItem.itemID));
-                            OrderDetails.QuantityList.Add(OrderItem.quantity);
+                            IandQ = new ItemAndQuantityforApiModel();
+                            IandQ.Item = _projectBL.GetItem(OrderItem.itemID);
+                            IandQ.Quantity = OrderItem.quantity;
+                            //OrderDetails.ItemList.Add(_projectBL.GetItem(OrderItem.itemID));
+                            //OrderDetails.QuantityList.Add(OrderItem.quantity);
+                            OrderDetails.ItemAndQuantity.Add(IandQ);
                         }
                         Result.Add(OrderDetails);
                     }
@@ -192,8 +202,8 @@ namespace Project0Api.Controllers
             }
         }
 
-        [HttpGet("GetOrderOfCurrentStore/{sortby}")]
-        public IActionResult GetOrderOfStore(string? sortby)
+        [HttpGet("GetOrderOfCurrentStore")]
+        public IActionResult GetOrderOfCurrentStore(string? sortby)
         {
             try
             { 
@@ -202,6 +212,7 @@ namespace Project0Api.Controllers
                 OrderDetailsForAPIModel OrderDetails = new OrderDetailsForAPIModel();
                 List<OrderModel> listOfOrders = _projectBL.GetAllOrder();
                 List<OrderItemModel> listOfOrderItems = new List<OrderItemModel>();
+                ItemAndQuantityforApiModel IandQ = new ItemAndQuantityforApiModel();
                 if (sortby == "DateTime")
                 {
                     Log.Information("Sorting orders by DateTime");
@@ -225,8 +236,10 @@ namespace Project0Api.Controllers
                     OrderDetails.DateTimeOfOrder = Order.datetimeoforder;
                     foreach(var OrderItem in listOfOrderItems)
                     {
-                        OrderDetails.ItemList.Add(_projectBL.GetItem(OrderItem.itemID));
-                        OrderDetails.QuantityList.Add(OrderItem.quantity);
+                        IandQ = new ItemAndQuantityforApiModel();
+                        IandQ.Item = _projectBL.GetItem(OrderItem.itemID);
+                        IandQ.Quantity = OrderItem.quantity;
+                        OrderDetails.ItemAndQuantity.Add(IandQ);
                     }
                     Result.Add(OrderDetails);
                 }
