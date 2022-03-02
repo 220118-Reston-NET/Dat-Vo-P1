@@ -4,9 +4,9 @@ namespace ProjectBL
     public interface IProjectBL
     {
         //EMPLOYEE
-        //EmployeeModel AddEmployee(EmployeeModel p_Employee);
+        EmployeeModel AddEmployee(EmployeeModel p_Employee);
 
-        //EmployeeModel RemoveEmployee(EmployeeModel p_Employee);
+        EmployeeModel RemoveEmployee(EmployeeModel p_Employee);
 
         //List<EmployeeModel> SearchEmployee(string p_name);
 
