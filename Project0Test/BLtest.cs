@@ -119,6 +119,7 @@ namespace Project0test
                 name = testname,
                 email = testemail,
                 phonenumber = "1234567890",
+                password = "123"
             };
 
             List<CustomerModel> expectedListOfCustomer= new List<CustomerModel>();
@@ -136,6 +137,7 @@ namespace Project0test
             Assert.Equal(testCustomer.name, E1.name);
             Assert.Equal(testCustomer.email,E1.email);
             Assert.Equal(testCustomer.phonenumber,E1.phonenumber);
+            Assert.Equal(testCustomer.password,E1.password);
         } 
 
         [Fact]
@@ -150,6 +152,7 @@ namespace Project0test
                 name = testname,
                 email = testemail,
                 phonenumber = "1234567890",
+                password = "123"
             };
 
             List<CustomerModel> expectedListOfCustomer= new List<CustomerModel>();
@@ -178,6 +181,7 @@ namespace Project0test
                 name = testname,
                 email = testemail,
                 phonenumber = "1234560",
+                password = "123"
             };
 
             List<CustomerModel> expectedListOfCustomer= new List<CustomerModel>();
@@ -191,6 +195,33 @@ namespace Project0test
 
             Assert.Throws<System.Exception>( () => projectBL.AddCustomer(testCustomer));
         } 
+        [Fact]
+        public void AddCustomerTest4()
+        {
+
+            string testname = "Tim";
+            string testemail = "Timemail.com";
+
+            CustomerModel testCustomer = new CustomerModel()
+            {
+                name = testname,
+                email = testemail,
+                phonenumber = "1560",
+                password = "123"
+            };
+
+            List<CustomerModel> expectedListOfCustomer= new List<CustomerModel>();
+
+            Mock<IRepository> mockRepo = new Mock<IRepository>();
+
+            mockRepo.Setup(repo => repo.AddCustomer(testCustomer)).Returns(testCustomer);            
+            mockRepo.Setup(repo => repo.GetAllCustomer()).Returns(expectedListOfCustomer);
+
+            IProjectBL projectBL = new ProjectBLc(mockRepo.Object);
+
+            Assert.Throws<System.Exception>( () => projectBL.AddCustomer(testCustomer));
+        } 
+
 
         [Fact]
         public void SearchCustomerTest()

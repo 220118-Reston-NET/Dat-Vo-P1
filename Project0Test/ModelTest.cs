@@ -21,6 +21,21 @@ namespace Project0test
             Assert.Equal(validName, cus.name);
         }
 
+        [Fact]
+        public void CustomerName2()
+        {
+            //Arrange
+            CustomerModel cus = new CustomerModel();
+            string validName = "";
+
+            //Act
+            cus.name = validName;
+
+            //Assert
+            Assert.NotNull(cus.name);
+            Assert.Equal(validName, cus.name);
+        }
+
 
         [Fact]
         public void CustomerEmail()
@@ -36,6 +51,22 @@ namespace Project0test
             Assert.NotNull(cus.email);
             Assert.Equal(valid, cus.email);
         }
+
+        [Fact]
+        public void CustomerEmail2()
+        {
+            //Arrange
+            CustomerModel cus = new CustomerModel();
+            string valid = "";
+
+            //Act
+            cus.email = valid;
+
+            //Assert
+            Assert.NotNull(cus.email);
+            Assert.Equal(valid, cus.email);
+        }
+
 
         [Fact]
         public void CustomerID()
@@ -386,7 +417,7 @@ namespace Project0test
             //Assert
             Assert.NotNull(s.storeID);
             Assert.Equal(valid, s.storeID);
-            
+
             
         }
 
