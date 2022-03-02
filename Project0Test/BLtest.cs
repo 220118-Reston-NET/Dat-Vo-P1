@@ -174,9 +174,64 @@ namespace Project0test
         // [Fact]
         // public void AddOrderTest()
         // {
+        //     //Arrange
+        //     Mock<IRepository> mockRepo = new Mock<IRepository>();
+        //     decimal a = 1.5m;
+        //     int b = 1;
+        //     int c = 1;
+
+        //     OrderModel TestOrder = new OrderModel()
+        //     {
+        //         TotalPrice = a,
+        //         customerID = b,      
+        //         storeID = c
+        //     };
+
+        //     mockRepo.Setup(repo => repo.AddOrder(TestOrder)).Returns(TestOrder);
+
+        //     //Act
+        //     IProjectBL projectBL = new ProjectBLc(mockRepo.Object);
+        //     OrderModel Omodel = projectBL.AddOrder(TestOrder);
+
+        //     //Assert
+        //     Assert.Same(TestOrder, Omodel); 
+        //     Assert.Equal(TestOrder.TotalPrice, Omodel.TotalPrice); 
+        //     Assert.Equal(TestOrder.customerID, Omodel.customerID); 
+        //     Assert.Equal(TestOrder.storeID, Omodel.storeID); 
 
         // }
+
+
     }
+
+    public class itemfunctionTest
+    {
+        [Fact]
+        public void GetItemtest()
+        {
+            string a = "a";
+            string b = "b";
+            decimal TP = 1.5m;
+            string c = "c";
+            ItemModel testItem = new ItemModel()
+            {
+                ItemID = 0,
+                ItemName = a,
+                ItemPrice = TP,
+                ItemCategory = c, 
+                ItemDescription = a
+            };
+            Mock<IRepository> mockRepo = new Mock<IRepository>();
+            mockRepo.Setup(repo => repo.GetItem(testItem.ItemID)).Returns(testItem);
+
+            IProjectBL projectBL = new ProjectBLc(mockRepo.Object);
+            ItemModel Imodel = projectBL.GetItem(0);
+
+            Assert.Same(testItem, Imodel); 
+            
+        } 
+    }
+
 
 
 

@@ -10,7 +10,6 @@ namespace ProjectModel
         // public List<OrderItemModel> listOfOrderItems{ get; set; }
 
         // public List<int> listOfAmount{ get; set; }
-        public Dictionary<ItemModel, int> ItemAndAmount { get; set; }
 
         public DateTime datetimeoforder { get; set;}
 
