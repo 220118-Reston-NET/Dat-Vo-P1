@@ -451,6 +451,34 @@ namespace Project0test
             Assert.False(Result);
         }
 
+        [Fact]
+        public void SearchInventoryByStoreIDTest()
+        {
+            int TstoreID = 1;
+            int TitemID = 1;
+            int Tquantity = 1;
+            InventoryModel TestInventory = new InventoryModel()
+            {
+                storeID = TstoreID,
+                itemID = TitemID,
+                quantity = Tquantity
+                
+            };
+            List<InventoryModel> expectedListOfInventory = new List<InventoryModel>();
+            expectedListOfInventory.Add(TestInventory);
+
+            Mock<IRepository> mockRepo = new Mock<IRepository>();
+            //mockRepo.Setup(repo => repo.GetAllInventory()).Returns(expectedListOfInventory);
+            mockRepo.Setup(repo => repo.SearchInventoryByStoreID(TestInventory.storeID)).Returns(expectedListOfInventory);
+
+            IProjectBL projectBL = new ProjectBLc(mockRepo.Object);
+            
+            List<InventoryModel> actualListOfInventory = projectBL.GetAllInventory();
+
+            InventoryModel result = projectBL.SearchInventoryByStoreID(TestInventory.storeID)[0];
+
+            Assert.Equal(result.storeID,TestInventory.storeID);
+        }
 
 
     }
