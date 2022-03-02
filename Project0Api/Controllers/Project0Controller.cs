@@ -34,6 +34,10 @@ namespace Project0Api.Controllers
         // }
 
 
+/// <summary>
+/// Display all employees
+/// </summary>
+/// <returns></returns>
         [HttpGet("GetAllEmployee")]
         public IActionResult GetAllEmployee()
         {
@@ -48,6 +52,9 @@ namespace Project0Api.Controllers
             }
         }
         
+///
+/// return customer
+/// 
         // GET: api/Project0/5
         [HttpGet("GetCustomerByName/{CustomerName}")]
         public IActionResult GetCustomer(string CustomerName)
@@ -95,7 +102,11 @@ namespace Project0Api.Controllers
             }
         }
 
-       
+/// <summary>
+/// Get Orders depending on who is logged in
+/// </summary>
+/// <param name="sortby"> sort by datetime or cost</param>
+/// <returns></returns>       
         [HttpGet("GetOrders")]
         public IActionResult GetOrders(string? sortby)
         {
@@ -253,6 +264,10 @@ namespace Project0Api.Controllers
         }
 
 
+
+///
+/// Add new Customer
+///
         // POST: api/Project0
         [HttpPost("Registration")]
         public IActionResult Post([FromBody] CustomerModel new_customer)
@@ -270,7 +285,9 @@ namespace Project0Api.Controllers
             }
         }
 
-        // PUT: api/Project0/5
+///
+/// Log in menu
+///      // PUT: api/Project0/5
         [HttpPut("Login/{EmployeeOrCustomer}/{UserID}/{Password}")]
         public IActionResult Put(string EmployeeOrCustomer, int UserID, string Password)
         {
@@ -310,6 +327,13 @@ namespace Project0Api.Controllers
             
         }
 
+
+
+/// <summary>
+/// Select or switch current store, if null input, return current store
+/// </summary>
+/// <param name="storeID">ID of the store</param>
+/// <returns> current store</returns>
         [HttpPut("SelectStore/")] 
         public IActionResult SelectStore(int? storeID)
         {
@@ -331,6 +355,14 @@ namespace Project0Api.Controllers
             }
         }
 
+
+
+/// <summary>
+/// Add Item to cart, if logged in as customer
+/// </summary>
+/// <param name="itemID"> Item ID</param>
+/// <param name="quantity"> Amount of said Item</param>
+/// <returns></returns>
         [HttpPut("AddToCart/{itemID}/{quantity}")] 
         public IActionResult Put(int itemID, int quantity)
         {
@@ -356,6 +388,13 @@ namespace Project0Api.Controllers
             }
         }
 
+
+/// <summary>
+/// Update Inventory, only works for Employees login
+/// </summary>
+/// <param name="itemID">Item ID</param>
+/// <param name="amount">new amount</param>
+/// <returns></returns>
         [HttpPut("UpdateInventory/")] 
         public IActionResult UpdateInventory(int itemID, int amount)
         {
@@ -376,6 +415,12 @@ namespace Project0Api.Controllers
             }
         }
 
+
+
+/// <summary>
+/// Place current Order, return conflict if cart is empty
+/// </summary>
+/// <returns> return either success or conflict/returns>
         [HttpPut("PlaceOrder")] 
         public IActionResult PlaceOrder()
         {
@@ -396,7 +441,10 @@ namespace Project0Api.Controllers
         }
 
 
-        // DELETE: api/Project0/5
+
+///
+/// Clears current customer and employee (log them out)
+///         // DELETE: api/Project0/5
         [HttpDelete("LogOut")]
         public IActionResult Delete()
         {
