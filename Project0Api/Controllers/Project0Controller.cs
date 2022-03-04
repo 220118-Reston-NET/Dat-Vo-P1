@@ -122,16 +122,28 @@ namespace Project0Api.Controllers
                     Log.Information("Displaying Customer's order(s)");
                     List<OrderModel> listOfOrders = _projectBL.GetAllOrder(CurrentCustomer.currentcustomer.customerID);
                     List<OrderItemModel> listOfOrderItems = new List<OrderItemModel>();
-                    if (sortby == "DateTime")
+                    if (sortby == "DateTimeAsc")
                     {
                         Log.Information("sorting order by DateTime");
                         listOfOrders = listOfOrders.OrderBy(o=>o.datetimeoforder).ToList();
                     }
-                    else if (sortby == "Cost")
+                    else if (sortby == "DateTimeDesc")
+                    {
+                        Log.Information("sorting order by DateTime");
+                        listOfOrders = listOfOrders.OrderByDescending(o=>o.datetimeoforder).ToList();
+                    }
+                    else if (sortby == "CostAsc")
                     {
                         Log.Information("sorting order by Cost");
                         listOfOrders = listOfOrders.OrderBy(o=>o.TotalPrice).ToList();
                     }
+                    else if (sortby == "CostDesc")
+                    {
+                        Log.Information("sorting order by Cost Descending");
+                        listOfOrders = listOfOrders.OrderByDescending(o=>o.TotalPrice).ToList();
+                    }
+
+
 
 
                     foreach(var Order in listOfOrders)
@@ -162,17 +174,27 @@ namespace Project0Api.Controllers
                     Log.Information("Displaying all order(s)");
                     List<OrderModel> listOfOrders = _projectBL.GetAllOrder();
                     List<OrderItemModel> listOfOrderItems = new List<OrderItemModel>();
-                    if (sortby == "DateTime")
+                    if (sortby == "DateTimeAsc")
                     {
-                        Log.Information("Sorting Orders by DateTime");
+                        Log.Information("Sorting Orders by DateTime Ascending");
                         listOfOrders = listOfOrders.OrderBy(o=>o.datetimeoforder).ToList();
                     }
-                    else if (sortby == "Cost")
+                    else if (sortby == "DateTimeDesc")
                     {
-                        Log.Information("Sorting Orders by Cost");
-                        listOfOrders = listOfOrders.OrderBy(o=>o.TotalPrice).ToList();
-
+                        Log.Information("Sorting Orders by DateTime Descending");
+                        listOfOrders = listOfOrders.OrderByDescending(o=>o.datetimeoforder).ToList();
                     }
+                    else if (sortby == "CostAsc")
+                    {
+                        Log.Information("Sorting Orders by Cost Ascending");
+                        listOfOrders = listOfOrders.OrderBy(o=>o.TotalPrice).ToList();
+                    }
+                    else if (sortby == "CostDesc")
+                    {
+                        Log.Information("Sorting Orders by Cost Descending");
+                        listOfOrders = listOfOrders.OrderByDescending(o=>o.TotalPrice).ToList();
+                    }
+
                     foreach(var Order in listOfOrders)
                     {   OrderDetails = new OrderDetailsForAPIModel();
                         listOfOrderItems = _projectBL.SearchOrderItem(Order.orderID);
@@ -224,17 +246,30 @@ namespace Project0Api.Controllers
                 List<OrderModel> listOfOrders = _projectBL.GetAllOrder();
                 List<OrderItemModel> listOfOrderItems = new List<OrderItemModel>();
                 ItemAndQuantityforApiModel IandQ = new ItemAndQuantityforApiModel();
-                if (sortby == "DateTime")
+                if (sortby == "DateTimeAsc")
                 {
                     Log.Information("Sorting orders by DateTime");
                     listOfOrders = listOfOrders.Where(order => order.storeID == CurrentCustomer.currentstore.storeID).ToList();
                     listOfOrders = listOfOrders.OrderBy(o=>o.datetimeoforder).ToList();
                 }
-                else if (sortby == "Cost")
+                else if (sortby == "DateTimeDesc")
+                {
+                    Log.Information("Sorting orders by DateTime");
+                    listOfOrders = listOfOrders.Where(order => order.storeID == CurrentCustomer.currentstore.storeID).ToList();
+                    listOfOrders = listOfOrders.OrderByDescending(o=>o.datetimeoforder).ToList();
+                }
+                else if (sortby == "CostAsc")
                 {
                     Log.Information("Sorting orders by Cost");
                     listOfOrders = listOfOrders.Where(order => order.storeID == CurrentCustomer.currentstore.storeID).ToList();
                     listOfOrders = listOfOrders.OrderBy(o=>o.TotalPrice).ToList();
+
+                }
+                else if (sortby == "CostDesc")
+                {
+                    Log.Information("Sorting orders by Cost");
+                    listOfOrders = listOfOrders.Where(order => order.storeID == CurrentCustomer.currentstore.storeID).ToList();
+                    listOfOrders = listOfOrders.OrderByDescending(o=>o.TotalPrice).ToList();
 
                 }
                 foreach(var Order in listOfOrders)
