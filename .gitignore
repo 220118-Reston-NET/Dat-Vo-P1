@@ -4,6 +4,6 @@ logs
 appsettings.json
 appsettingsV2.json
 publish
-Project0Api/appsettings.Development.json
+appsettings.Development.json
 .vscode
 
