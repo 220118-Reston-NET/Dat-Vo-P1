@@ -1,5 +1,5 @@
 # Store-App API
-This project is an API for a store owner to manage the inventories and customers
+This project is an API for a store owner to manage the inventories and customers with multiple store location.
 
 ## Tech
 * C#
