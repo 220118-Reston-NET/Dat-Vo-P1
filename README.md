@@ -23,7 +23,7 @@ This project is an API for a store owner to manage the inventories and customers
 ## Getting Started
 Open VScode in the correct directory and open the terminal and type in the following CLI commands
 ```
-git pull [repository link]
+git pull https://github.com/220118-Reston-NET/Dat-Vo-P1.git
 ```
 Change current directory into the API
 ```
@@ -35,6 +35,6 @@ dotnet run
 ```
 
 ## Usage
-To test that the API is working and see all the functionalities, use the following link https://localhost:0000/swagger/index.html but replace the port number with the your own.
+To test that the API is working and see all the functionalities, use the following link https://localhost:[PortNumberHere]/swagger/index.html but replace the port number with the your own (and remove the brackets).
 
 
