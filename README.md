@@ -5,7 +5,7 @@ This project is an API for a store owner to manage the inventories and customers
 * C#
 * ASP.NET webapi
 * ADO.NET
-* msSQL
+* Microsoft SQL server
 * xUnit
 * Serilog
 * Azure Cloud Service
