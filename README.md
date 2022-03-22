@@ -22,15 +22,15 @@ This project is an API for a store owner to manage the inventories and customers
 
 ## Getting Started
 Open VScode in the correct directory and open the terminal and type in the following CLI commands
-```
+```bash
 git pull https://github.com/220118-Reston-NET/Dat-Vo-P1.git
 ```
 Change current directory into the API
-```
+```bash
 cd Project0Api
 ```
 Run the api
-```
+```bash
 dotnet run
 ```
 
